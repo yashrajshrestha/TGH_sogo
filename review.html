@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sogo Hotel by Colorlib.com</title>
+    <title>Thamel Grand Hotel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -29,7 +29,7 @@
     <header class="site-header js-site-header">
       <div class="container-fluid">
         <div class="row align-items-center">
-          <div class="col-6 col-lg-4 site-logo" data-aos="fade"><a href="index.html">Sogo Hotel</a></div>
+          <div class="col-6 col-lg-4 site-logo" data-aos="fade"><a href="index.html">Thamel Grand Hotel</a></div>
           <div class="col-6 col-lg-8">
 
 
@@ -99,8 +99,14 @@
                   <input type="text" name="name" class="form-control ">
                 </div>
                 <div class="col-md-6 form-group">
-                  <label for="phone">rating</label>
-                  <input type="text" name="rating" class="form-control ">
+                  <label for="phone">Rating</label>
+                  <select name="rating" class="form-control ">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
                 </div>
               </div>
           
@@ -319,16 +325,15 @@
           formDataObject[key] = value;
         })
 
-        const jsonData = JSON.stringify(formDataObject);
+        const jsonData = JSON.stringify({"data": {formDataObject}});
 
-        console.log("formData", formData);
-
-        const apiUrl = 'http://localhost:3000/reviews/create-review';
+        const apiUrl = 'http://localhost:1337/api/reviews';
 
         fetch(apiUrl, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            "Authorization": "Bearer 081d9de3542455cc520d79b612919ae47322b341e0b5b7b12f1e7eb238ff38c1c855ae6bb366fe7f7f5c5bd9619f7932937d1b8162a68f55ca50ec7f294e09a2750a6e021006240762237a95924a2e7a8b5618c2d3c40a0e1ba907e2baafff23a2f2b465ac3faed9b3e5412719612461ad3db4d300c72fc0d50ad1bb0afe5692"
           },
           body: jsonData
         })

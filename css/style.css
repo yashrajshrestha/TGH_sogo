@@ -7,6 +7,10 @@ body {
   color: #6c757d;
   position: relative; }
 
+span{
+  font-weight: 100;
+}
+
 ::-moz-selection {
   color: #fff;
   background: #ffba5a; }
@@ -416,7 +420,8 @@ textarea.form-control {
   color: #adb5bd;
   text-transform: uppercase;
   letter-spacing: .2em;
-  font-size: 14px; }
+  font-size: 20px;
+ }
 
 .owl-carousel .owl-item {
   opacity: .4; }
@@ -443,9 +448,11 @@ textarea.form-control {
     .owl-carousel .owl-nav .owl-next span:before {
       font-size: 40px; }
   .owl-carousel .owl-nav .owl-prev {
-    left: 30px !important; }
+    left: -50px !important; 
+  }
   .owl-carousel .owl-nav .owl-next {
-    right: 30px !important; }
+    right: -50px !important; 
+  }
 
 .owl-carousel .owl-dots {
   text-align: center; }
@@ -1390,5 +1397,34 @@ textarea.form-control {
 
 .star:hover {
   color: gold;
+}
+
+.blog-details-section {
+	padding-top: 55px;
+}
+.blog-details-text .bd-title {
+	margin-bottom: 52px;
+}
+.blog-details-text .bd-title p {
+	font-size: 18px;
+	color: #707079;
+	line-height: 30px;
+}
+.blog-details-text .bd-pic {
+	overflow: hidden;
+	margin-bottom: 35px;
+}
+.blog-details-text .bd-pic .bp-item {
+	width: calc(33.33% - 10px);
+	float: left;
+	margin-right: 15px;
+}
+.blog-details-text .bd-pic .bp-item:last-child {
+	margin-right: 0;
+}
+
+.logo-size{
+  height: 10px;
+  width: 10px;
 }
 
