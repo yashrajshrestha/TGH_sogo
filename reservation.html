@@ -93,6 +93,14 @@
             
             <form id="reservation" class="bg-white p-md-5 p-4 mb-5 border">
               <div class="row">
+                <div class="col-md-12 form-group">
+                  <label class="text-black font-weight-bold" for="room">Room</label>
+                  <select name="room" id="room" class="form-control">
+                    <option value="">Loading rooms…</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
                 <div class="col-md-6 form-group">
                   <label class="text-black font-weight-bold" for="name">Name</label>
                   <input type="text" id="name" class="form-control " name="name">
@@ -167,8 +175,8 @@
           <div class="col-md-5" data-aos="fade-up" data-aos-delay="200">
             <div class="row">
               <div class="col-md-10 ml-auto contact-info">
-                <p><span class="d-block">Address:</span> <span class="text-black"> 98 West 21th Street, Suite 721 New York NY 10016</span></p>
-                <p><span class="d-block">Phone:</span> <span class="text-black"> (+1) 435 3533</span></p>
+                <p><span class="d-block">Address:</span> <span class="text-black"> Chaksibari Marg, Thamel, Kathmandu 44600, Nepal</span></p>
+                <p><span class="d-block">Phone:</span> <span class="text-black"> +977-1-4700296</span></p>
                 <p><span class="d-block">Email:</span> <span class="text-black"> info@yourdomain.com</span></p>
               </div>
             </div>
@@ -197,9 +205,9 @@
             </ul>
           </div>
           <div class="col-md-3 mb-5 pr-md-5 contact-info">
-            <!-- <li>198 West 21th Street, <br> Suite 721 New York NY 10016</li> -->
-            <p><span class="d-block"><span class="ion-ios-location h5 mr-3 text-primary"></span>Address:</span> <span> 198 West 21th Street, <br> Suite 721 New York NY 10016</span></p>
-            <p><span class="d-block"><span class="ion-ios-telephone h5 mr-3 text-primary"></span>Phone:</span> <span> (+1) 435 3533</span></p>
+            <!-- <li>Chaksibari Marg, Thamel, <br> Kathmandu 44600, Nepal</li> -->
+            <p><span class="d-block"><span class="ion-ios-location h5 mr-3 text-primary"></span>Address:</span> <span> Chaksibari Marg, Thamel, <br> Kathmandu 44600, Nepal</span></p>
+            <p><span class="d-block"><span class="ion-ios-telephone h5 mr-3 text-primary"></span>Phone:</span> <span> +977-1-4700296</span></p>
             <p><span class="d-block"><span class="ion-ios-email h5 mr-3 text-primary"></span>Email:</span> <span> info@domain.com</span></p>
           </div>
           <div class="col-md-3 mb-5">
@@ -247,6 +255,7 @@
     
 
     <script src="js/main.js"></script>
+    <script src="js/tgh-api.js"></script>
 
     <script>
 
@@ -281,34 +290,35 @@
 
         const formDataObject = {};
         formData.forEach((value, key) => {
-
-          formDataObject[key] = ['check_in', 'check_out'].includes(key) ? convertDate(value) : value;
-        })
-
-        const jsonData = JSON.stringify({"data": formDataObject});
-
-        const apiUrl = 'http://localhost:1337/api/bookings';
-
-        fetch(apiUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            "Authorization": "Bearer 081d9de3542455cc520d79b612919ae47322b341e0b5b7b12f1e7eb238ff38c1c855ae6bb366fe7f7f5c5bd9619f7932937d1b8162a68f55ca50ec7f294e09a2750a6e021006240762237a95924a2e7a8b5618c2d3c40a0e1ba907e2baafff23a2f2b465ac3faed9b3e5412719612461ad3db4d300c72fc0d50ad1bb0afe5692"
-          },
-          body: jsonData
-        })
-        .then(response =>{response.json();})
-        .then(data => {
-            alert("Booking has been created!");
-            window.location.search = '';
-            window.location.reload();
-        })
-        .catch(error => {
-          alert(error);
-          console.error('API Error:', error );
+          if (['check_in', 'check_out'].includes(key)) formDataObject[key] = convertDate(value);
+          else if (['adult', 'children'].includes(key)) formDataObject[key] = Number(value) || 0;
+          else formDataObject[key] = value; // phone is a biginteger — a string is fine
         });
 
-        alert("Booking has been created!");
+        // Public "create" on /api/bookings is enabled in Strapi, so no API token
+        // is needed. (A stale bearer token would 401 rather than fall back to the
+        // public role — which is exactly what the old hardcoded token did.)
+        fetch('http://localhost:1337/api/bookings', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ data: formDataObject })
+        })
+        .then(async (response) => {
+          const payload = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            throw new Error((payload.error && payload.error.message) || ('HTTP ' + response.status));
+          }
+          return payload;
+        })
+        .then(() => {
+          alert('Booking has been created!');
+          window.location.search = '';
+          window.location.reload();
+        })
+        .catch((error) => {
+          alert('Could not create booking: ' + error.message);
+          console.error('API Error:', error);
+        });
       }
 
       function convertDate(dateString) {
