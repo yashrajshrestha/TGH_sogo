@@ -70,7 +70,7 @@
     </header>
     <!-- END head -->
 
-    <section class="site-hero overlay" style="background-image: url(images/hero_4.jpg)" data-stellar-background-ratio="0.5">
+    <section class="site-hero overlay" style="background-image: url(images/hotel/tgh-4.jpg)" data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row site-hero-inner justify-content-center align-items-center">
           <div class="col-md-10 text-center" data-aos="fade-up">
@@ -179,7 +179,7 @@
               </figure>
               <div class="p-3 text-center room-info">
                 <h2>Deluxe Single Room</h2>
-                <span class="text-uppercase letter-spacing-1">90$ / per night</span>
+                
               </div>
             </a>
           </div>
@@ -192,7 +192,7 @@
               </figure>
               <div class="p-3 text-center room-info">
                 <h2>Deluxe Double Room</h2>
-                <span class="text-uppercase letter-spacing-1">120$ / per night</span>
+                
               </div>
             </a>
           </div>
@@ -204,7 +204,7 @@
               </figure>
               <div class="p-3 text-center room-info">
                 <h2>Deluxe Twin Room</h2>
-                <span class="text-uppercase letter-spacing-1">120$ / per night</span>
+                
               </div>
             </a>
           </div>
@@ -216,7 +216,7 @@
               </figure>
               <div class="p-3 text-center room-info">
                 <h2>Deluxe Triple Room</h2>
-                <span class="text-uppercase letter-spacing-1">250$ / per night</span>
+                
               </div>
             </a>
           </div>
@@ -228,7 +228,7 @@
               </figure>
               <div class="p-3 text-center room-info">
                 <h2>Superior Deluxe Queen Suite with Balcony</h2>
-                <span class="text-uppercase letter-spacing-1">250$ / per night</span>
+                
               </div>
             </a>
           </div>
@@ -240,7 +240,7 @@
               </figure>
               <div class="p-3 text-center room-info">
                 <h2>Luxurious City View Room</h2>
-                <span class="text-uppercase letter-spacing-1">250$ / per night</span>
+                
               </div>
             </a>
           </div>
@@ -263,12 +263,6 @@
             <div class="home-slider major-caousel owl-carousel mb-5" data-aos="fade-up" data-aos-delay="200">
               <div class="slider-item">
                 <a href="images/slider-1.jpg" data-fancybox="images" data-caption="Caption for this image"><img src="images/room.jpeg" alt="Image placeholder" class="img-fluid"></a>
-              </div>
-              <div class="slider-item">
-                <a href="images/slider-2.jpg" data-fancybox="images" data-caption="Caption for this image"><img src="images/room1.jpeg" alt="Image placeholder" class="img-fluid"></a>
-              </div>
-              <div class="slider-item">
-                <a href="images/slider-3.jpg" data-fancybox="images" data-caption="Caption for this image"><img src="images/room2.jpeg" alt="Image placeholder" class="img-fluid"></a>
               </div>
               <div class="slider-item">
                 <a href="images/slider-4.jpg" data-fancybox="images" data-caption="Caption for this image"><img src="images/room3.jpeg" alt="Image placeholder" class="img-fluid"></a>
@@ -444,266 +438,67 @@
 
     </section>
     
-    <section class="section bg-image overlay" style="background-image: url('images/hero_3.jpg');">
-      <div class="container" style="max-width: 1600px">
+    <section class="section bg-image overlay" style="background-image: url('images/hotel/tgh-3.jpg');padding-top:80px;padding-bottom:80px;">
+      <div class="container">
         <div class="row justify-content-center text-center mb-5">
-          <div class="col-md-7">
-            <h2 class="heading text-white" data-aos="fade">Our Restaurant Menu</h2>
-            <span class="text-white" data-aos="fade" data-aos-delay="100">Our restaurant menu invites you to start your day with a delectable breakfast, relish mouthwatering main courses, and sip on artisanal drinks.</span>
+          <div class="col-md-8">
+            <span class="d-block text-primary text-uppercase letter-spacing-2 mb-2" data-aos="fade-up">Our Kitchen</span>
+            <h2 class="heading text-white" data-aos="fade-up">Our Menu</h2>
+            <p class="text-white text-opacity-7" data-aos="fade-up">Breakfast, mains, vegetarian and drinks &mdash; freshly prepared and served on our rooftop.</p>
           </div>
         </div>
-        <div class="food-menu-tabs" data-aos="fade">
-          <ul class="nav nav-tabs mb-5" id="myTab" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link  letter-spacing-2" id="mains-tab" data-toggle="tab" href="#mains" role="tab" aria-controls="mains" aria-selected="true">Breakfast</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active letter-spacing-2" id="desserts-tab" data-toggle="tab" href="#desserts" role="tab" aria-controls="desserts" aria-selected="false">Mains</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link letter-spacing-2" id="drinks-tab" data-toggle="tab" href="#drinks" role="tab" aria-controls="drinks" aria-selected="false">Drinks</a>
-            </li>
+
+        <style>
+          .menu-tabs{list-style:none;padding:0;margin:0 0 46px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
+          .menu-tab{background:transparent;border:1px solid rgba(255,255,255,.4);color:#fff;padding:9px 24px;border-radius:40px;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .3s,color .3s,border-color .3s;font-family:"Roboto",arial,sans-serif;}
+          .menu-tab:hover{border-color:#ffba5a;color:#ffba5a;}
+          .menu-tab.active{background:#ffba5a;border-color:#ffba5a;color:#3a2c12;font-weight:600;}
+          /* Fixed menu-card aspect ratio: any uploaded photo drops in and fits (no crop). */
+          .menu-stage{position:relative;width:100%;max-width:500px;margin:0 auto;aspect-ratio:3/4;perspective:1900px;}
+          .menu-panel{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .45s ease;}
+          .menu-panel.is-active{opacity:1;pointer-events:auto;}
+          .menu-fold{width:100%;height:100%;transform-origin:top center;transform:rotateX(-90deg);transition:transform .85s cubic-bezier(.2,.8,.25,1);border-radius:10px;overflow:hidden;box-shadow:0 28px 60px rgba(0,0,0,.55);background:#f6efe1;will-change:transform;}
+          .menu-panel.is-active .menu-fold{transform:rotateX(0deg);}
+          .menu-fold img{width:100%;height:100%;object-fit:contain;display:block;background:#f6efe1;}
+          @supports not (aspect-ratio:1/1){.menu-stage{height:0;padding-bottom:133.33%;}}
+          @media (prefers-reduced-motion:reduce){.menu-fold{transition:none;transform:none;}}
+        </style>
+
+        <div class="food-menu-fold" data-aos="fade">
+          <ul class="menu-tabs" role="tablist">
+            <li><button type="button" class="menu-tab active" data-menu="breakfast" role="tab">Breakfast</button></li>
+            <li><button type="button" class="menu-tab" data-menu="mains" role="tab">Mains</button></li>
+            <li><button type="button" class="menu-tab" data-menu="vegetarian" role="tab">Vegetarian</button></li>
+            <li><button type="button" class="menu-tab" data-menu="drinks" role="tab">Drinks</button></li>
           </ul>
-          <div class="tab-content py-2" id="myTabContent">
-            
-            
-            <div class="tab-pane fade show text-left" id="mains" role="tabpanel" aria-labelledby="mains-tab">
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">English Style Breakfast</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Murgh Tikka Masala</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
 
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">Baked Beans Breakfast</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Fish Moilee</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">Nepali Omlette Breakfast</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Safed Gosht</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">Croissant Breaskfast</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Safed Gosht</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">Museli Breaskfast</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">French Toast Combo</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">Tofu Energy Breakfast</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Vegie Omelet</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">Traditional Sausage Breakfast</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Chorizo &amp; Egg Omelet</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">Israeli shakshuka</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Chorizo &amp; Egg Omelet</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">Egg Benedict</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">French Toast Combo</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">Frammer's Scrambled Omellet</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Vegie Omelet</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">Country Grilled Breakfast</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Chorizo &amp; Egg Omelet</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">Mexcian Morning</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Chorizo &amp; Egg Omelet</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                </div>
-              </div>
-              
-
-            </div> <!-- .tab-pane -->
-
-            <div class="tab-pane fade show active text-left" id="desserts" role="tabpanel" aria-labelledby="desserts-tab">
-              <!-- <div class="row justify-content-center text-center mb-5">
-                <div class="col-md-6">
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h2 mb-3" style="font-family: 'Times New Roman', serif;">Our Chef's Special</span> -->
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Banana Split</a></h3> -->
-                    <!-- <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p> -->
-                  <!-- </div>
-                </div>
-              </div> -->
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">MAIN COURSE</span>
-                    <h3 class="text-white"><a href="index.html#" class="text-white">MEAT LOVERS</a></h3>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">TRADITIONAL MOMO</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Banana Split</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">BIRYANI</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Sticky Toffee Pudding</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">CHICKEN SATAY</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Pecan</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">LEMON GRILLED CHICKEN</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Apple Strudel</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">CHICKEN TANDOORI PIZZA</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Pancakes</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">MEAT LOVERS PIZZA</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Ice Cream Sundae</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">SPAGHETTI - BOLOGNAISE|CARBONARA</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Ice Cream Sundae</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">CHICKEN BUTTER MASALA - RICE</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Ice Cream Sundae</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">DELICIOUS</span>
-                    <h3 class="text-white"><a href="index.html#" class="text-white">CHEF'S SPECIAL</a></h3>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">SICHUAN CHICK / PORK</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Apple Strudel</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">OSTRICH CHOI LA (BBQ)</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Pancakes</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">RAINBOW TROUT FISH</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Ice Cream Sundae</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">SALMON STEAK</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Ice Cream Sundae</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">GERMAN BRATWURST</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Ice Cream Sundae</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">SPECIAL</span>
-                    <h3 class="text-white"><a href="index.html#" class="text-white">VEGETARIAN</a></h3>
-                    <!-- <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p> -->
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">CHEESE SANDWICH</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Apple Strudel</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">TOFU MEAL</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Pancakes</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">T.G.H SPECIAL POTATO</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Ice Cream Sundae</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">PANEER TIKKA BUTTER MASALA</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Ice Cream Sundae</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">PANEER CHOI- LA</span>
-                    <!-- <h3 class="text-white"><a href="index.html#" class="text-white">Ice Cream Sundae</a></h3> -->
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                </div>
-              </div>
-            </div> <!-- .tab-pane -->
-
-            <div class="tab-pane fade text-left" id="drinks" role="tabpanel" aria-labelledby="drinks-tab">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">$32.00</span>
-                    <h3 class="text-white"><a href="index.html#" class="text-white">Spring Water</a></h3>
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">$14.00</span>
-                    <h3 class="text-white"><a href="index.html#" class="text-white">Coke, Diet Coke, Coke Zero</a></h3>
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">$93.00</span>
-                    <h3 class="text-white"><a href="index.html#" class="text-white">Orange Fanta</a></h3>
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">$18.00</span>
-                    <h3 class="text-white"><a href="index.html#" class="text-white">Lemonade, Lemon Squash</a></h3>
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">$38.35</span>
-                    <h3 class="text-white"><a href="index.html#" class="text-white">Sparkling Mineral Water</a></h3>
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                  <div class="food-menu mb-5">
-                    <span class="d-block text-primary h4 mb-3">$69.00</span>
-                    <h3 class="text-white"><a href="index.html#" class="text-white">Lemon, Lime &amp; Bitters</a></h3>
-                    <p class="text-white text-opacity-7">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
-                </div>
-              </div>
-            </div> <!-- .tab-pane -->
+          <div class="menu-stage">
+            <!-- Swap the src of each .menu-fold img with a real menu photo; the slot fits it automatically. -->
+            <div class="menu-panel is-active" data-menu="breakfast"><div class="menu-fold"><img src="images/menu-breakfast.svg" alt="Breakfast menu"></div></div>
+            <div class="menu-panel" data-menu="mains"><div class="menu-fold"><img src="images/menu-mains.svg" alt="Mains menu"></div></div>
+            <div class="menu-panel" data-menu="vegetarian"><div class="menu-fold"><img src="images/menu-vegetarian.svg" alt="Vegetarian menu"></div></div>
+            <div class="menu-panel" data-menu="drinks"><div class="menu-fold"><img src="images/menu-drinks.svg" alt="Drinks menu"></div></div>
           </div>
         </div>
+
+        <script>
+          (function () {
+            var wrap = document.querySelector('.food-menu-fold');
+            if (!wrap) return;
+            var tabs = wrap.querySelectorAll('.menu-tab');
+            var panels = wrap.querySelectorAll('.menu-panel');
+            // Each inactive card sits folded (rotateX(-90)); toggling is-active unfolds
+            // the chosen one and re-folds the rest — the CSS transition does the animation.
+            function show(key) {
+              tabs.forEach(function (t) { t.classList.toggle('active', t.getAttribute('data-menu') === key); });
+              panels.forEach(function (p) { p.classList.toggle('is-active', p.getAttribute('data-menu') === key); });
+            }
+            tabs.forEach(function (t) { t.addEventListener('click', function () { show(t.getAttribute('data-menu')); }); });
+            // Fold the first card in on load (start folded, then open shortly after).
+            panels.forEach(function (p) { p.classList.remove('is-active'); });
+            setTimeout(function () { show('breakfast'); }, 80);
+          })();
+        </script>
       </div>
     </section>
    
@@ -898,7 +693,7 @@
       </div>
     </section>
 
-    <!-- <section class="section bg-image overlay" style="background-image: url('images/hero_4.jpg');">
+    <!-- <section class="section bg-image overlay" style="background-image: url('images/hotel/tgh-4.jpg');">
         <div class="container" >
           <div class="row align-items-center">
             <div class="col-12 col-md-6 text-center mb-4 mb-md-0 text-md-left" data-aos="fade-up">
@@ -912,57 +707,65 @@
       </section> -->
 
     <footer class="section footer-section">
-      <div class="container">
-        <div class="row mb-4">
-          <div class="col-md-3 mb-5">
-            <ul class="list-unstyled link">
-              <li><a href="index.html#">About Us</a></li>
-              <li><a href="index.html#">Terms &amp; Conditions</a></li>
-              <li><a href="index.html#">Privacy Policy</a></li>
-             <li><a href="index.html#">Rooms</a></li>
-            </ul>
-          </div>
-          <div class="col-md-3 mb-5">
-            <ul class="list-unstyled link">
-              <li><a href="index.html#">The Rooms &amp; Suites</a></li>
-              <li><a href="index.html#">About Us</a></li>
-              <li><a href="index.html#">Contact Us</a></li>
-              <li><a href="index.html#">Restaurant</a></li>
-            </ul>
-          </div>
-          <div class="col-md-3 mb-5 pr-md-5 contact-info">
-            <!-- <li>Chaksibari Marg, Thamel, <br> Kathmandu 44600, Nepal</li> -->
-            <p><span class="d-block"><span class="ion-ios-location h5 mr-3 text-primary"></span>Address:</span> <span> Chaksibari Marg, Thamel, <br> Kathmandu 44600, Nepal</span></p>
-            <p><span class="d-block"><span class="ion-ios-telephone h5 mr-3 text-primary"></span>Phone:</span> <span> +977-1-4700296</span></p>
-            <p><span class="d-block"><span class="ion-ios-email h5 mr-3 text-primary"></span>Email:</span> <span> info@domain.com</span></p>
-          </div>
-          <div class="col-md-3 mb-5">
-            <p>Sign up for our newsletter</p>
-            <form action="index.html#" class="footer-newsletter">
-              <div class="form-group">
-                <input type="email" class="form-control" placeholder="Email...">
-                <button type="submit" class="btn"><span class="fa fa-paper-plane"></span></button>
-              </div>
-            </form>
-          </div>
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-md-3 mb-5">
+          <ul class="list-unstyled link">
+            <li><a href="rooms.html">The Rooms &amp; Suites</a></li>
+            <li><a href="about.html#">About Us</a></li>
+            <li><a href="contact.html#">Contact Us</a></li>
+            <li><a href="index.html#restaurant">Restaurant</a></li>
+          </ul>
         </div>
-        <div class="row pt-5">
-          <p class="col-md-6 text-left">
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        <div class="col-md-3 mb-5">
+          <!-- <ul class="list-unstyled link">
+                <li><a href="index.html#">About Us</a></li>
+                <li><a href="index.html#">Terms &amp; Conditions</a></li>
+                <li><a href="index.html#">Privacy Policy</a></li>
+               <li><a href="index.html#">Rooms</a></li>
+              </ul> -->
+        </div>
+        <div class="col-md-3 mb-5 pr-md-5 contact-info">
+          <!-- <li>198 West 21th Street, <br> Suite 721 New York NY 10016</li> -->
+          <!-- <p><span class="d-block"><span class="ion-ios-location h5 mr-3 text-primary"></span>Address:</span> <span> 198 West 21th Street, <br> Suite 721 New York NY 10016</span></p>
+              <p><span class="d-block"><span class="ion-ios-telephone h5 mr-3 text-primary"></span>Phone:</span> <span> (+1) 435 3533</span></p>
+              <p><span class="d-block"><span class="ion-ios-email h5 mr-3 text-primary"></span>Email:</span> <span> info@domain.com</span></p> -->
+        </div>
+        <div class="col-md-3 mb-5">
+          <!-- <li>198 West 21th Street, <br> Suite 721 New York NY 10016</li> -->
+          <p><span class="d-block"><span class="ion-ios-location h5 mr-3 text-primary"></span>Address:</span>
+            <span>
+              <a href="https://www.google.com/maps/place/Thamel+Grand+Hotel/@27.7170826,85.3098029,17z/data=!3m1!4b1!4m9!3m8!1s0x39eb18e33639aa63:0xd3a44de7c84b3bd3!5m2!4m1!1i2!8m2!3d27.7170826!4d85.3098029!16s%2Fg%2F1q62kbq1d?entry=ttu"
+                target="_blank">
+                P885+RWM, Chaksibari Marg, Kathmandu 44600
+              </a>
+            </span>
           </p>
-            
-          <p class="col-md-6 text-right social">
-            <a href="index.html#"><span class="fa fa-tripadvisor"></span></a>
-            <a href="index.html#"><span class="fa fa-facebook"></span></a>
-            <a href="index.html#"><span class="fa fa-twitter"></span></a>
-            <a href="index.html#"><span class="fa fa-linkedin"></span></a>
-            <a href="index.html#"><span class="fa fa-vimeo"></span></a>
-          </p>
+          <p><span class="d-block"><span class="ion-ios-telephone h5 mr-3 text-primary"></span>Phone:</span> <span>
+              01-4700296</span></p>
+          <p><span class="d-block"><span class="ion-ios-email h5 mr-3 text-primary"></span>Email:</span> <span>
+              info@thamelgrandhotel.com.np</span></p>
         </div>
       </div>
-    </footer>
+      <div class="row pt-5">
+        <p class="col-md-6 text-left">
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          Copyright &copy;
+          <script>document.write(new Date().getFullYear());</script> All rights reserved
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </p>
+
+        <p class="col-md-6 text-right social">
+          <a
+            href="https://www.tripadvisor.com/Hotel_Review-g293890-d6468795-Reviews-Thamel_Grand_Hotel-Kathmandu_Kathmandu_Valley_Bagmati_Zone_Central_Region.html"><span
+              class="fa fa-tripadvisor"></span></a>
+          <a href="https://www.facebook.com/thamelgrandhotel.np/"><span class="fa fa-facebook"></span></a>
+          <a href="https://www.instagram.com/thamelgrandhotel2012/"><span class="fa fa-instagram"></span></a>
+          <a href="https://www.booking.com/hotel/np/hamel-rand-otel-td.html"><span class="fa fa-book"></span></a>
+        </p>
+      </div>
+    </div>
+  </footer>
     
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -991,6 +794,57 @@
           });
       });
 
+      // Reliable review slider (autoplay + arrows + responsive) — the template's
+      // owl-carousel is unreliable when content is injected after page load.
+      function tghBuildSlider(el, opts) {
+        opts = opts || {};
+        var interval = opts.interval || 5000;
+        var originals = Array.prototype.slice.call(el.children);
+        if (!originals.length) return;
+        // Break out of the narrow Bootstrap column so 5 cards have room to breathe.
+        var col = el.closest('[class*="col-"]');
+        if (col) { col.style.maxWidth = '100%'; col.style.flex = '0 0 100%'; col.style.marginLeft = '0'; col.style.marginRight = '0'; }
+        el.setAttribute('style', 'position:relative;overflow:hidden;max-width:1500px;margin:0 auto;padding:0 6px;');
+        var track = document.createElement('div');
+        track.setAttribute('style', 'display:flex;');
+        originals.forEach(function (c) {
+          c.setAttribute('style', 'background:#fff;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.07);padding:26px 22px;text-align:center;height:280px;display:flex;flex-direction:column;justify-content:flex-start;box-sizing:border-box;margin:0;');
+          var slide = document.createElement('div');
+          slide.setAttribute('style', 'box-sizing:border-box;padding:14px;flex:0 0 33.3333%;');
+          slide.appendChild(c);
+          track.appendChild(slide);
+        });
+        el.innerHTML = '';
+        el.appendChild(track);
+        var perView = 3, idx = 0, timer, animating = false;
+        var baseSlides = Array.prototype.slice.call(track.children);
+        function pvFor() { var w = window.innerWidth; return w < 640 ? 1 : (w < 1024 ? 2 : 3); }
+        function removeClones() { Array.prototype.slice.call(track.querySelectorAll('.tgh-clone')).forEach(function (n) { track.removeChild(n); }); }
+        function addClones() { for (var i = 0; i < perView; i++) { var cl = baseSlides[i % baseSlides.length].cloneNode(true); cl.className = 'tgh-clone'; track.appendChild(cl); } }
+        function setFlex() { Array.prototype.forEach.call(track.children, function (s) { s.style.flex = '0 0 ' + (100 / perView) + '%'; }); }
+        function apply(anim) { track.style.transition = anim ? 'transform .6s ease' : 'none'; track.style.transform = 'translateX(-' + (idx * (100 / perView)) + '%)'; }
+        function next() { if (animating) return; animating = true; idx++; apply(true); setTimeout(function () { if (idx >= originals.length) { idx = 0; apply(false); } animating = false; }, 640); }
+        function prev() { if (animating) return; animating = true; if (idx <= 0) { idx = originals.length; apply(false); void track.offsetWidth; } idx--; apply(true); setTimeout(function () { animating = false; }, 640); }
+        function play() { clearInterval(timer); timer = setInterval(next, interval); }
+        function resize() { perView = pvFor(); removeClones(); addClones(); setFlex(); if (idx > originals.length) idx = 0; apply(false); }
+        [['‹', prev, 'left'], ['›', next, 'right']].forEach(function (a) {
+          var b = document.createElement('button'); b.type = 'button'; b.textContent = a[0];
+          b.setAttribute('style', 'position:absolute;top:50%;' + a[2] + ':0;transform:translateY(-50%);z-index:3;width:40px;height:40px;border:none;border-radius:50%;background:rgba(20,20,20,.4);color:#fff;font-size:22px;line-height:1;cursor:pointer;');
+          b.onclick = function () { a[1](); play(); };
+          el.appendChild(b);
+        });
+        el.onmouseenter = function () { clearInterval(timer); };
+        el.onmouseleave = play;
+        window.addEventListener('resize', resize);
+        resize(); play();
+      }
+
+
+      function tghEsc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+      function tghInitials(name){ var p=String(name||'').trim().split(/[\s-]+/).filter(Boolean); if(!p.length) return '?'; return (p.length===1?p[0].slice(0,2):p[0][0]+p[p.length-1][0]).toUpperCase(); }
+      function tghColor(name){ var pal=['#8e4d3b','#3b6ea5','#4b7a52','#8a5a9e','#b5852f','#487b7b','#a24d5c','#5b6a8a']; var h=0,s=String(name||''); for(var i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))>>>0; return pal[h%pal.length]; }
+      function tghStars(n){ n=Math.round(Number(n)||0); var o=''; for(var i=0;i<5;i++) o+= i<n?'★':'☆'; return o; }
+      function tghReviewInner(a){ var name=a.full_name||''; return '<div style="width:60px;height:60px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:600;background:'+tghColor(name)+';">'+tghEsc(tghInitials(name))+'</div>'+'<div style="color:#f0a500;font-size:16px;letter-spacing:2px;margin-bottom:10px;">'+tghStars(a.rating)+'</div>'+'<p style="color:#555;font-size:14.5px;line-height:1.6;margin:0 0 12px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;">'+tghEsc(a.description)+'</p>'+'<div style="color:#222;font-weight:600;font-size:15px;margin-top:auto;">'+tghEsc(name)+'</div>'; }
 
       const apiUrl = 'http://localhost:1337/api/reviews';
 
@@ -1009,56 +863,18 @@
         let itemContainer = document.querySelector('#reviews');
         itemContainer.className = 'testimonial-slider owl-carousel';
 
-        data.data.forEach(review => {
-
-      
-
-          let item =  document.createElement('div');
+        data.data.forEach(function (review) {
+          var item = document.createElement('div');
           item.className = 'ts-item';
-
-
-          let description = document.createElement('p');
-          description.textContent = review.attributes.description;
-
-          let tiAuthor = document.createElement('div');
-          tiAuthor.className = 'ti-author';
-
-          let rating = document.createElement('div');
-          rating.className = 'rating';
-
-          let fullStars = Math.floor(review.attributes.rating);
-          let halfStar = review.rating % 1 === 0.5;
-
-          for(let i = 0; i < fullStars; i++){
-            const star = document.createElement('i');
-            star.className = 'icon_star';
-            rating.appendChild(star);
-          }
-
-          if(halfStar) {
-            const halfStarIcon = document.createElement('i');
-            halfStarIcon.className = 'icon_star-half_alt';
-            rating.appendChild(halfStarIcon);
-          }
-
-          const clientName = document.createElement('h5');
-          clientName.textContent = ` - ${review.attributes.full_name}`;
-
-          const reviewDate = document.createElement('h5');
-          reviewDate.textContent = ` - ${review.attributes.createdAt}`;
-
-          //Append elements to the tiAuthor container
-          tiAuthor.appendChild(rating);
-          tiAuthor.appendChild(clientName);
-          // tiAuthor.appendChild(reviewDate);
-
-          //Append elements to the item container
-          item.appendChild(description);
-          item.appendChild(tiAuthor);
-
+          item.innerHTML = tghReviewInner(review.attributes);
           itemContainer.appendChild(item);
         })
-        
+
+        // Reviews arrive after the page-load owl init, so render them in a
+        // reliable custom slider (autoplay + arrows + responsive).
+        try { $('#reviews').trigger('destroy.owl.carousel'); } catch (e) { /* ignore */ }
+        itemContainer.className = '';
+        tghBuildSlider(itemContainer, { interval: 4500 });
       })
       .catch(error => {
         console.error('API Error:', error);
