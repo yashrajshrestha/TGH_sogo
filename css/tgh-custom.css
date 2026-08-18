@@ -1,0 +1,127 @@
+/* Thamel Grand Hotel  custom additions: lightbox, gallery grid, modern polish.
+   Loaded after style.css so it can refine the template. Accent: brass #b9863b. */
+:root{ --tgh-brass:#b9863b; --tgh-brass-deep:#9a6f2c; --tgh-ink:#2b2b2b; }
+
+/* ---------- Lightbox ---------- */
+.tgh-lb{position:fixed;inset:0;z-index:9999;background:rgba(12,12,14,.94);display:flex;
+  align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;}
+.tgh-lb.is-open{opacity:1;visibility:visible;}
+.tgh-lb-stage{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px;}
+.tgh-lb-stage img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:3px;
+  box-shadow:0 24px 70px rgba(0,0,0,.55);}
+.tgh-lb-stage figcaption{color:rgba(255,255,255,.72);font-size:13px;letter-spacing:.02em;}
+.tgh-lb-close{position:absolute;top:16px;right:22px;background:none;border:0;color:#fff;
+  font-size:36px;line-height:1;cursor:pointer;opacity:.82;padding:4px 10px;}
+.tgh-lb-close:hover,.tgh-lb-close:focus-visible{opacity:1;}
+.tgh-lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.1);
+  border:0;color:#fff;width:52px;height:52px;border-radius:50%;font-size:30px;line-height:1;
+  cursor:pointer;transition:background .2s;}
+.tgh-lb-nav:hover,.tgh-lb-nav:focus-visible{background:rgba(255,255,255,.24);}
+.tgh-lb-prev{left:20px;} .tgh-lb-next{right:20px;}
+.tgh-lb-counter{position:absolute;bottom:20px;left:0;right:0;text-align:center;
+  color:rgba(255,255,255,.7);font-size:12.5px;letter-spacing:.1em;}
+.tgh-lb :focus-visible{outline:2px solid var(--tgh-brass);outline-offset:3px;}
+@media (max-width:600px){.tgh-lb-nav{width:42px;height:42px;font-size:24px;}
+  .tgh-lb-prev{left:8px;}.tgh-lb-next{right:8px;}}
+@media (prefers-reduced-motion:no-preference){.tgh-lb{transition:opacity .28s ease;}}
+
+/* ---------- Gallery page ---------- */
+.tgh-gallery-wrap{max-width:1240px;margin:0 auto;padding:0 20px;}
+.tgh-gallery-filters{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:0 0 36px;}
+.tgh-gf{background:transparent;border:1px solid #d8d2c6;border-radius:40px;padding:9px 24px;
+  font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;color:#6b675f;font-family:"Roboto",arial,sans-serif;transition:background .25s,color .25s,border-color .25s;}
+.tgh-gf:hover{border-color:var(--tgh-brass);color:var(--tgh-brass-deep);}
+.tgh-gf.active{background:var(--tgh-brass);border-color:var(--tgh-brass);color:#fff;}
+.tgh-grid{column-count:3;column-gap:16px;}
+.tgh-tile{break-inside:avoid;margin:0 0 16px;display:block;width:100%;padding:0;border:0;
+  background:none;cursor:pointer;border-radius:5px;overflow:hidden;position:relative;line-height:0;}
+.tgh-tile img{width:100%;display:block;border-radius:5px;transition:transform .55s ease;}
+.tgh-tile::after{content:"";position:absolute;inset:0;background:rgba(30,24,16,0);
+  transition:background .3s ease;border-radius:5px;}
+.tgh-tile:hover img{transform:scale(1.06);}
+.tgh-tile:hover::after{background:rgba(30,24,16,.16);}
+.tgh-tile:focus-visible{outline:2px solid var(--tgh-brass);outline-offset:2px;}
+@media (max-width:1000px){.tgh-grid{column-count:2;}}
+@media (max-width:600px){.tgh-grid{column-count:1;}}
+
+/* ---------- Homepage gallery teaser ---------- */
+.tgh-teaser{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.tgh-teaser a{display:block;overflow:hidden;border-radius:5px;line-height:0;position:relative;}
+.tgh-teaser img{width:100%;height:100%;object-fit:cover;aspect-ratio:1/1;transition:transform .5s ease;}
+.tgh-teaser a:hover img{transform:scale(1.07);}
+@media (max-width:700px){.tgh-teaser{grid-template-columns:repeat(2,1fr);}}
+
+/* ---------- Modern polish (tasteful, non-breaking) ---------- */
+.btn-primary{transition:transform .2s ease,box-shadow .2s ease,background-color .2s ease;}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(185,134,59,.7);}
+a{transition:color .2s ease;}
+.site-block-half .text h2{letter-spacing:-.01em;}
+img{max-width:100%;}
+
+/* ---------- Real menu (Black Olives Cafe) ---------- */
+.tgh-menu{max-width:1080px;margin:0 auto;background:#f6efe1;border-radius:8px;
+  padding:40px 44px 46px;box-shadow:0 34px 80px -34px rgba(0,0,0,.65);}
+.tgh-menu-tabs{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:36px;}
+.tgh-menu-tab{background:transparent;border:1px solid #cdbf9f;color:#6b5f45;border-radius:40px;
+  padding:9px 26px;font-size:12px;letter-spacing:2px;text-transform:uppercase;
+  font-family:"Roboto",arial,sans-serif;cursor:pointer;transition:background .25s,color .25s,border-color .25s;}
+.tgh-menu-tab:hover{border-color:#b9863b;color:#9a6f2c;}
+.tgh-menu-tab.active{background:#b9863b;border-color:#b9863b;color:#fff;}
+.tgh-menu-body{column-count:2;column-gap:50px;}
+.menu-group{break-inside:avoid;margin:0 0 30px;}
+.menu-group-title{font-family:"Playfair Display",Georgia,serif;font-size:20px;color:#2b2b2b;
+  letter-spacing:.01em;margin:0 0 14px;padding-bottom:9px;border-bottom:1px solid #e2d5b8;position:relative;}
+.menu-group-title::after{content:"";position:absolute;left:0;bottom:-1px;width:46px;height:2px;background:#b9863b;}
+.menu-item{margin:0 0 13px;}
+.mi-head{display:flex;align-items:baseline;}
+.mi-name{font-weight:600;color:#33302a;font-size:15px;}
+.mi-leader{flex:1 1 auto;margin:0 8px 5px;border-bottom:1px dotted #bcac86;min-width:14px;}
+.mi-price{font-weight:600;color:#9a6f2c;font-size:14.5px;white-space:nowrap;font-variant-numeric:tabular-nums;}
+.mi-desc{font-size:12.7px;color:#8a7d63;font-style:italic;line-height:1.45;margin-top:2px;max-width:54ch;}
+@media (max-width:768px){.tgh-menu-body{column-count:1;} .tgh-menu{padding:26px 20px 30px;}}
+
+/* ---------- Welcome video ---------- */
+.tgh-welcome-video{max-height:560px;width:auto;max-width:100%;border-radius:14px;
+  box-shadow:0 22px 55px -22px rgba(0,0,0,.45);display:inline-block;vertical-align:middle;}
+@media (max-width:991px){.tgh-welcome-video{max-height:70vh;}}
+
+/* ---------- Room video slide + lightbox video ---------- */
+.rg-slide-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+.rg-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;
+  width:62px;height:62px;border-radius:50%;background:rgba(20,20,20,.5);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:22px;padding-left:4px;pointer-events:none;
+  transition:background .2s;}
+.room-gallery:hover .rg-play{background:rgba(185,134,59,.85);}
+.tgh-lb-video{max-width:92vw;max-height:82vh;border-radius:3px;box-shadow:0 24px 70px rgba(0,0,0,.55);background:#000;}
+
+/* ---------- Homepage room grid (attractive overlay cards) ---------- */
+.rooms-grid{margin-top:6px;}
+.tgh-room-card{display:block;text-decoration:none;border-radius:12px;overflow:hidden;position:relative;
+  box-shadow:0 12px 32px -16px rgba(0,0,0,.4);transition:transform .3s ease,box-shadow .3s ease;background:#000;}
+.tgh-room-card:hover,.tgh-room-card:focus-visible{transform:translateY(-5px);box-shadow:0 24px 50px -20px rgba(0,0,0,.5);}
+.rc-media{position:relative;aspect-ratio:4/3;overflow:hidden;}
+.rc-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease;}
+.tgh-room-card:hover .rc-media img{transform:scale(1.08);}
+.rc-media::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(20,14,6,.74),rgba(20,14,6,.05) 55%);}
+.rc-body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:20px 22px;}
+.rc-name{font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:22px;line-height:1.15;
+  color:#fff;margin:0 0 6px;}
+.rc-cta{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#ffd89b;display:inline-flex;
+  align-items:center;gap:7px;transition:gap .25s ease,color .25s ease;font-family:"Roboto",arial,sans-serif;}
+.tgh-room-card:hover .rc-cta{gap:12px;color:#ffe6bf;}
+
+/* ---------- Refinements v2: welcome frame + slicker menu ---------- */
+.tgh-welcome-video{border:1px solid rgba(185,134,59,.35);box-shadow:0 26px 60px -24px rgba(0,0,0,.5);}
+/* slicker menu */
+.tgh-menu{background:#f7f2e6;padding:44px 48px 48px;}
+.tgh-menu-body{column-gap:56px;}
+.menu-group{margin:0 0 34px;}
+.menu-group-title{font-size:21px;letter-spacing:.015em;}
+.menu-item{margin:0 -12px 2px;padding:8px 12px 8px;border-radius:8px;transition:background .18s ease;}
+.menu-item:hover{background:rgba(185,134,59,.07);}
+.mi-name{font-size:15.5px;color:#2c2a24;}
+.mi-price{color:#a06b1e;}
+.mi-leader{border-bottom-color:#c9b98d;}
+.mi-desc{margin-top:3px;color:#8c7f64;}
+@media (max-width:768px){.tgh-menu{padding:26px 18px 30px;}}

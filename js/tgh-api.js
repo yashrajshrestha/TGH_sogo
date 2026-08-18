@@ -56,10 +56,9 @@
     if (/lounge|sitting|suite/.test(t)) f.push(['sofa', 'Sitting lounge']);
     f.push(['wifi', 'Free Wi-Fi']);
     f.push(['tv', 'Flat-screen TV']);
-    if (/minibar/.test(t)) f.push(['fridge', 'Minibar']);
     if (/desk/.test(t)) f.push(['desk', 'Work desk']);
-    if (/bathtub|bath tub/.test(t)) f.push(['bath', 'Bathtub & shower']);
-    else f.push(['bath', 'Ensuite bathroom']);
+    // No minibar or bathtub at this property — always show a plain ensuite bathroom.
+    f.push(['bath', 'Ensuite bathroom']);
     var seen = {}, out = [];
     f.forEach(function (x) { if (!seen[x[1]]) { seen[x[1]] = 1; out.push(x); } });
     return out.slice(0, 6);
@@ -83,11 +82,50 @@
       '.tgh-feat{display:flex;align-items:center;gap:10px;font-family:"Roboto",arial,sans-serif;font-size:14px;color:#3a3a3a;line-height:1.25;}' +
       '.tgh-feat svg{flex:0 0 21px;width:21px;height:21px;color:#c98a2b;}' +
       '.tgh-feat span{white-space:nowrap;}' +
-      '@media (max-width:480px){.tgh-feats{grid-template-columns:1fr;}}';
+      '@media (max-width:480px){.tgh-feats{grid-template-columns:1fr;}}' +
+      // Even, tidy grid: uniform card height, image fills, text vertically centred.
+      '#rooms-container .site-block-half{margin-bottom:0;overflow:hidden;}' +
+      '#rooms-container .site-block-half .text{display:flex;flex-direction:column;justify-content:center;}' +
+      '@media (min-width:992px){#rooms-container .site-block-half .text{min-height:460px;}}' +
+      // Sliding photo gallery on each room card.
+      '.room-gallery{position:relative;width:100%;min-height:320px;overflow:hidden;}' +
+      '@media (min-width:992px){.room-gallery{width:50%;min-height:460px;}}' +
+      '.rg-slides{position:absolute;inset:0;}' +
+      '.rg-slide{position:absolute;inset:0;display:block;background-size:cover;background-position:center;opacity:0;transition:opacity .6s ease;}' +
+      '.rg-slide.is-active{opacity:1;}' +
+      '.rg-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:42px;height:42px;border:none;border-radius:50%;background:rgba(20,20,20,.42);color:#fff;font-size:24px;line-height:1;cursor:pointer;opacity:0;transition:opacity .25s,background .2s;}' +
+      '.room-gallery:hover .rg-arrow{opacity:1;}' +
+      '.rg-arrow:hover{background:rgba(20,20,20,.7);}' +
+      '.rg-prev{left:12px;}.rg-next{right:12px;}' +
+      '.rg-dots{position:absolute;bottom:14px;left:0;right:0;display:flex;justify-content:center;gap:7px;z-index:3;}' +
+      '.rg-dot{width:8px;height:8px;border-radius:50%;border:none;background:rgba(255,255,255,.55);cursor:pointer;padding:0;transition:background .2s,width .2s;}' +
+      '.rg-dot.is-active{background:#ffba5a;}' +
+      '@media (hover:none){.rg-arrow{opacity:1;}}';
     var s = document.createElement('style');
     s.id = 'tgh-room-styles';
     s.textContent = css;
     document.head.appendChild(s);
+  }
+
+  // Each room type gets a curated set of real photos (matched by bed config from the
+  // owner's photo set), shown as a sliding gallery on the room card.
+  function roomGallery(title) {
+    var t = String(title || '').toLowerCase();
+    var G = {
+      single: ['images/rooms/single-1.jpg', 'images/rooms/single-2.jpg', 'images/rooms/single-3.jpg', 'images/rooms/single-4.jpg'],
+      twin: ['images/rooms/twin-1.jpg', 'images/rooms/twin-2.jpg', 'images/rooms/twin-3.jpg', 'images/rooms/twin-4.jpg'],
+      twinbalcony: ['images/rooms/twinbalcony-1.jpg', 'images/rooms/twinbalcony-2.jpg', 'images/rooms/twinbalcony-3.jpg', 'images/rooms/twinbalcony-4.jpg'],
+      triple: ['images/rooms/triple-1.jpg', 'images/rooms/triple-2.jpg', 'images/rooms/triple-3.jpg', 'images/rooms/triple-4.jpg'],
+      family: ['images/rooms/family-1.jpg', 'images/rooms/family-2.jpg', 'images/rooms/family-3.jpg', 'images/rooms/family-4.jpg'],
+      cityview: [{ video: 'media/rooms/cityview.mp4', poster: 'media/rooms/cityview-poster.jpg' }, 'images/rooms/cityview-1.jpg', 'images/rooms/cityview-2.jpg', 'images/rooms/cityview-3.jpg', 'images/rooms/cityview-4.jpg']
+    };
+    if (/single/.test(t)) return G.single;
+    if (/triple/.test(t)) return G.triple;
+    if (/family|queen\s*suite/.test(t)) return G.family;
+    if (/twin/.test(t) && /balcony/.test(t)) return G.twinbalcony;
+    if (/twin/.test(t)) return G.twin;
+    if (/city|view/.test(t)) return G.cityview;
+    return G.twin;
   }
 
   function roomCard(entry, i) {
@@ -97,16 +135,35 @@
     var media = a.img && a.img.data;
     var url = media && media.length ? mediaUrl(media[0].attributes.url) : null;
     var right = i % 2 === 1; // alternate the image side, like the original layout
-    // Fall back to the hotel's real room photos (from the owner's email) when a
-    // room has no uploaded image yet.
-    var bg = url || (right ? 'images/hotel/tgh-2.jpg' : 'images/hotel/tgh-1.jpg');
+    // Sliding gallery of type-matched photos (API photo first if one is uploaded).
+    var imgs = roomGallery(a.title);
+    if (url) imgs = [url].concat(imgs);
+    var slides = imgs.map(function (u, idx) {
+      var active = idx === 0 ? ' is-active' : '';
+      if (u && u.video) {
+        return '<div class="rg-slide rg-slide-video' + active + '" role="img" aria-label="' + esc(a.title) + ' video tour">' +
+          '<video muted loop playsinline preload="metadata" poster="' + u.poster + '"><source src="' + u.video + '" type="video/mp4"></video>' +
+          '<span class="rg-play" aria-hidden="true">&#9658;</span></div>';
+      }
+      return '<div class="rg-slide' + active + '" ' +
+        'style="background-image:url(\'' + u + '\');" role="img" aria-label="' + esc(a.title) + ' photo ' + (idx + 1) + '"></div>';
+    }).join('');
+    var dots = imgs.map(function (u, idx) {
+      return '<button type="button" class="rg-dot' + (idx === 0 ? ' is-active' : '') + '" data-idx="' + idx + '" aria-label="Go to photo ' + (idx + 1) + '"></button>';
+    }).join('');
+    var gallery =
+      '<div class="room-gallery' + (right ? ' order-2' : '') + '" data-imgs="' + encodeURIComponent(JSON.stringify(imgs)) + '" data-title="' + esc(a.title) + '">' +
+        '<div class="rg-slides">' + slides + '</div>' +
+        '<button type="button" class="rg-arrow rg-prev" aria-label="Previous photo">‹</button>' +
+        '<button type="button" class="rg-arrow rg-next" aria-label="Next photo">›</button>' +
+        '<div class="rg-dots">' + dots + '</div>' +
+      '</div>';
     var chips = roomFeatures(a.title, a.discription).map(function (x) {
       return '<div class="tgh-feat">' + featIcon(x[0]) + '<span>' + esc(x[1]) + '</span></div>';
     }).join('');
     return (
       '<div class="site-block-half d-block d-lg-flex bg-white" data-aos="fade">' +
-        '<a href="' + href + '" class="image d-block bg-image-2' + (right ? ' order-2' : '') + '" ' +
-          'style="background-image: url(\'' + bg + '\');"></a>' +
+        gallery +
         '<div class="text' + (right ? ' order-1' : '') + ' bg-light bg-gradient bg-opacity-20">' +
           '<h2 class="mb-2">' + esc(a.title) + '</h2>' +
           '<p class="tgh-lead">' + esc(shortLead(a.discription)) + '</p>' +
@@ -145,8 +202,55 @@
         if (!rooms.length) return; // nothing published yet — keep the static demo rooms
         ensureRoomStyles();
         el.innerHTML = rooms.map(roomCard).join('');
+        initRoomGalleries();
       })
       .catch(function (e) { console.warn('[TGH] rooms API unavailable, keeping static content:', e.message); });
+  }
+
+  // Wire up each room card's sliding gallery: autoplay + arrows + dots, pause on hover.
+  function initRoomGalleries() {
+    var galleries = document.querySelectorAll('#rooms-container .room-gallery');
+    Array.prototype.forEach.call(galleries, function (g) {
+      var slides = g.querySelectorAll('.rg-slide');
+      var dots = g.querySelectorAll('.rg-dot');
+      var idx = 0, timer;
+      // Parse this room's photo set + open it in the lightbox when the photo is clicked.
+      var imgs = [];
+      try { imgs = JSON.parse(decodeURIComponent(g.getAttribute('data-imgs') || '[]')); } catch (e) { imgs = []; }
+      var title = g.getAttribute('data-title') || '';
+      var wrap = g.querySelector('.rg-slides');
+      if (wrap && imgs.length && window.TGHLightbox) {
+        wrap.style.cursor = 'zoom-in';
+        wrap.addEventListener('click', function () {
+          window.TGHLightbox.open(imgs.map(function (u) {
+            return (u && u.video) ? { video: u.video, poster: u.poster, alt: title } : { full: u, alt: title };
+          }), idx);
+        });
+      }
+      // Autoplay any inline video slide (muted loop preview).
+      Array.prototype.forEach.call(g.querySelectorAll('.rg-slide-video video'), function (v) {
+        var pl = v.play(); if (pl && pl.catch) pl.catch(function () {});
+      });
+      if (slides.length < 2) { // single photo — hide slider controls (lightbox still works)
+        Array.prototype.forEach.call(g.querySelectorAll('.rg-arrow'), function (b) { b.style.display = 'none'; });
+        var dc = g.querySelector('.rg-dots'); if (dc) dc.style.display = 'none';
+        return;
+      }
+      function show(n) {
+        idx = (n + slides.length) % slides.length;
+        Array.prototype.forEach.call(slides, function (s, k) { s.classList.toggle('is-active', k === idx); });
+        Array.prototype.forEach.call(dots, function (d, k) { d.classList.toggle('is-active', k === idx); });
+      }
+      function play() { clearInterval(timer); timer = setInterval(function () { show(idx + 1); }, 4500); }
+      g.querySelector('.rg-next').addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); show(idx + 1); play(); });
+      g.querySelector('.rg-prev').addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); show(idx - 1); play(); });
+      Array.prototype.forEach.call(dots, function (d) {
+        d.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); show(+d.getAttribute('data-idx')); play(); });
+      });
+      g.addEventListener('mouseenter', function () { clearInterval(timer); });
+      g.addEventListener('mouseleave', play);
+      play();
+    });
   }
 
   // --- Reviews (review.html) ---

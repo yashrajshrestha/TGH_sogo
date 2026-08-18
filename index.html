@@ -9,8 +9,6 @@
     <meta name="keywords" content="" />
     <meta name="author" content="" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=|Roboto+Sans:400,700|Playfair+Display:400,700">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
@@ -24,6 +22,7 @@
     <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
     <!-- Theme Style -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tgh-custom.css?v=g4">
   </head>
   <body>
     
@@ -54,6 +53,7 @@
                       <ul class="list-unstyled menu">
                         <li class="active"><a href="index.html">Home</a></li>
                         <li><a href="rooms.html">Rooms</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="events.html">Events</a></li>
                         <li><a href="contact.html">Contact</a></li>
@@ -147,16 +147,16 @@
     <section class="py-5 bg-light">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-md-12 col-lg-7 ml-auto order-lg-2 position-relative mb-5" data-aos="fade-up">
-            <figure class="img-absolute">
-              <img src="images/food-1.jpg" alt="Image" class="img-fluid">
-            </figure>
-            <img src="images/img_1.jpg" alt="Image" class="img-fluid rounded">
+          <div class="col-md-12 col-lg-6 ml-auto order-lg-2 position-relative mb-5 text-center" data-aos="fade-up">
+            <video class="tgh-welcome-video" autoplay muted loop playsinline preload="metadata" poster="media/welcome-poster.jpg" aria-label="A short tour of Thamel Grand Hotel">
+              <source src="media/welcome.mp4" type="video/mp4">
+            </video>
           </div>
-          <div class="col-md-12 col-lg-4 order-lg-1" data-aos="fade-up">
-            <h2 class="heading">Welcome!</h2>
-            <p class="mb-4"><b>Welcome to a retreat where nature's grandeur meets modern comfort. Discover the allure of a three-star gem cradled by the breathtaking landscapes of mountains and hills. Our hotel promises a cozy escape, where you can unwind and relish the natural splendor that surrounds you.<b> </p>
-            <p><a href="about.html#" class="btn btn-primary text-white py-2 mr-3">Learn More</a> <span class="mr-3 font-family-serif"><em>or</em></span> <a href="https://vimeo.com/channels/staffpicks/93951774"  data-fancybox class="text-uppercase letter-spacing-1">See video</a></p>
+          <div class="col-md-12 col-lg-5 order-lg-1" data-aos="fade-up">
+            <span class="d-block text-primary text-uppercase letter-spacing-2 mb-2">A warm Nepali welcome</span>
+            <h2 class="heading">Welcome to Thamel Grand</h2>
+            <p class="mb-4">Tucked into the heart of Thamel, Kathmandu, we are a boutique retreat where warm Nepali hospitality meets modern comfort. Wake to Himalayan light, unwind on our rooftop garden at the Black Olives Caf&eacute;, and step straight into the city&rsquo;s most vibrant quarter &mdash; temples, trails and markets right at your doorstep.</p>
+            <p class="mb-0"><a href="reservation.html" class="btn btn-primary text-white py-2 mr-3">Book your stay</a> <a href="rooms.html" class="text-uppercase letter-spacing-1 ml-2">Explore our rooms</a></p>
           </div>
           
         </div>
@@ -171,80 +171,52 @@
             <span data-aos="fade-up" data-aos-delay="100">Step into a world of refinement and comfort in our thoughtfully appointed hotel rooms and suites, tailored to exceed your expectations.</span>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-6 col-lg-4" data-aos="fade-up">
-            <a href="rooms.html#deluxe-single" class="room">
-              <figure class="img-wrap">
-                <img src="images/img_1.jpg" alt="Free website template" class="img-fluid mb-3">
-              </figure>
-              <div class="p-3 text-center room-info">
-                <h2>Deluxe Single Room</h2>
-                
+        <div class="row justify-content-center rooms-grid">
+          <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up">
+            <a href="rooms.html" class="tgh-room-card">
+              <div class="rc-media"><img src="images/rooms/single-1.jpg" alt="Deluxe Single Room" loading="lazy"></div>
+              <div class="rc-body">
+                <h3 class="rc-name">Deluxe Single Room</h3>
+                <span class="rc-cta">View room <span aria-hidden="true">&rarr;</span></span>
               </div>
             </a>
           </div>
-
-
-          <div class="col-md-6 col-lg-4" data-aos="fade-up">
-            <a href="rooms.html#deluxe-double" class="room">
-              <figure class="img-wrap">
-                <img src="images/img_2.jpg" alt="Free website template" class="img-fluid mb-3">
-              </figure>
-              <div class="p-3 text-center room-info">
-                <h2>Deluxe Double Room</h2>
-                
+          <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up">
+            <a href="rooms.html" class="tgh-room-card">
+              <div class="rc-media"><img src="images/rooms/single-2.jpg" alt="Deluxe Double Room" loading="lazy"></div>
+              <div class="rc-body">
+                <h3 class="rc-name">Deluxe Double Room</h3>
+                <span class="rc-cta">View room <span aria-hidden="true">&rarr;</span></span>
               </div>
             </a>
           </div>
-
-          <div class="col-md-6 col-lg-4" data-aos="fade-up">
-            <a href="rooms.html#deluxe-twin" class="room">
-              <figure class="img-wrap">
-                <img src="images/img_2.jpg" alt="Free website template" class="img-fluid mb-3">
-              </figure>
-              <div class="p-3 text-center room-info">
-                <h2>Deluxe Twin Room</h2>
-                
+          <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up">
+            <a href="rooms.html" class="tgh-room-card">
+              <div class="rc-media"><img src="images/rooms/triple-1.jpg" alt="Deluxe Triple Room" loading="lazy"></div>
+              <div class="rc-body">
+                <h3 class="rc-name">Deluxe Triple Room</h3>
+                <span class="rc-cta">View room <span aria-hidden="true">&rarr;</span></span>
               </div>
             </a>
           </div>
-
-          <div class="col-md-6 col-lg-4" data-aos="fade-up">
-            <a href="rooms.html#deluxe-triple" class="room">
-              <figure class="img-wrap">
-                <img src="images/img_3.jpg" alt="Free website template" class="img-fluid mb-3">
-              </figure>
-              <div class="p-3 text-center room-info">
-                <h2>Deluxe Triple Room</h2>
-                
+          <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up">
+            <a href="rooms.html" class="tgh-room-card">
+              <div class="rc-media"><img src="images/rooms/family-1.jpg" alt="Deluxe Family Suite Room" loading="lazy"></div>
+              <div class="rc-body">
+                <h3 class="rc-name">Deluxe Family Suite Room</h3>
+                <span class="rc-cta">View room <span aria-hidden="true">&rarr;</span></span>
               </div>
             </a>
           </div>
-
-          <div class="col-md-6 col-lg-4" data-aos="fade-up">
-            <a href="rooms.html#superior-deluxe" class="room">
-              <figure class="img-wrap">
-                <img src="images/img_3.jpg" alt="Free website template" class="img-fluid mb-3">
-              </figure>
-              <div class="p-3 text-center room-info">
-                <h2>Superior Deluxe Queen Suite with Balcony</h2>
-                
+          <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up">
+            <a href="rooms.html" class="tgh-room-card">
+              <div class="rc-media"><img src="images/rooms/cityview-1.jpg" alt="Luxurious City View Room" loading="lazy"></div>
+              <div class="rc-body">
+                <h3 class="rc-name">Luxurious City View Room</h3>
+                <span class="rc-cta">View room <span aria-hidden="true">&rarr;</span></span>
               </div>
             </a>
           </div>
-
-          <div class="col-md-6 col-lg-4" data-aos="fade-up">
-            <a href="rooms.html#luxurious-city" class="room">
-              <figure class="img-wrap">
-                <img src="images/img_3.jpg" alt="Free website template" class="img-fluid mb-3">
-              </figure>
-              <div class="p-3 text-center room-info">
-                <h2>Luxurious City View Room</h2>
-                
-              </div>
-            </a>
-          </div>
-
         </div>
       </div>
     </section>
@@ -442,63 +414,16 @@
       <div class="container">
         <div class="row justify-content-center text-center mb-5">
           <div class="col-md-8">
-            <span class="d-block text-primary text-uppercase letter-spacing-2 mb-2" data-aos="fade-up">Our Kitchen</span>
+            <span class="d-block text-primary text-uppercase letter-spacing-2 mb-2" data-aos="fade-up">Black Olives Caf&eacute; &middot; Rooftop</span>
             <h2 class="heading text-white" data-aos="fade-up">Our Menu</h2>
-            <p class="text-white text-opacity-7" data-aos="fade-up">Breakfast, mains, vegetarian and drinks &mdash; freshly prepared and served on our rooftop.</p>
+            <p class="text-white text-opacity-7" data-aos="fade-up">Breakfast, food, drinks &amp; cocktails &mdash; freshly prepared and served on our rooftop garden.</p>
           </div>
         </div>
 
-        <style>
-          .menu-tabs{list-style:none;padding:0;margin:0 0 46px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
-          .menu-tab{background:transparent;border:1px solid rgba(255,255,255,.4);color:#fff;padding:9px 24px;border-radius:40px;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .3s,color .3s,border-color .3s;font-family:"Roboto",arial,sans-serif;}
-          .menu-tab:hover{border-color:#ffba5a;color:#ffba5a;}
-          .menu-tab.active{background:#ffba5a;border-color:#ffba5a;color:#3a2c12;font-weight:600;}
-          /* Fixed menu-card aspect ratio: any uploaded photo drops in and fits (no crop). */
-          .menu-stage{position:relative;width:100%;max-width:500px;margin:0 auto;aspect-ratio:3/4;perspective:1900px;}
-          .menu-panel{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .45s ease;}
-          .menu-panel.is-active{opacity:1;pointer-events:auto;}
-          .menu-fold{width:100%;height:100%;transform-origin:top center;transform:rotateX(-90deg);transition:transform .85s cubic-bezier(.2,.8,.25,1);border-radius:10px;overflow:hidden;box-shadow:0 28px 60px rgba(0,0,0,.55);background:#f6efe1;will-change:transform;}
-          .menu-panel.is-active .menu-fold{transform:rotateX(0deg);}
-          .menu-fold img{width:100%;height:100%;object-fit:contain;display:block;background:#f6efe1;}
-          @supports not (aspect-ratio:1/1){.menu-stage{height:0;padding-bottom:133.33%;}}
-          @media (prefers-reduced-motion:reduce){.menu-fold{transition:none;transform:none;}}
-        </style>
-
-        <div class="food-menu-fold" data-aos="fade">
-          <ul class="menu-tabs" role="tablist">
-            <li><button type="button" class="menu-tab active" data-menu="breakfast" role="tab">Breakfast</button></li>
-            <li><button type="button" class="menu-tab" data-menu="mains" role="tab">Mains</button></li>
-            <li><button type="button" class="menu-tab" data-menu="vegetarian" role="tab">Vegetarian</button></li>
-            <li><button type="button" class="menu-tab" data-menu="drinks" role="tab">Drinks</button></li>
-          </ul>
-
-          <div class="menu-stage">
-            <!-- Swap the src of each .menu-fold img with a real menu photo; the slot fits it automatically. -->
-            <div class="menu-panel is-active" data-menu="breakfast"><div class="menu-fold"><img src="images/menu-breakfast.svg" alt="Breakfast menu"></div></div>
-            <div class="menu-panel" data-menu="mains"><div class="menu-fold"><img src="images/menu-mains.svg" alt="Mains menu"></div></div>
-            <div class="menu-panel" data-menu="vegetarian"><div class="menu-fold"><img src="images/menu-vegetarian.svg" alt="Vegetarian menu"></div></div>
-            <div class="menu-panel" data-menu="drinks"><div class="menu-fold"><img src="images/menu-drinks.svg" alt="Drinks menu"></div></div>
-          </div>
+        <div class="tgh-menu" data-aos="fade-up">
+          <div class="tgh-menu-tabs" id="menuTabs" role="tablist" aria-label="Menu categories"></div>
+          <div class="tgh-menu-body" id="menuBody"></div>
         </div>
-
-        <script>
-          (function () {
-            var wrap = document.querySelector('.food-menu-fold');
-            if (!wrap) return;
-            var tabs = wrap.querySelectorAll('.menu-tab');
-            var panels = wrap.querySelectorAll('.menu-panel');
-            // Each inactive card sits folded (rotateX(-90)); toggling is-active unfolds
-            // the chosen one and re-folds the rest — the CSS transition does the animation.
-            function show(key) {
-              tabs.forEach(function (t) { t.classList.toggle('active', t.getAttribute('data-menu') === key); });
-              panels.forEach(function (p) { p.classList.toggle('is-active', p.getAttribute('data-menu') === key); });
-            }
-            tabs.forEach(function (t) { t.addEventListener('click', function () { show(t.getAttribute('data-menu')); }); });
-            // Fold the first card in on load (start folded, then open shortly after).
-            panels.forEach(function (p) { p.classList.remove('is-active'); });
-            setTimeout(function () { show('breakfast'); }, 80);
-          })();
-        </script>
       </div>
     </section>
    
@@ -706,12 +631,30 @@
         </div>
       </section> -->
 
+    <!-- Gallery teaser -->
+    <section class="section bg-light">
+      <div class="container">
+        <div class="row justify-content-center text-center mb-5">
+          <div class="col-md-8" data-aos="fade-up">
+            <span class="d-block text-primary text-uppercase letter-spacing-2 mb-2">Gallery</span>
+            <h2 class="heading">Moments at Thamel Grand</h2>
+            <p class="text-black-50">Rooms, rooftop dining and the streets of Thamel &mdash; a glimpse of your stay.</p>
+          </div>
+        </div>
+        <div class="tgh-teaser" id="galleryTeaser" data-aos="fade-up"></div>
+        <div class="text-center mt-5">
+          <a href="gallery.html" class="btn btn-primary text-white">View full gallery</a>
+        </div>
+      </div>
+    </section>
+
     <footer class="section footer-section">
     <div class="container">
       <div class="row mb-4">
         <div class="col-md-3 mb-5">
           <ul class="list-unstyled link">
             <li><a href="rooms.html">The Rooms &amp; Suites</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
             <li><a href="about.html#">About Us</a></li>
             <li><a href="contact.html#">Contact Us</a></li>
             <li><a href="index.html#restaurant">Restaurant</a></li>
@@ -779,20 +722,8 @@
     <script src="js/aos.js"></script>
     
     <script src="js/bootstrap-datepicker.js"></script> 
-    <script src="js/jquery.timepicker.min.js"></script> 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="js/jquery.timepicker.min.js"></script>
     <script>
-      $(document).ready(function () {
-          $('.owl-carousel').owlCarousel({
-              items: 1, // Number of items to display at a time
-              loop: true, // Enable loop
-              autoplay: true, // Enable autoplay
-              autoplayTimeout: 3000, // Autoplay interval in milliseconds (3 seconds in this case)
-              autoplayHoverPause: true ,// Pause autoplay on hover
-              nav: true, // Enable navigation arrows
-          });
-      });
 
       // Reliable review slider (autoplay + arrows + responsive) — the template's
       // owl-carousel is unreliable when content is injected after page load.
@@ -950,5 +881,10 @@
   </script>
 
     <script src="js/main.js"></script>
+    <script src="js/gallery-data.js?v=g1"></script>
+    <script src="js/tgh-lightbox.js?v=g2"></script>
+    <script src="js/gallery-teaser.js?v=g1"></script>
+    <script src="js/menu-data.js?v=m1"></script>
+    <script src="js/menu-render.js?v=m1"></script>
   </body>
 </html>
