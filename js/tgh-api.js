@@ -3,7 +3,7 @@
  * demo content; if it's down, the static markup is left untouched. */
 (function () {
   'use strict';
-  var API = 'http://localhost:1337';
+  var API = '';
 
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {

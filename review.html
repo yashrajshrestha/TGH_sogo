@@ -320,7 +320,7 @@
     
 
     <script src="js/main.js"></script>
-    <script src="js/tgh-api.js?v=20260817e"></script>
+    <script src="js/tgh-api.js?v=20260817f"></script>
 
     <script>
       document.getElementById('submitButton').addEventListener('click', function(){
@@ -338,7 +338,7 @@
 
         const jsonData = JSON.stringify({"data": {formDataObject}});
 
-        const apiUrl = 'http://localhost:1337/api/reviews';
+        const apiUrl = '/api/reviews';
 
         fetch(apiUrl, {
           method: 'POST',

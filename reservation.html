@@ -265,7 +265,7 @@
     
 
     <script src="js/main.js"></script>
-    <script src="js/tgh-api.js?v=20260817e"></script>
+    <script src="js/tgh-api.js?v=20260817f"></script>
 
     <script>
 
@@ -308,7 +308,7 @@
         // Public "create" on /api/bookings is enabled in Strapi, so no API token
         // is needed. (A stale bearer token would 401 rather than fall back to the
         // public role — which is exactly what the old hardcoded token did.)
-        fetch('http://localhost:1337/api/bookings', {
+        fetch('/api/bookings', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ data: formDataObject })

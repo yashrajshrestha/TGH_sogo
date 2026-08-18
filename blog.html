@@ -247,7 +247,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         const myParam = urlParams.get('id');
         
-         const apiUrl = 'http://localhost:1337/api/blogs/'+myParam+'?populate=*';
+         const apiUrl = '/api/blogs/'+myParam+'?populate=*';
 
          fetch(apiUrl, {
         method: 'GET',
@@ -295,13 +295,13 @@
             
             const mediaImage = document.createElement('img');
             mediaImage.className = 'col-lg-4 col-md-6 col-sm-6 col-12 post mb-5';
-            mediaImage.setAttribute("src", 'http://localhost:1337'+image.attributes.url);
+            mediaImage.setAttribute("src", ''+image.attributes.url);
 
             blogimage.append(mediaImage);
           });
 
           const header = document.getElementById('header');
-          const imageUrl = 'http://localhost:1337'+data.data.attributes.header_img.data.attributes.url;
+          const imageUrl = ''+data.data.attributes.header_img.data.attributes.url;
           header.style.backgroundImage = `url('${imageUrl}')`;
       
          });

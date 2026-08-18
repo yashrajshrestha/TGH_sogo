@@ -777,7 +777,7 @@
       function tghStars(n){ n=Math.round(Number(n)||0); var o=''; for(var i=0;i<5;i++) o+= i<n?'★':'☆'; return o; }
       function tghReviewInner(a){ var name=a.full_name||''; return '<div style="width:60px;height:60px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:600;background:'+tghColor(name)+';">'+tghEsc(tghInitials(name))+'</div>'+'<div style="color:#f0a500;font-size:16px;letter-spacing:2px;margin-bottom:10px;">'+tghStars(a.rating)+'</div>'+'<p style="color:#555;font-size:14.5px;line-height:1.6;margin:0 0 12px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;">'+tghEsc(a.description)+'</p>'+'<div style="color:#222;font-weight:600;font-size:15px;margin-top:auto;">'+tghEsc(name)+'</div>'; }
 
-      const apiUrl = 'http://localhost:1337/api/reviews';
+      const apiUrl = '/api/reviews';
 
 
       fetch(apiUrl, {
@@ -812,7 +812,7 @@
       });
 
 
-      const blogUrl = 'http://localhost:1337/api/blogs?populate=*'
+      const blogUrl = '/api/blogs?populate=*'
 
       fetch(blogUrl,{
         method: "GET",
@@ -842,7 +842,7 @@
 
           const mediaImage = document.createElement('img');
           mediaImage.className = 'img-fluid';
-          mediaImage.setAttribute("src", 'http://localhost:1337'+blog.attributes.header_img.data.attributes.url);
+          mediaImage.setAttribute("src", ''+blog.attributes.header_img.data.attributes.url);
           
           const headerImage = document.createElement('img');
           const cardBody = document.createElement('div');
