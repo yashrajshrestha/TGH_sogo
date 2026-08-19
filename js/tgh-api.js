@@ -117,7 +117,7 @@
       twinbalcony: ['images/rooms/twinbalcony-1.jpg', 'images/rooms/twinbalcony-2.jpg', 'images/rooms/twinbalcony-3.jpg', 'images/rooms/twinbalcony-4.jpg'],
       triple: ['images/rooms/triple-1.jpg', 'images/rooms/triple-2.jpg', 'images/rooms/triple-3.jpg', 'images/rooms/triple-4.jpg'],
       family: ['images/rooms/family-1.jpg', 'images/rooms/family-2.jpg', 'images/rooms/family-3.jpg', 'images/rooms/family-4.jpg'],
-      cityview: [{ video: 'media/rooms/cityview.mp4', poster: 'media/rooms/cityview-poster.jpg' }, 'images/rooms/cityview-1.jpg', 'images/rooms/cityview-2.jpg', 'images/rooms/cityview-3.jpg', 'images/rooms/cityview-4.jpg']
+      cityview: ['images/rooms/cityview-1.jpg', 'images/rooms/cityview-2.jpg', 'images/rooms/cityview-3.jpg', 'images/rooms/cityview-4.jpg']
     };
     if (/single/.test(t)) return G.single;
     if (/triple/.test(t)) return G.triple;
@@ -137,6 +137,8 @@
     var right = i % 2 === 1; // alternate the image side, like the original layout
     // Sliding gallery of type-matched photos (API photo first if one is uploaded).
     var imgs = roomGallery(a.title);
+    // Every room leads with a short video tour.
+    imgs = [{ video: 'media/rooms/room-tour.mp4', poster: 'media/rooms/room-tour-poster.jpg' }].concat(imgs);
     if (url) imgs = [url].concat(imgs);
     var slides = imgs.map(function (u, idx) {
       var active = idx === 0 ? ' is-active' : '';
