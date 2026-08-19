@@ -2,6 +2,9 @@
 
 	'use strict';
 
+	// Guard: if the owl-carousel plugin isn't loaded on a page, make owlCarousel a safe no-op.
+	if (typeof $.fn.owlCarousel === 'undefined') { $.fn.owlCarousel = function () { return this; }; }
+
   $('.site-menu-toggle').click(function(){
     var $this = $(this);
     if ( $('body').hasClass('menu-open') ) {

@@ -319,7 +319,7 @@
 
     
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=2"></script>
     <script src="js/tgh-api.js?v=20260819c"></script>
 
     <script>
@@ -343,8 +343,7 @@
         fetch(apiUrl, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
-            "Authorization": "Bearer 081d9de3542455cc520d79b612919ae47322b341e0b5b7b12f1e7eb238ff38c1c855ae6bb366fe7f7f5c5bd9619f7932937d1b8162a68f55ca50ec7f294e09a2750a6e021006240762237a95924a2e7a8b5618c2d3c40a0e1ba907e2baafff23a2f2b465ac3faed9b3e5412719612461ad3db4d300c72fc0d50ad1bb0afe5692"
+            'Content-Type': 'application/json'
           },
           body: jsonData
         })

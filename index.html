@@ -769,15 +769,14 @@
       fetch(apiUrl, {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization':  "Bearer 081d9de3542455cc520d79b612919ae47322b341e0b5b7b12f1e7eb238ff38c1c855ae6bb366fe7f7f5c5bd9619f7932937d1b8162a68f55ca50ec7f294e09a2750a6e021006240762237a95924a2e7a8b5618c2d3c40a0e1ba907e2baafff23a2f2b465ac3faed9b3e5412719612461ad3db4d300c72fc0d50ad1bb0afe5692"
+          'Content-Type': 'application/json'
         }
       })
-      .then(response => response.json())
-      
-      .then(data => {
-        
+      .then(function (response) { if (!response.ok) throw new Error('HTTP ' + response.status); return response.json(); })
+      .then(function (data) {
+        if (!data || !data.data || !data.data.length) return; // API down/empty — keep static reviews
         let itemContainer = document.querySelector('#reviews');
+        itemContainer.innerHTML = '';
         itemContainer.className = 'testimonial-slider owl-carousel';
 
         data.data.forEach(function (review) {
@@ -803,15 +802,14 @@
       fetch(blogUrl,{
         method: "GET",
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization':  "Bearer 081d9de3542455cc520d79b612919ae47322b341e0b5b7b12f1e7eb238ff38c1c855ae6bb366fe7f7f5c5bd9619f7932937d1b8162a68f55ca50ec7f294e09a2750a6e021006240762237a95924a2e7a8b5618c2d3c40a0e1ba907e2baafff23a2f2b465ac3faed9b3e5412719612461ad3db4d300c72fc0d50ad1bb0afe5692"
+          'Content-Type': 'application/json'
         }
       })
-      .then(response=> response.json())
-      .then(data => {
-
+      .then(function (response) { if (!response.ok) throw new Error('HTTP ' + response.status); return response.json(); })
+      .then(function (data) {
+        if (!data || !data.data || !data.data.length) return; // API down/empty — keep static trips
         const itemContainer = document.querySelector("#blogs");
-        
+        itemContainer.innerHTML = '';
         data.data.forEach(blog => {
 
           const item = document.createElement('div');
@@ -823,7 +821,7 @@
           media.className = 'media media-custom d-block mb-4 h-100';
 
           const mediaHref = document.createElement('a');
-          mediaHref.setAttribute('href', 'http://localhost:5500/sogo/blog.html?id='+blog.id);
+          mediaHref.setAttribute('href', 'blog.html?id=' + blog.id);
           mediaHref.className = 'mb-4 d-block';
 
           const mediaImage = document.createElement('img');
@@ -863,10 +861,11 @@
           itemContainer.appendChild(item);
         })
       })
+      .catch(function (e) { console.warn('[TGH] blogs unavailable, keeping static:', e.message); });
 
   </script>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=2"></script>
     <script src="js/gallery-data.js?v=g1"></script>
     <script src="js/tgh-lightbox.js?v=g2"></script>
     <script src="js/gallery-teaser.js?v=g2"></script>
