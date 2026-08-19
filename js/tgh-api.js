@@ -124,6 +124,7 @@
     if (/family|queen\s*suite/.test(t)) return G.family;
     if (/twin/.test(t) && /balcony/.test(t)) return G.twinbalcony;
     if (/twin/.test(t)) return G.twin;
+    if (/double/.test(t)) return G.single;
     if (/city|view/.test(t)) return G.cityview;
     return G.twin;
   }
@@ -177,36 +178,32 @@
   }
 
   // --- Reservation room selector (reservation.html) ---
+  // The hotel offers these 5 rooms. (Rendered directly so the rooms page + booking match the
+  // real lineup; the DB currently holds a different set — update it, then this can read the API.)
+  var STATIC_ROOMS = [
+    { id: 1, title: 'Deluxe Single Room', discription: 'A cosy room for the solo traveller with a comfortable bed, work desk and ensuite bathroom, moments from the heart of Thamel.' },
+    { id: 2, title: 'Deluxe Double Room', discription: 'A relaxed room for two with a double bed, work desk and ensuite bathroom in the heart of Thamel.' },
+    { id: 4, title: 'Deluxe Triple Room', discription: 'A spacious room that comfortably sleeps three, with three beds, a work desk and ensuite bathroom.' },
+    { id: 5, title: 'Deluxe Family Suite Room', discription: 'A roomy suite for families, with a sitting area, flexible bedding and an ensuite bathroom.' },
+    { id: 6, title: 'Luxurious City View Room', discription: 'Our top-floor room with bright city views, a plush bed and an ensuite bathroom.' }
+  ];
+
   function loadRoomOptions() {
     var sel = document.getElementById('room');
     if (!sel) return;
     var wanted = new URLSearchParams(window.location.search).get('room');
-    fetch(API + '/api/rooms?filters[isdisplay][$eq]=true&sort=price:asc')
-      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-      .then(function (res) {
-        var rooms = (res && res.data) || [];
-        sel.innerHTML = '<option value="">Select a room…</option>' + rooms.map(function (e) {
-          var a = e.attributes || e;
-          var on = String(e.id) === String(wanted) ? ' selected' : '';
-          return '<option value="' + e.id + '"' + on + '>' + esc(a.title) + '</option>';
-        }).join('');
-      })
-      .catch(function (e) { console.warn('[TGH] could not load rooms for the selector:', e.message); });
+    sel.innerHTML = '<option value="">Select a room…</option>' + STATIC_ROOMS.map(function (e) {
+      var on = String(e.id) === String(wanted) ? ' selected' : '';
+      return '<option value="' + e.id + '"' + on + '>' + esc(e.title) + '</option>';
+    }).join('');
   }
 
   function loadRooms() {
     var el = document.getElementById('rooms-container');
     if (!el) return;
-    fetch(API + '/api/rooms?populate=*&filters[isdisplay][$eq]=true&sort=price:asc')
-      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-      .then(function (res) {
-        var rooms = (res && res.data) || [];
-        if (!rooms.length) return; // nothing published yet — keep the static demo rooms
-        ensureRoomStyles();
-        el.innerHTML = rooms.map(roomCard).join('');
-        initRoomGalleries();
-      })
-      .catch(function (e) { console.warn('[TGH] rooms API unavailable, keeping static content:', e.message); });
+    ensureRoomStyles();
+    el.innerHTML = STATIC_ROOMS.map(roomCard).join('');
+    initRoomGalleries();
   }
 
   // Wire up each room card's sliding gallery: autoplay + arrows + dots, pause on hover.
