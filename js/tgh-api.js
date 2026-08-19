@@ -112,21 +112,18 @@
   function roomGallery(title) {
     var t = String(title || '').toLowerCase();
     var G = {
-      single: ['images/rooms/single-1.jpg', 'images/rooms/single-2.jpg', 'images/rooms/single-3.jpg', 'images/rooms/single-4.jpg'],
-      twin: ['images/rooms/twin-1.jpg', 'images/rooms/twin-2.jpg', 'images/rooms/twin-3.jpg', 'images/rooms/twin-4.jpg'],
-      twinbalcony: ['images/rooms/twinbalcony-1.jpg', 'images/rooms/twinbalcony-2.jpg', 'images/rooms/twinbalcony-3.jpg', 'images/rooms/twinbalcony-4.jpg'],
+      single: ['images/rooms/single-1.jpg', 'images/rooms/single-2.jpg', 'images/rooms/single-3.jpg'],
+      double: ['images/rooms/double-1.jpg', 'images/rooms/double-2.jpg', 'images/rooms/double-3.jpg'],
       triple: ['images/rooms/triple-1.jpg', 'images/rooms/triple-2.jpg', 'images/rooms/triple-3.jpg', 'images/rooms/triple-4.jpg'],
       family: ['images/rooms/family-1.jpg', 'images/rooms/family-2.jpg', 'images/rooms/family-3.jpg', 'images/rooms/family-4.jpg'],
-      cityview: ['images/rooms/cityview-1.jpg', 'images/rooms/cityview-2.jpg', 'images/rooms/cityview-3.jpg', 'images/rooms/cityview-4.jpg']
+      cityview: ['images/rooms/cityview-1.jpg', 'images/rooms/cityview-2.jpg', 'images/rooms/cityview-3.jpg']
     };
-    if (/single/.test(t)) return G.single;
-    if (/triple/.test(t)) return G.triple;
-    if (/family|queen\s*suite/.test(t)) return G.family;
-    if (/twin/.test(t) && /balcony/.test(t)) return G.twinbalcony;
-    if (/twin/.test(t)) return G.twin;
-    if (/double/.test(t)) return G.single;
     if (/city|view/.test(t)) return G.cityview;
-    return G.twin;
+    if (/family|queen\s*suite/.test(t)) return G.family;
+    if (/triple/.test(t)) return G.triple;
+    if (/double/.test(t)) return G.double;
+    if (/single/.test(t)) return G.single;
+    return G.double;
   }
 
   function roomCard(entry, i) {
