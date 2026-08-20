@@ -118,13 +118,17 @@
       family: ['images/rooms/family-1.jpg', 'images/rooms/family-2.jpg', 'images/rooms/family-3.jpg', 'images/rooms/family-4.jpg'],
       cityview: ['images/rooms/cityview-1.jpg', 'images/rooms/cityview-2.jpg', 'images/rooms/cityview-3.jpg']
     };
-    if (/city|view/.test(t)) return G.cityview;
-    if (/family|queen\s*suite/.test(t)) return G.family;
-    if (/triple/.test(t)) return G.triple;
-    if (/double/.test(t)) return G.double;
-    if (/single/.test(t)) return G.single;
-    return G.double;
+    var set = G.double;
+    if (/city|view/.test(t)) set = G.cityview;
+    else if (/family|queen\s*suite/.test(t)) set = G.family;
+    else if (/triple/.test(t)) set = G.triple;
+    else if (/double/.test(t)) set = G.double;
+    else if (/single/.test(t)) set = G.single;
+    // Version-stamp so browsers refetch when we re-curate a room's photos
+    // (the filenames stay the same, so without this the old image is cached).
+    return set.map(function (u) { return u + '?p=' + ROOM_IMG_VER; });
   }
+  var ROOM_IMG_VER = '20260820a';
 
   function roomCard(entry, i) {
     var a = entry.attributes || entry;
