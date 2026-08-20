@@ -37,6 +37,10 @@
     target = Math.max(0, Math.min(target, document.body.scrollHeight - window.innerHeight));
     var dist = target - start, t0 = null, dur = 460;
     if (Math.abs(dist) < 2) return;
+    // No animation when the tab is backgrounded (rAF is paused there) or when
+    // the visitor asked for reduced motion - just land on it.
+    var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (document.hidden || still) { window.scrollTo(0, target); return; }
     requestAnimationFrame(function step(ts) {
       if (t0 === null) t0 = ts;
       var p = Math.min(1, (ts - t0) / dur);

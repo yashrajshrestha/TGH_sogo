@@ -129,7 +129,7 @@
     // (the filenames stay the same, so without this the old image is cached).
     return set.map(function (u) { return u + '?p=' + ROOM_IMG_VER; });
   }
-  var ROOM_IMG_VER = '20260820a';
+  var ROOM_IMG_VER = '20260820e';
 
   function roomCard(entry, i) {
     var a = entry.attributes || entry;
