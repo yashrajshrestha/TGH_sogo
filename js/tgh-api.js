@@ -112,18 +112,20 @@
   function roomGallery(title) {
     var t = String(title || '').toLowerCase();
     var G = {
-      single: ['images/rooms/single-1.jpg', 'images/rooms/single-2.jpg', 'images/rooms/single-3.jpg'],
-      double: ['images/rooms/double-1.jpg', 'images/rooms/double-2.jpg', 'images/rooms/double-3.jpg', 'images/rooms/double-4.jpg'],
+      // Deluxe Single / Double is one combined card — show the single + double photos together.
+      singledouble: ['images/rooms/single-1.jpg', 'images/rooms/single-2.jpg', 'images/rooms/single-3.jpg',
+                     'images/rooms/double-1.jpg', 'images/rooms/double-2.jpg', 'images/rooms/double-3.jpg', 'images/rooms/double-4.jpg'],
+      twin: ['images/rooms/twin-1.jpg', 'images/rooms/twin-2.jpg', 'images/rooms/twin-3.jpg'],
       triple: ['images/rooms/triple-1.jpg', 'images/rooms/triple-2.jpg', 'images/rooms/triple-3.jpg', 'images/rooms/triple-4.jpg'],
       family: ['images/rooms/family-1.jpg', 'images/rooms/family-2.jpg', 'images/rooms/family-3.jpg', 'images/rooms/family-4.jpg'],
       cityview: ['images/rooms/cityview-1.jpg', 'images/rooms/cityview-2.jpg', 'images/rooms/cityview-3.jpg']
     };
-    var set = G.double;
+    var set = G.singledouble;
     if (/city|view/.test(t)) set = G.cityview;
     else if (/family|queen\s*suite/.test(t)) set = G.family;
     else if (/triple/.test(t)) set = G.triple;
-    else if (/double/.test(t)) set = G.double;
-    else if (/single/.test(t)) set = G.single;
+    else if (/twin/.test(t)) set = G.twin;
+    else if (/single|double/.test(t)) set = G.singledouble;
     // Version-stamp so browsers refetch when we re-curate a room's photos
     // (the filenames stay the same, so without this the old image is cached).
     return set.map(function (u) { return u + '?p=' + ROOM_IMG_VER; });
@@ -182,8 +184,8 @@
   // The hotel offers these 5 rooms. (Rendered directly so the rooms page + booking match the
   // real lineup; the DB currently holds a different set — update it, then this can read the API.)
   var STATIC_ROOMS = [
-    { id: 1, title: 'Deluxe Single Room', discription: 'A cosy room for the solo traveller with a comfortable bed, work desk and ensuite bathroom, moments from the heart of Thamel.' },
-    { id: 2, title: 'Deluxe Double Room', discription: 'A relaxed room for two with a double bed, work desk and ensuite bathroom in the heart of Thamel.' },
+    { id: 1, title: 'Deluxe Single / Double Room', discription: 'A comfortable room for one or two guests, with a cosy double bed, work desk and ensuite bathroom, moments from the heart of Thamel.' },
+    { id: 2, title: 'Deluxe Twin Room', discription: 'A bright room with two separate beds, ideal for friends or colleagues travelling together, with a work desk and ensuite bathroom.' },
     { id: 4, title: 'Deluxe Triple Room', discription: 'A spacious room that comfortably sleeps three, with three beds, a work desk and ensuite bathroom.' },
     { id: 5, title: 'Deluxe Family Suite Room', discription: 'A roomy suite for families, with a sitting area, flexible bedding and an ensuite bathroom.' },
     { id: 6, title: 'Luxurious City View Room', discription: 'Our top-floor room with bright city views, a plush bed and an ensuite bathroom.' }

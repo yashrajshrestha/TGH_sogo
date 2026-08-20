@@ -142,3 +142,28 @@ img{max-width:100%;}
 .tgh-tour-video{max-height:560px;width:auto;max-width:100%;border-radius:14px;
   border:1px solid rgba(185,134,59,.35);box-shadow:0 26px 60px -24px rgba(0,0,0,.5);background:#000;display:inline-block;}
 @media (max-width:991px){.tgh-tour-video{max-height:72vh;}}
+
+/* ---------- Menu highlights: background-free dish shots above the menu ---------- */
+/* The shots are cut out (transparent PNG/WebP), so they sit straight on the
+   section photo with only a drop shadow grounding them - no card, no plate edge. */
+.tgh-menu-highlights{max-width:1080px;margin:0 auto 40px;}
+.mh-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px 8px;}
+.mh-card{display:flex;flex-direction:column;align-items:center;text-align:center;
+  background:none;border:0;padding:10px 6px 14px;cursor:pointer;color:#fff;border-radius:12px;
+  transition:transform .22s ease,background .22s ease;font-family:"Roboto",arial,sans-serif;}
+.mh-card:hover,.mh-card:focus-visible{transform:translateY(-6px);background:rgba(255,255,255,.07);outline:none;}
+.mh-shot{display:flex;align-items:flex-end;justify-content:center;height:136px;width:100%;}
+.mh-shot img{width:auto;height:auto;max-height:136px;max-width:100%;
+  filter:drop-shadow(0 16px 18px rgba(0,0,0,.5));transition:transform .22s ease;}
+.mh-card:hover .mh-shot img,.mh-card:focus-visible .mh-shot img{transform:scale(1.07);}
+.mh-name{font-family:"Playfair Display",Georgia,serif;font-size:15.5px;margin-top:14px;}
+.mh-group{font-size:10.5px;text-transform:uppercase;letter-spacing:.15em;color:#e2b877;margin-top:4px;}
+/* Brief tint on the group you just jumped to. */
+.menu-group{border-radius:8px;}
+.mg-flash{animation:mgFlash 1.4s ease;}
+@keyframes mgFlash{0%,100%{background:transparent;}18%{background:rgba(185,134,59,.16);}}
+@media (max-width:768px){
+  .mh-strip{grid-template-columns:repeat(2,1fr);gap:10px 6px;}
+  .mh-shot{height:104px;} .mh-shot img{max-height:104px;}
+  .mh-name{font-size:14px;margin-top:10px;} .tgh-menu-highlights{margin-bottom:28px;}
+}
