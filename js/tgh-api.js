@@ -116,10 +116,11 @@
       // then doubles 29/51/47/23 (old-sheet numbering; each set ends with a bathroom shot).
       singledouble: ['images/rooms/single-1.jpg', 'images/rooms/single-2.jpg', 'images/rooms/single-3.jpg',
                      'images/rooms/double-1.jpg', 'images/rooms/double-2.jpg', 'images/rooms/double-3.jpg', 'images/rooms/double-4.jpg'],
-      twin: ['images/rooms/twin-1.jpg', 'images/rooms/twin-2.jpg', 'images/rooms/twin-3.jpg'],
-      triple: ['images/rooms/triple-1.jpg', 'images/rooms/triple-2.jpg', 'images/rooms/triple-3.jpg', 'images/rooms/triple-4.jpg'],
+      twin: ['images/rooms/twin-1.jpg', 'images/rooms/twin-2.jpg', 'images/rooms/twin-3.jpg', 'images/rooms/twin-4.jpg', 'images/rooms/twin-5.jpg'],
+      triple: ['images/rooms/triple-1.jpg', 'images/rooms/triple-2.jpg', 'images/rooms/triple-3.jpg', 'images/rooms/triple-4.jpg', 'images/rooms/triple-5.jpg'],
       family: ['images/rooms/family-1.jpg', 'images/rooms/family-2.jpg', 'images/rooms/family-3.jpg', 'images/rooms/family-4.jpg'],
-      cityview: ['images/rooms/cityview-1.jpg', 'images/rooms/cityview-2.jpg', 'images/rooms/cityview-3.jpg']
+      // Luxurious City View: the tour video leads, then one photo (owner's pick).
+      cityview: ['images/rooms/cityview-1.jpg']
     };
     var set = G.singledouble;
     if (/city|view/.test(t)) set = G.cityview;
@@ -131,7 +132,7 @@
     // (the filenames stay the same, so without this the old image is cached).
     return set.map(function (u) { return u + '?p=' + ROOM_IMG_VER; });
   }
-  var ROOM_IMG_VER = '20260820f';
+  var ROOM_IMG_VER = '20260820g';
 
   function roomCard(entry, i) {
     var a = entry.attributes || entry;
