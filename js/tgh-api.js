@@ -140,8 +140,11 @@
     var right = i % 2 === 1; // alternate the image side, like the original layout
     // Sliding gallery of type-matched photos (API photo first if one is uploaded).
     var imgs = roomGallery(a.title);
-    // Every room leads with a short video tour.
-    imgs = [{ video: 'media/rooms/room-tour.mp4', poster: 'media/rooms/room-tour-poster.jpg' }].concat(imgs);
+    // Lead with a short video tour — but only on the Luxurious City View room
+    // (it's that room's walkthrough). Other rooms show photos only.
+    if (/city|view/.test(String(a.title || '').toLowerCase())) {
+      imgs = [{ video: 'media/rooms/room-tour.mp4', poster: 'media/rooms/room-tour-poster.jpg' }].concat(imgs);
+    }
     if (url) imgs = [url].concat(imgs);
     var slides = imgs.map(function (u, idx) {
       var active = idx === 0 ? ' is-active' : '';

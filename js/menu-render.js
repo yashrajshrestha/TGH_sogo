@@ -26,13 +26,33 @@
   Array.prototype.forEach.call(tabsEl.children, function (b) { b.addEventListener('click', function () { render(b.getAttribute('data-tab')); }); });
   render(keys[0]);
 
+  // The template's scroll plugins swallow native smooth scrolling, so tween by hand.
+  function glideTo(el) {
+    var header = document.querySelector('.site-header');
+    var pad = (header ? header.offsetHeight : 0) + 18;
+    var rect = el.getBoundingClientRect();
+    var start = window.pageYOffset;
+    var fits = rect.height < window.innerHeight - pad;
+    var target = start + rect.top - (fits ? Math.max(pad, (window.innerHeight - rect.height) / 2) : pad);
+    target = Math.max(0, Math.min(target, document.body.scrollHeight - window.innerHeight));
+    var dist = target - start, t0 = null, dur = 460;
+    if (Math.abs(dist) < 2) return;
+    requestAnimationFrame(function step(ts) {
+      if (t0 === null) t0 = ts;
+      var p = Math.min(1, (ts - t0) / dur);
+      var e = p < 0.5 ? 2 * p * p : -1 + (4 - 2 * p) * p;   // easeInOutQuad
+      window.scrollTo(0, start + dist * e);
+      if (p < 1) requestAnimationFrame(step);
+    });
+  }
+
   // Let the highlights strip open a tab and scroll to one group.
   window.TGHMenu = {
     show: function (tab, group) {
       if (!data[tab]) return;
       render(tab);
       var el = group && document.getElementById('mg-' + slug(group));
-      (el || tabsEl).scrollIntoView({ behavior: 'smooth', block: el ? 'center' : 'start' });
+      glideTo(el || tabsEl);
       if (el) { el.classList.add('mg-flash'); setTimeout(function(){ el.classList.remove('mg-flash'); }, 1400); }
     }
   };
