@@ -112,8 +112,10 @@
   function roomGallery(title) {
     var t = String(title || '').toLowerCase();
     var G = {
-      // Deluxe Single / Double is one combined card — owner chose photos #48, #49, #22.
-      singledouble: ['images/rooms/single-1.jpg', 'images/rooms/single-2.jpg', 'images/rooms/single-3.jpg'],
+      // Deluxe Single / Double combined card — owner's picks: singles 48/49/22
+      // then doubles 29/51/47/23 (old-sheet numbering; each set ends with a bathroom shot).
+      singledouble: ['images/rooms/single-1.jpg', 'images/rooms/single-2.jpg', 'images/rooms/single-3.jpg',
+                     'images/rooms/double-1.jpg', 'images/rooms/double-2.jpg', 'images/rooms/double-3.jpg', 'images/rooms/double-4.jpg'],
       twin: ['images/rooms/twin-1.jpg', 'images/rooms/twin-2.jpg', 'images/rooms/twin-3.jpg'],
       triple: ['images/rooms/triple-1.jpg', 'images/rooms/triple-2.jpg', 'images/rooms/triple-3.jpg', 'images/rooms/triple-4.jpg'],
       family: ['images/rooms/family-1.jpg', 'images/rooms/family-2.jpg', 'images/rooms/family-3.jpg', 'images/rooms/family-4.jpg'],
@@ -129,7 +131,7 @@
     // (the filenames stay the same, so without this the old image is cached).
     return set.map(function (u) { return u + '?p=' + ROOM_IMG_VER; });
   }
-  var ROOM_IMG_VER = '20260820e';
+  var ROOM_IMG_VER = '20260820f';
 
   function roomCard(entry, i) {
     var a = entry.attributes || entry;
