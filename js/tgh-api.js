@@ -113,7 +113,7 @@
     var t = String(title || '').toLowerCase();
     var G = {
       single: ['images/rooms/single-1.jpg', 'images/rooms/single-2.jpg', 'images/rooms/single-3.jpg'],
-      double: ['images/rooms/double-1.jpg', 'images/rooms/double-2.jpg', 'images/rooms/double-3.jpg'],
+      double: ['images/rooms/double-1.jpg', 'images/rooms/double-2.jpg', 'images/rooms/double-3.jpg', 'images/rooms/double-4.jpg'],
       triple: ['images/rooms/triple-1.jpg', 'images/rooms/triple-2.jpg', 'images/rooms/triple-3.jpg', 'images/rooms/triple-4.jpg'],
       family: ['images/rooms/family-1.jpg', 'images/rooms/family-2.jpg', 'images/rooms/family-3.jpg', 'images/rooms/family-4.jpg'],
       cityview: ['images/rooms/cityview-1.jpg', 'images/rooms/cityview-2.jpg', 'images/rooms/cityview-3.jpg']
