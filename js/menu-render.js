@@ -6,10 +6,12 @@
   if (!tabsEl || !bodyEl) return;
   var keys = Object.keys(data);
   function esc(s){ return String(s==null?'':s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];}); }
+  // Prices are intentionally not rendered: the menu on the site is a taster,
+  // not a price list. `price` stays in menu-data.js so it can come back easily.
   function itemHtml(it) {
     var desc = it.desc ? '<div class="mi-desc">' + esc(it.desc) + '</div>' : '';
     return '<div class="menu-item"><div class="mi-head"><span class="mi-name">' + esc(it.name) +
-      '</span><span class="mi-leader"></span><span class="mi-price">' + esc(it.price) + '</span></div>' + desc + '</div>';
+      '</span></div>' + desc + '</div>';
   }
   function groupHtml(g) {
     return '<div class="menu-group"><h4 class="menu-group-title">' + esc(g.group) + '</h4>' +
