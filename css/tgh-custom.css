@@ -85,12 +85,29 @@ img{max-width:100%;}
   box-shadow:0 22px 55px -22px rgba(0,0,0,.45);display:inline-block;vertical-align:middle;}
 @media (max-width:991px){.tgh-welcome-video{max-height:70vh;}}
 
-/* ---------- Café video (menu section) + exterior video (about) ---------- */
-.tgh-cafe-video{max-height:430px;width:auto;max-width:100%;border-radius:14px;
-  box-shadow:0 26px 60px -24px rgba(0,0,0,.75);display:inline-block;vertical-align:middle;}
+/* ---------- Exterior video (about) ---------- */
 .tgh-exterior-video{max-height:560px;width:auto;max-width:100%;border-radius:14px;
   box-shadow:0 22px 55px -22px rgba(0,0,0,.45);display:inline-block;vertical-align:middle;}
-@media (max-width:991px){.tgh-cafe-video,.tgh-exterior-video{max-height:65vh;}}
+@media (max-width:991px){.tgh-exterior-video{max-height:65vh;}}
+
+/* ---------- Welcome video slider (homepage) ---------- */
+.tgh-video-slider{position:relative;display:inline-block;width:min(100%,360px);aspect-ratio:9/14;
+  border-radius:14px;overflow:hidden;box-shadow:0 22px 55px -22px rgba(0,0,0,.45);background:#111;}
+.tvs-slide{position:absolute;inset:0;opacity:0;transition:opacity .5s ease;pointer-events:none;}
+.tvs-slide.is-active{opacity:1;pointer-events:auto;}
+.tvs-slide video{width:100%;height:100%;object-fit:cover;display:block;}
+.tvs-tag{position:absolute;top:12px;left:12px;z-index:3;padding:5px 12px;border-radius:999px;
+  background:rgba(20,14,6,.55);backdrop-filter:blur(4px);color:#ffe6bf;font-size:10.5px;
+  letter-spacing:1.5px;text-transform:uppercase;font-family:"Roboto",arial,sans-serif;}
+.tvs-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:4;width:40px;height:40px;
+  border:none;border-radius:50%;background:rgba(20,20,20,.45);color:#fff;font-size:24px;line-height:1;
+  cursor:pointer;transition:background .2s;}
+.tvs-arrow:hover{background:rgba(185,134,59,.85);}
+.tvs-prev{left:10px;}.tvs-next{right:10px;}
+.tvs-dots{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:7px;z-index:4;}
+.tvs-dot{width:8px;height:8px;border-radius:50%;border:none;background:rgba(255,255,255,.55);
+  cursor:pointer;padding:0;transition:background .2s;}
+.tvs-dot.is-active{background:#ffba5a;}
 
 /* ---------- Room video slide + lightbox video ---------- */
 .rg-slide-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}

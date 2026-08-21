@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
     <!-- Theme Style -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/tgh-custom.css?v=g9">
+    <link rel="stylesheet" href="css/tgh-custom.css?v=h1">
     <link rel="stylesheet" href="css/tgh-theme.css?v=t1">
   </head>
   <body>
@@ -149,9 +149,35 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-md-12 col-lg-6 ml-auto order-lg-2 position-relative mb-5 text-center" data-aos="fade-up">
-            <video class="tgh-welcome-video" autoplay muted loop playsinline preload="metadata" poster="media/welcome-poster.jpg" aria-label="A short tour of Thamel Grand Hotel">
-              <source src="media/welcome.mp4" type="video/mp4">
-            </video>
+            <div class="tgh-video-slider" id="welcomeVideos" aria-label="Videos of Thamel Grand Hotel">
+              <div class="tvs-slide is-active">
+                <video muted playsinline preload="auto" poster="media/welcome-poster.jpg" aria-label="Evening at Thamel Grand Hotel">
+                  <source src="media/welcome.mp4" type="video/mp4">
+                </video>
+                <span class="tvs-tag">The hotel</span>
+              </div>
+              <div class="tvs-slide">
+                <video muted playsinline preload="metadata" poster="media/cafe-poster.jpg" aria-label="Black Olives Café &amp; Bar rooftop">
+                  <source src="media/cafe.mp4" type="video/mp4">
+                </video>
+                <span class="tvs-tag">Rooftop caf&eacute;</span>
+              </div>
+              <div class="tvs-slide">
+                <video muted playsinline preload="metadata" poster="media/exterior-poster.jpg" aria-label="Hotel building and entrance">
+                  <source src="media/exterior.mp4" type="video/mp4">
+                </video>
+                <span class="tvs-tag">Our building</span>
+              </div>
+              <div class="tvs-slide">
+                <video muted playsinline preload="metadata" poster="media/rooms/room-tour-poster.jpg" aria-label="Luxurious City View room tour">
+                  <source src="media/rooms/room-tour.mp4" type="video/mp4">
+                </video>
+                <span class="tvs-tag">City View room</span>
+              </div>
+              <button type="button" class="tvs-arrow tvs-prev" aria-label="Previous video">&lsaquo;</button>
+              <button type="button" class="tvs-arrow tvs-next" aria-label="Next video">&rsaquo;</button>
+              <div class="tvs-dots" role="tablist" aria-label="Choose video"></div>
+            </div>
           </div>
           <div class="col-md-12 col-lg-5 order-lg-1" data-aos="fade-up">
             <span class="d-block text-primary text-uppercase letter-spacing-2 mb-2">A warm Nepali welcome</span>
@@ -408,11 +434,6 @@
           </div>
         </div>
 
-        <div class="text-center mb-5" data-aos="fade-up">
-          <video class="tgh-cafe-video" autoplay muted loop playsinline preload="metadata" poster="media/cafe-poster.jpg" aria-label="Black Olives Café &amp; Bar rooftop">
-            <source src="media/cafe.mp4" type="video/mp4">
-          </video>
-        </div>
 
         <div class="tgh-menu-highlights" data-aos="fade-up">
           <div class="mh-strip" id="menuHighlights">
@@ -866,6 +887,43 @@
         })
       })
       .catch(function (e) { console.warn('[TGH] blogs unavailable, keeping static:', e.message); });
+
+      // --- Welcome video slider: each clip plays through, then slides to the next ---
+      (function () {
+        var box = document.getElementById('welcomeVideos');
+        if (!box) return;
+        var slides = Array.prototype.slice.call(box.querySelectorAll('.tvs-slide'));
+        var dotsWrap = box.querySelector('.tvs-dots');
+        var idx = 0, watchdog;
+        slides.forEach(function (s, i) {
+          var d = document.createElement('button');
+          d.type = 'button'; d.className = 'tvs-dot' + (i === 0 ? ' is-active' : '');
+          d.setAttribute('aria-label', 'Video ' + (i + 1));
+          d.onclick = function () { show(i); };
+          dotsWrap.appendChild(d);
+          s.querySelector('video').addEventListener('ended', function () { if (i === idx) show(idx + 1); });
+        });
+        function show(n) {
+          clearTimeout(watchdog);
+          idx = (n + slides.length) % slides.length;
+          slides.forEach(function (s, i) {
+            var v = s.querySelector('video');
+            s.classList.toggle('is-active', i === idx);
+            dotsWrap.children[i].classList.toggle('is-active', i === idx);
+            if (i === idx) {
+              v.currentTime = 0;
+              var p = v.play();
+              if (p && p.catch) p.catch(function () { /* autoplay blocked — poster stays */ });
+              // Safety: advance even if 'ended' never fires (e.g. play blocked).
+              watchdog = setTimeout(function () { if (idx === i) show(idx + 1); },
+                ((isFinite(v.duration) && v.duration > 0 ? v.duration : 12) + 3) * 1000);
+            } else {
+              v.pause();
+            }
+          });
+        }
+        show(0);
+      })();
 
   </script>
 
