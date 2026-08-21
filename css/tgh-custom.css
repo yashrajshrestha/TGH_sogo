@@ -85,6 +85,13 @@ img{max-width:100%;}
   box-shadow:0 22px 55px -22px rgba(0,0,0,.45);display:inline-block;vertical-align:middle;}
 @media (max-width:991px){.tgh-welcome-video{max-height:70vh;}}
 
+/* ---------- Café video (menu section) + exterior video (about) ---------- */
+.tgh-cafe-video{max-height:430px;width:auto;max-width:100%;border-radius:14px;
+  box-shadow:0 26px 60px -24px rgba(0,0,0,.75);display:inline-block;vertical-align:middle;}
+.tgh-exterior-video{max-height:560px;width:auto;max-width:100%;border-radius:14px;
+  box-shadow:0 22px 55px -22px rgba(0,0,0,.45);display:inline-block;vertical-align:middle;}
+@media (max-width:991px){.tgh-cafe-video,.tgh-exterior-video{max-height:65vh;}}
+
 /* ---------- Room video slide + lightbox video ---------- */
 .rg-slide-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
 .rg-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;
