@@ -221,3 +221,9 @@ img{max-width:100%;}
   .tgh-menu .mh-strip{flex-direction:row;overflow-x:auto;gap:8px;padding-bottom:6px;}
   .tgh-menu .mh-card{min-width:150px;}
 }
+
+/* ---------- Menu: inline dish thumbnails (restaurant-menu style) ---------- */
+.menu-item.has-photo{display:flex;align-items:center;gap:13px;}
+.mi-thumb{flex:0 0 56px;width:56px;height:56px;object-fit:cover;border-radius:9px;
+  box-shadow:0 4px 12px -4px rgba(60,40,10,.45);background:#fff;}
+.menu-item.has-photo .mi-text{flex:1 1 auto;min-width:0;}
