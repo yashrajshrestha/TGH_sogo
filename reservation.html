@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tgh-custom.css?v=h6">
     <link rel="stylesheet" href="css/tgh-theme.css?v=t2">
+    <link rel="stylesheet" href="css/tgh-reserve.css?v=r1">
   </head>
   <body>
     
@@ -32,118 +33,126 @@
     <script src="js/tgh-chrome.js?v=2"></script>
     <!-- END head -->
 
-    <section class="site-hero inner-page overlay" style="background-image: url(images/hotel/tgh-4.jpg)" data-stellar-background-ratio="0.5">
+    <section class="site-hero inner-page overlay tgh-reserve-hero" style="background-image: url(images/hotel/tgh-4.jpg)" data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row site-hero-inner justify-content-center align-items-center">
           <div class="col-md-10 text-center" data-aos="fade">
-            <h1 class="heading mb-3">Reservation Form</h1>
-            <ul class="custom-breadcrumbs mb-4">
-              <li><a href="index.html">Home</a></li>
-              <li>&bullet;</li>
-              <li>Reservation</li>
-            </ul>
+            <span class="tgh-eyebrow-line">Booking &middot; Thamel, Kathmandu</span>
+            <h1 class="heading mb-2">Reserve your stay</h1>
+            <p class="rz-hero-sub">Pick your room and dates &mdash; we&rsquo;ll confirm by email and phone. No payment now.</p>
           </div>
         </div>
       </div>
-
     </section>
     <!-- END section -->
 
-    <section class="section contact-section" id="next">
+    <section class="tgh-reserve" id="next">
       <div class="container">
-        <div class="row">
-          <div class="col-md-7" data-aos="fade-up" data-aos-delay="100">
-            
-            <form id="reservation" class="bg-white p-md-5 p-4 mb-5 border">
-              <div class="row">
-                <div class="col-md-12 form-group">
-                  <label class="text-black font-weight-bold" for="room">Room</label>
-                  <select name="room" id="room" class="form-control">
-                    <option value="">Loading rooms…</option>
+        <div class="tgh-reserve-grid">
+
+          <!-- Booking form -->
+          <form id="reservation" class="rz-form" data-aos="fade-up">
+
+            <fieldset class="rz-group">
+              <legend class="rz-eyebrow">Your stay</legend>
+
+              <div class="rz-field rz-full rz-select">
+                <label for="room">Room</label>
+                <select name="room" id="room" class="form-control">
+                  <option value="">Loading rooms&hellip;</option>
+                </select>
+              </div>
+
+              <div class="rz-row">
+                <div class="rz-field">
+                  <label for="checkin_date">Check&#8209;in</label>
+                  <input type="text" id="checkin_date" class="form-control" name="check_in" placeholder="Select date" autocomplete="off" readonly>
+                </div>
+                <div class="rz-field">
+                  <label for="checkout_date">Check&#8209;out</label>
+                  <input type="text" id="checkout_date" class="form-control" name="check_out" placeholder="Select date" autocomplete="off" readonly>
+                </div>
+              </div>
+
+              <div class="rz-row">
+                <div class="rz-field rz-select">
+                  <label for="adults">Adults</label>
+                  <select name="adult" id="adults" class="form-control">
+                    <option value="1">1 adult</option>
+                    <option value="2">2 adults</option>
+                    <option value="3">3 adults</option>
+                    <option value="4+">4+ adults</option>
+                  </select>
+                </div>
+                <div class="rz-field rz-select">
+                  <label for="children">Children</label>
+                  <select name="children" id="children" class="form-control">
+                    <option value="0">No children</option>
+                    <option value="1">1 child</option>
+                    <option value="2">2 children</option>
+                    <option value="3">3 children</option>
                   </select>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <label class="text-black font-weight-bold" for="name">Name</label>
-                  <input type="text" id="name" class="form-control " name="name">
+            </fieldset>
+
+            <fieldset class="rz-group">
+              <legend class="rz-eyebrow">Your details</legend>
+
+              <div class="rz-row">
+                <div class="rz-field">
+                  <label for="name">Full name</label>
+                  <input type="text" id="name" class="form-control" name="name" placeholder="e.g. Emily Carter" autocomplete="name">
                 </div>
-                <div class="col-md-6 form-group">
-                  <label class="text-black font-weight-bold" for="phone">Phone</label>
-                  <input type="text" id="phone" class="form-control " name="phone">
-                </div>
-              </div>
-          
-              <div class="row">
-                <div class="col-md-12 form-group">
-                  <label class="text-black font-weight-bold" for="email">Email</label>
-                  <input type="email" id="email" class="form-control " name="email">
+                <div class="rz-field">
+                  <label for="phone">Phone</label>
+                  <input type="tel" id="phone" class="form-control" name="phone" placeholder="e.g. +1 555 012 3456" autocomplete="tel">
                 </div>
               </div>
 
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <label class="text-black font-weight-bold" for="checkin_date">Date Check In</label>
-                  <input type="text" id="checkin_date" class="form-control" name="check_in">
-                </div>
-                <div class="col-md-6 form-group">
-                  <label class="text-black font-weight-bold" for="checkout_date">Date Check Out</label>
-                  <input type="text" id="checkout_date" class="form-control" name="check_out">
-                </div>
+              <div class="rz-field rz-full">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="form-control" name="email" placeholder="you@email.com" autocomplete="email">
               </div>
 
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <label for="adults" class="font-weight-bold text-black">Adults</label>
-                  <div class="field-icon-wrap">
-                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                    <select name="adult" id="adults" class="form-control">
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4+">4+</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-6 form-group">
-                  <label for="children" class="font-weight-bold text-black">Children</label>
-                  <div class="field-icon-wrap">
-                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                    <select name="children" id="children" class="form-control">
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4+">4+</option>
-                    </select>
-                  </div>
-                </div>
+              <div class="rz-field rz-full">
+                <label for="message">Anything we should know? <span style="text-transform:none;letter-spacing:0;color:#b7ad9c;">(optional)</span></label>
+                <textarea name="description" id="message" class="form-control" rows="4" placeholder="Arrival time, airport pickup, dietary needs&hellip;"></textarea>
               </div>
+            </fieldset>
 
-              
-
-              <div class="row mb-4">
-                <div class="col-md-12 form-group">
-                  <label class="text-black font-weight-bold" for="message">Notes</label>
-                  <textarea name="description" id="message" class="form-control " cols="30" rows="8"></textarea>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="submit" id="submitButton" value="Book Now" class="btn btn-primary text-white py-3 px-5 font-weight-bold">
-                </div>
-              </div>
-            </form>
-
-          </div>
-          <div class="col-md-5" data-aos="fade-up" data-aos-delay="200">
-            <div class="row">
-              <div class="col-md-10 ml-auto contact-info">
-                <p><span class="d-block">Address:</span> <span class="text-black"> Chaksibari Marg, Thamel, Kathmandu 44600, Nepal</span></p>
-                <p><span class="d-block">Phone:</span> <span class="text-black"> +977-1-4700296</span></p>
-                <p><span class="d-block">Email:</span> <span class="text-black"> info@yourdomain.com</span></p>
-              </div>
+            <div class="rz-actions">
+              <button type="submit" id="submitButton" class="rz-submit">Confirm reservation</button>
+              <p class="rz-status" id="reserveStatus" role="status" aria-live="polite"></p>
+              <p class="rz-fineprint"><span class="ion-ios-lock"></span>No payment today &mdash; we hold your request and reply within a few hours.</p>
             </div>
-          </div>
+          </form>
+
+          <!-- Live reservation summary — the "front desk" card -->
+          <aside class="rz-summary" data-aos="fade-up" data-aos-delay="100" aria-label="Your reservation summary">
+            <div class="rz-summary-media" id="rzMedia">
+              <span class="rz-summary-tag">Your reservation</span>
+            </div>
+            <div class="rz-summary-body">
+              <h2 class="rz-summary-room" id="rzRoomName">Choose a room</h2>
+              <p class="rz-summary-desc" id="rzRoomDesc">Pick a room above and your stay details fill in here.</p>
+
+              <dl class="rz-dl">
+                <div class="rz-dl-row"><dt>Check&#8209;in</dt><span class="rz-lead"></span><dd id="rzIn">&mdash;</dd></div>
+                <div class="rz-dl-row"><dt>Check&#8209;out</dt><span class="rz-lead"></span><dd id="rzOut">&mdash;</dd></div>
+                <div class="rz-dl-row"><dt>Nights</dt><span class="rz-lead"></span><dd id="rzNights" class="rz-accent">&mdash;</dd></div>
+                <div class="rz-dl-row"><dt>Guests</dt><span class="rz-lead"></span><dd id="rzGuests">1 adult</dd></div>
+              </dl>
+
+              <ul class="rz-perks">
+                <li>Free Wi&#8209;Fi</li>
+                <li>Ensuite bathroom</li>
+                <li>Rooftop caf&eacute;</li>
+                <li>Airport pickup help</li>
+              </ul>
+            </div>
+          </aside>
+
         </div>
       </div>
     </section>
@@ -171,90 +180,131 @@
 
     <script>
 
-      $(document).ready(function(){
+      // Room details for the live summary card (mirrors STATIC_ROOMS in tgh-api.js).
+      var RZ_ROOMS = {
+        '1': { name: 'Deluxe Single / Double Room', img: 'images/rooms/single-1.jpg', desc: 'A comfortable room for one or two guests, with a cosy double bed and ensuite bathroom.' },
+        '2': { name: 'Deluxe Twin Room', img: 'images/rooms/twin-1.jpg', desc: 'A bright room with two separate beds — ideal for friends or colleagues.' },
+        '4': { name: 'Deluxe Triple Room', img: 'images/rooms/triple-1.jpg', desc: 'A spacious room that comfortably sleeps three, with three beds.' },
+        '5': { name: 'Deluxe Family Suite Room', img: 'images/rooms/family-1.jpg', desc: 'A roomy suite for families, with a sitting area and flexible bedding.' },
+        '6': { name: 'Luxurious City View Room', img: 'images/rooms/cityview-1.jpg', desc: 'Our top-floor room with bright city views and a plush bed.' }
+      };
+      var MONTHS = { January:'01',February:'02',March:'03',April:'04',May:'05',June:'06',July:'07',August:'08',September:'09',October:'10',November:'11',December:'12' };
 
-        function populateFormFields(){
+      function convertDate(dateString) {
+        var parts = String(dateString || '').split(' ');
+        if (parts.length < 3) return '';
+        var day = parts[0], month = parts[1].replace(',', '').trim(), year = parts[2];
+        if (!MONTHS[month]) return '';
+        return year + '-' + MONTHS[month] + '-' + (day.length < 2 ? '0' + day : day);
+      }
+      function fmtShort(dateString) {
+        var iso = convertDate(dateString);
+        if (!iso) return '—';
+        var d = new Date(iso + 'T00:00:00');
+        if (isNaN(d.getTime())) return '—';
+        return d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+      }
+      function guestsLabel() {
+        var a = document.getElementById('adults').value || '1';
+        var c = document.getElementById('children').value || '0';
+        var out = (a === '4+' ? '4+ adults' : a + (a === '1' ? ' adult' : ' adults'));
+        var cn = Number(c) || 0;
+        if (cn > 0) out += ' · ' + cn + (cn === 1 ? ' child' : ' children');
+        return out;
+      }
 
-          const urlParams = new URLSearchParams(window.location.search);
-          const start_date = urlParams.get("start_date");
-          const end_date = urlParams.get("end_date");
-          const adultInput = urlParams.get("adult");
-          const childrenInput = urlParams.get("children");
+      function updateSummary() {
+        var room = RZ_ROOMS[document.getElementById('room').value];
+        var media = document.getElementById('rzMedia');
+        document.getElementById('rzRoomName').textContent = room ? room.name : 'Choose a room';
+        document.getElementById('rzRoomDesc').textContent = room ? room.desc : 'Pick a room above and your stay details fill in here.';
+        media.style.backgroundImage = room ? "url('" + room.img + "')" : '';
 
-          $("#checkin_date").datepicker("setDate", start_date);
-          $("#checkout_date").datepicker("setDate", end_date);
+        var inStr = document.getElementById('checkin_date').value;
+        var outStr = document.getElementById('checkout_date').value;
+        document.getElementById('rzIn').textContent = inStr ? fmtShort(inStr) : '—';
+        document.getElementById('rzOut').textContent = outStr ? fmtShort(outStr) : '—';
 
-          document.getElementById("adults").value = adultInput;
-          document.getElementById("children").value= childrenInput;
+        var ci = convertDate(inStr), co = convertDate(outStr), nights = '—';
+        if (ci && co) {
+          var n = Math.round((new Date(co) - new Date(ci)) / 86400000);
+          nights = n > 0 ? (n + (n === 1 ? ' night' : ' nights')) : '—';
         }
+        document.getElementById('rzNights').textContent = nights;
+        document.getElementById('rzGuests').textContent = guestsLabel();
+      }
 
-        populateFormFields();
+      $(document).ready(function () {
+        // Prefill from the home-page availability bar, if present.
+        var q = new URLSearchParams(window.location.search);
+        if (q.get('start_date')) $('#checkin_date').datepicker('setDate', q.get('start_date'));
+        if (q.get('end_date')) $('#checkout_date').datepicker('setDate', q.get('end_date'));
+        if (q.get('adult')) document.getElementById('adults').value = q.get('adult');
+        if (q.get('children')) document.getElementById('children').value = q.get('children');
+
+        // Live summary: react to every field that describes the stay.
+        $('#room, #adults, #children').on('change', updateSummary);
+        $('#checkin_date, #checkout_date').on('change changeDate', updateSummary);
+        // #room is filled by tgh-api.js after load — refresh once it's ready.
+        setTimeout(updateSummary, 60);
+        setTimeout(updateSummary, 400);
       });
 
-      document.getElementById('submitButton').addEventListener('click', function(){
+      var statusEl = document.getElementById('reserveStatus');
+      function setStatus(kind, msg) {
+        statusEl.className = 'rz-status ' + (kind === 'ok' ? 'is-ok' : 'is-err');
+        statusEl.textContent = msg;
+      }
+
+      document.getElementById('reservation').addEventListener('submit', function (e) {
+        e.preventDefault();
         submitForm();
       });
 
       function submitForm() {
+        var f = document.getElementById('reservation');
+        var room = f.room.value, ci = f.check_in.value, co = f.check_out.value;
+        var name = f.name.value.trim(), phone = f.phone.value.trim(), email = f.email.value.trim();
 
-        const form = document.getElementById('reservation');
-        const formData = new FormData(form);
+        if (!room) return setStatus('err', 'Please choose a room.');
+        if (!ci || !co) return setStatus('err', 'Please pick your check-in and check-out dates.');
+        if (convertDate(co) <= convertDate(ci)) return setStatus('err', 'Check-out must be after check-in.');
+        if (!name) return setStatus('err', 'Please add your name so we know who’s coming.');
+        if (!phone && !email) return setStatus('err', 'Add a phone or email so we can confirm your stay.');
 
-        const formDataObject = {};
-        formData.forEach((value, key) => {
-          if (['check_in', 'check_out'].includes(key)) formDataObject[key] = convertDate(value);
-          else if (['adult', 'children'].includes(key)) formDataObject[key] = Number(value) || 0;
-          else formDataObject[key] = value; // phone is a biginteger — a string is fine
-        });
+        var payload = {
+          room: room,
+          name: name, phone: phone, email: email,
+          check_in: convertDate(ci), check_out: convertDate(co),
+          adult: Number(f.adult.value) || 0,
+          children: Number(f.children.value) || 0,
+          description: f.description.value
+        };
 
-        // Public "create" on /api/bookings is enabled in Strapi, so no API token
-        // is needed. (A stale bearer token would 401 rather than fall back to the
-        // public role — which is exactly what the old hardcoded token did.)
+        var btn = document.getElementById('submitButton');
+        btn.disabled = true; btn.textContent = 'Sending…';
+        setStatus('ok', 'Sending your request…');
+
         fetch('/api/bookings', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ data: formDataObject })
+          body: JSON.stringify({ data: payload })
         })
-        .then(async (response) => {
-          const payload = await response.json().catch(() => ({}));
-          if (!response.ok) {
-            throw new Error((payload.error && payload.error.message) || ('HTTP ' + response.status));
-          }
-          return payload;
+        .then(async function (r) {
+          var body = await r.json().catch(function () { return {}; });
+          if (!r.ok) throw new Error((body.error && body.error.message) || ('HTTP ' + r.status));
+          return body;
         })
-        .then(() => {
-          alert('Booking has been created!');
-          window.location.search = '';
-          window.location.reload();
+        .then(function () {
+          setStatus('ok', 'Reservation received — thank you, ' + name.split(' ')[0] + '! We’ll confirm by email or phone shortly.');
+          btn.textContent = 'Reservation sent ✓';
+          f.reset(); updateSummary();
         })
-        .catch((error) => {
-          alert('Could not create booking: ' + error.message);
-          console.error('API Error:', error);
+        .catch(function (err) {
+          console.error('Booking error:', err);
+          setStatus('err', 'Sorry, we couldn’t send that (' + err.message + '). Please call us on 01-4700296 and we’ll book you in.');
+          btn.disabled = false; btn.textContent = 'Confirm reservation';
         });
-      }
-
-      function convertDate(dateString) {
-        
-        const parts = dateString.split(" ");
-        const day = parts[0];
-        const month = parts[1].replace(',', '').trim();
-        const year = parts[2];
-
-        const monthMap = {
-          January: "01",
-          February: "02",
-          March: "03",
-          April: "04",
-          May: "05",
-          June: "06",
-          July: "07",
-          August: "08",
-          September: "09",
-          October: "10",
-          November: "11",
-          December: "12",
-        };
-        return `${year}-${monthMap[month]}-${day}`;
       }
     </script>
   </body>
