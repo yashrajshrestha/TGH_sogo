@@ -16,4 +16,4 @@ deployment:
     - /bin/cp -f reservation.html $DEPLOYPATH
     - /bin/cp -f review.html $DEPLOYPATH
     - /bin/cp -f blog.html $DEPLOYPATH
-    - /bin/cp -f api/index.php $DEPLOYPATHapi/index.php
+    - /bin/cp -f api/index.php ${DEPLOYPATH}api/index.php
