@@ -203,3 +203,21 @@ img{max-width:100%;}
 
 /* ---------- Trips & Tours cards: uniform image ratio (photos are CC0) ---------- */
 .blog-post-entry .post .media-custom > a img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block;border-radius:6px;}
+
+/* ---------- Menu: dish photos as a compact rail beside the list ---------- */
+.tgh-menu-split{display:flex;gap:36px;align-items:flex-start;}
+.tgh-menu-split .tgh-menu-body{flex:1 1 auto;}
+.tgh-menu .tgh-menu-highlights{flex:0 0 205px;margin:0;}
+.tgh-menu .mh-strip{display:flex;flex-direction:column;gap:4px;}
+.tgh-menu .mh-card{display:grid;grid-template-columns:62px 1fr;grid-template-rows:auto auto;column-gap:10px;align-items:center;text-align:left;padding:6px 8px;}
+.tgh-menu .mh-card:hover,.tgh-menu .mh-card:focus-visible{transform:none;}
+.tgh-menu .mh-shot{grid-row:1/3;height:52px;width:62px;align-items:center;}
+.tgh-menu .mh-shot img{max-height:52px;}
+.tgh-menu .mh-name{grid-column:2;font-size:13.5px;margin:0;align-self:end;line-height:1.2;}
+.tgh-menu .mh-group{grid-column:2;margin-top:2px;font-size:9px;}
+@media (max-width:991px){
+  .tgh-menu-split{flex-direction:column-reverse;gap:0;}
+  .tgh-menu .tgh-menu-highlights{width:100%;margin-bottom:16px;}
+  .tgh-menu .mh-strip{flex-direction:row;overflow-x:auto;gap:8px;padding-bottom:6px;}
+  .tgh-menu .mh-card{min-width:150px;}
+}

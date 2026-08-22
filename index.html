@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
     <!-- Theme Style -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/tgh-custom.css?v=h2">
+    <link rel="stylesheet" href="css/tgh-custom.css?v=h3">
     <link rel="stylesheet" href="css/tgh-theme.css?v=t1">
   </head>
   <body>
@@ -438,6 +438,8 @@
 
         <div class="tgh-menu" data-aos="fade-up">
           <div class="tgh-menu-tabs" id="menuTabs" role="tablist" aria-label="Menu categories"></div>
+          <div class="tgh-menu-split">
+            <div class="tgh-menu-body" id="menuBody"></div>
         <div class="tgh-menu-highlights" data-aos="fade-up">
           <div class="mh-strip" id="menuHighlights">
             <button type="button" class="mh-card" data-tab="Breakfast" data-group="Breakfast" aria-label="Croissant Breakfast &mdash; see Breakfast on the menu">
@@ -482,7 +484,7 @@
             </button>
           </div>
         </div>
-          <div class="tgh-menu-body" id="menuBody"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -612,7 +614,7 @@
           </div>
           <div class="col-lg-4 col-md-6 col-sm-6 col-12 post mb-5" data-aos="fade-up" data-aos-delay="200">
             <div class="media media-custom d-block mb-4 h-100">
-              <a href="blog.html?id=2" class="mb-4 d-block"><img loading="lazy" decoding="async" src="images/trips/thamel-alleys.jpg" alt="Wandering the Ancient Alleys of Thamel" class="img-fluid"></a>
+              <a href="blog.html?id=2" class="mb-4 d-block"><img loading="lazy" decoding="async" src="images/trips/newari-alley.jpg" alt="Wandering the Ancient Alleys of Thamel" class="img-fluid"></a>
               <div class="media-body">
                 <span class="meta-post">March 5, 2026</span>
                 <h2 class="mt-0 mb-3"><a href="blog.html?id=2">Wandering the Ancient Alleys of Thamel</a></h2>
@@ -850,9 +852,12 @@
           mediaHref.setAttribute('href', 'blog.html?id=' + blog.id);
           mediaHref.className = 'mb-4 d-block';
 
+          // The DB header images still point at room photos — use the
+          // subject-correct local images for the known posts.
+          const TGH_TRIP_IMG = {1:'images/trips/nagarkot-sunrise.jpg',2:'images/trips/newari-alley.jpg',3:'images/trips/kumari-durbar.jpg',4:'images/trips/boudhanath.jpg'};
           const mediaImage = document.createElement('img');
           mediaImage.className = 'img-fluid';
-          mediaImage.setAttribute("src", ''+blog.attributes.header_img.data.attributes.url);
+          mediaImage.setAttribute("src", TGH_TRIP_IMG[blog.id] || (''+blog.attributes.header_img.data.attributes.url));
           
           const headerImage = document.createElement('img');
           const cardBody = document.createElement('div');
