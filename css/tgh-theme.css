@@ -56,4 +56,9 @@ body{color:#2c2822;}
 
 /* ---- Section rhythm ---- */
 .section{padding-top:6.5rem;padding-bottom:6.5rem;}
-.site-hero.inner-page{min-height:56vh;}
+/* Inner-page hero: consistent height and an overlay that exactly covers it.
+   The template made the dark overlay 700px tall while the hero was ~56vh, so it
+   bled into the section below — pin the overlay to the hero box instead. */
+.site-hero.inner-page{height:auto;min-height:60vh;}
+.site-hero.inner-page.overlay::before{top:0;left:0;right:0;bottom:0;height:auto;min-height:0;}
+.site-hero.inner-page .site-hero-inner{min-height:60vh;}
