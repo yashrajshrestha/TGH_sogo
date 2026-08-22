@@ -1,0 +1,64 @@
+/* ============ Thamel Grand — premium hotel theme layer ============
+   Loaded after style.css + tgh-custom.css. Palette: ivory / ink / brass / pine. */
+:root{
+  --tgh-ivory:#F6F1E7; --tgh-ink:#221E1A; --tgh-brass:#B08A46; --tgh-brass-d:#8f6f34;
+  --tgh-pine:#1F2E28; --tgh-stone:#8A8073; --tgh-mist:#EAE3D4;
+}
+
+/* ---- Typography ---- */
+h1,h2,h3,.heading,.site-logo a{font-family:"Playfair Display",Georgia,serif;letter-spacing:-.01em;}
+body{color:#2c2822;}
+.heading{font-weight:600;}
+
+/* ---- Accent unification (brass, not the old bright gold) ---- */
+.text-primary{color:var(--tgh-brass)!important;}
+.btn-primary{background:var(--tgh-brass)!important;border-color:var(--tgh-brass)!important;color:#fff!important;
+  border-radius:4px;letter-spacing:.04em;transition:background .25s,transform .2s,box-shadow .2s;}
+.btn-primary:hover{background:var(--tgh-brass-d)!important;border-color:var(--tgh-brass-d)!important;
+  transform:translateY(-1px);box-shadow:0 10px 24px -10px rgba(176,138,70,.7);}
+.bg-image.overlay::before{background:rgba(20,15,8,.55);}
+
+/* ---- Section eyebrow with a brass hairline (the signature) ---- */
+.text-uppercase.letter-spacing-2, .custom-caption{letter-spacing:.26em!important;}
+.section .heading + p, .section .heading + span{color:#6f685c;}
+
+/* ---- Immersive hero ---- */
+.tgh-hero.site-hero{min-height:100vh;height:auto;display:flex;align-items:flex-end;
+  padding:0 0 8.5rem;background-size:cover;background-position:center;position:relative;}
+.tgh-hero.site-hero::before{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to bottom,rgba(18,13,7,.38),rgba(18,13,7,.10) 34%,rgba(18,13,7,.85));}
+.tgh-hero .container{position:relative;z-index:2;}
+.tgh-hero-inner{max-width:780px;text-align:left;}
+.tgh-eyebrow{display:inline-flex;align-items:center;gap:12px;color:#f0d9a8;text-transform:uppercase;
+  letter-spacing:.28em;font-size:12px;font-weight:600;margin-bottom:20px;font-family:"Roboto",sans-serif;}
+.tgh-eyebrow::before{content:"";width:34px;height:1px;background:#f0d9a8;display:inline-block;}
+.tgh-hero-title{color:#fff;font-size:clamp(40px,6vw,78px);line-height:1.03;margin:0 0 20px;
+  text-wrap:balance;text-shadow:0 2px 30px rgba(0,0,0,.25);}
+.tgh-hero-sub{color:rgba(255,255,255,.9);font-size:19px;line-height:1.6;max-width:44ch;margin:0;}
+.tgh-scroll{position:absolute;left:50%;bottom:2.2rem;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.85);
+  text-transform:uppercase;letter-spacing:.22em;font-size:10.5px;text-decoration:none;font-family:"Roboto",sans-serif;}
+.tgh-scroll::after{content:"";display:block;width:1px;height:34px;background:rgba(255,255,255,.55);margin:10px auto 0;}
+@media (max-width:767px){.tgh-hero.site-hero{padding-bottom:6rem;min-height:92vh;}}
+
+/* ---- Booking bar as a floating card over the hero ---- */
+.check-availabilty{position:relative;z-index:6;margin-top:-64px;}
+.check-availabilty .block-32{background:#fff;border-radius:8px;padding:26px 30px;
+  box-shadow:0 28px 64px -28px rgba(20,15,8,.45);border-top:3px solid var(--tgh-brass);}
+.check-availabilty label{font-size:11px!important;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--tgh-stone)!important;font-weight:600!important;margin-bottom:6px;}
+.check-availabilty .form-control{border:0;border-bottom:1px solid var(--tgh-mist);border-radius:0;
+  padding-left:32px;background:transparent;}
+.check-availabilty .form-control:focus{border-color:var(--tgh-brass);box-shadow:none;}
+.check-availabilty .btn-success{background:var(--tgh-brass);border-color:var(--tgh-brass);border-radius:4px;
+  text-transform:uppercase;letter-spacing:.08em;font-weight:600;padding:.7rem 1rem;transition:background .25s;}
+.check-availabilty .btn-success:hover{background:var(--tgh-brass-d);border-color:var(--tgh-brass-d);}
+@media (max-width:991px){.check-availabilty{margin-top:-40px;}}
+
+/* ---- Section rhythm ---- */
+.section{padding-top:6.5rem;padding-bottom:6.5rem;}
+/* Inner-page hero: consistent height and an overlay that exactly covers it.
+   The template made the dark overlay 700px tall while the hero was ~56vh, so it
+   bled into the section below — pin the overlay to the hero box instead. */
+.site-hero.inner-page{height:auto;min-height:60vh;}
+.site-hero.inner-page.overlay::before{top:0;left:0;right:0;bottom:0;height:auto;min-height:0;}
+.site-hero.inner-page .site-hero-inner{min-height:60vh;}

@@ -1,0 +1,19 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home8/thamelgrandhotel/public_html/
+    - /bin/cp -R css $DEPLOYPATH
+    - /bin/cp -R js $DEPLOYPATH
+    - /bin/cp -R images $DEPLOYPATH
+    - /bin/cp -R media $DEPLOYPATH
+    - /bin/cp -R fonts $DEPLOYPATH
+    - /bin/cp -f index.html $DEPLOYPATH
+    - /bin/cp -f rooms.html $DEPLOYPATH
+    - /bin/cp -f gallery.html $DEPLOYPATH
+    - /bin/cp -f about.html $DEPLOYPATH
+    - /bin/cp -f events.html $DEPLOYPATH
+    - /bin/cp -f contact.html $DEPLOYPATH
+    - /bin/cp -f reservation.html $DEPLOYPATH
+    - /bin/cp -f review.html $DEPLOYPATH
+    - /bin/cp -f blog.html $DEPLOYPATH
+    - /bin/cp -f api/index.php ${DEPLOYPATH}api/index.php

@@ -1,0 +1,172 @@
+/* Thamel Grand Hotel — reservation page ("front desk" booking UI).
+   Scoped under .tgh-reserve so it never leaks into the rest of the site.
+   Palette: pine / brass / ivory / mist (brand tokens from tgh-theme.css). */
+
+.tgh-reserve{background:var(--tgh-ivory);padding:0 0 6.5rem;}
+.tgh-reserve .container{max-width:1140px;}
+
+/* Float the booking desk up over the base of the hero, like the home page bar. */
+.tgh-reserve-grid{
+  display:grid;grid-template-columns:1.55fr 1fr;gap:30px;
+  margin-top:-104px;position:relative;z-index:6;align-items:start;
+}
+
+/* ---------- form card ---------- */
+.rz-form{
+  background:#fff;border-radius:16px;padding:42px 42px 34px;
+  box-shadow:0 44px 100px -55px rgba(20,15,8,.65);
+}
+.rz-group{border:0;padding:0;margin:0 0 30px;min-width:0;}
+.rz-group:last-of-type{margin-bottom:22px;}
+.rz-eyebrow{
+  display:flex;align-items:center;gap:12px;width:100%;
+  font-family:"Roboto",Arial,sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--tgh-brass);
+  margin:0 0 18px;padding:0;
+}
+.rz-eyebrow::after{content:"";flex:1;height:1px;background:var(--tgh-mist);}
+
+.rz-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.rz-field{margin:0 0 18px;min-width:0;}
+.rz-field.rz-full{grid-column:1 / -1;}
+.rz-field label{
+  display:block;font-family:"Roboto",Arial,sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--tgh-stone);margin:0 0 7px;
+}
+
+/* inputs — override the template's .form-control just inside this page */
+.tgh-reserve .form-control,
+.tgh-reserve select.form-control,
+.tgh-reserve textarea.form-control{
+  height:52px;border:1px solid var(--tgh-mist);border-radius:10px;background:#fbf9f4;
+  padding:0 16px;font-size:15px;color:var(--tgh-ink);width:100%;box-shadow:none;
+  transition:border-color .18s ease, box-shadow .18s ease, background .18s ease;
+  font-family:"Roboto",Arial,sans-serif;
+}
+.tgh-reserve textarea.form-control{height:auto;min-height:118px;padding:13px 16px;line-height:1.6;resize:vertical;}
+.tgh-reserve .form-control::placeholder{color:#b7ad9c;}
+.tgh-reserve .form-control:focus{
+  border-color:var(--tgh-brass);background:#fff;outline:none;
+  box-shadow:0 0 0 3px rgba(176,138,70,.18);
+}
+/* selects: custom brass chevron, drop the template's icon wrap */
+.rz-select{position:relative;}
+.rz-select select.form-control{appearance:none;-webkit-appearance:none;-moz-appearance:none;padding-right:42px;cursor:pointer;}
+.rz-select::after{
+  content:"";position:absolute;right:17px;top:50%;width:9px;height:9px;pointer-events:none;
+  border-right:2px solid var(--tgh-brass);border-bottom:2px solid var(--tgh-brass);
+  transform:translateY(-70%) rotate(45deg);
+}
+
+/* submit */
+.rz-actions{margin-top:4px;}
+.rz-submit{
+  width:100%;height:56px;border:0;border-radius:11px;cursor:pointer;
+  background:var(--tgh-brass);color:#fff;font-family:"Roboto",Arial,sans-serif;
+  font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  transition:background .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.rz-submit:hover{background:var(--tgh-brass-d);transform:translateY(-2px);box-shadow:0 16px 30px -14px rgba(176,138,70,.8);}
+.rz-submit:active{transform:translateY(0);}
+.rz-fineprint{
+  margin:14px 2px 0;font-size:12.5px;color:var(--tgh-stone);text-align:center;line-height:1.5;
+  font-family:"Roboto",Arial,sans-serif;
+}
+.rz-fineprint .fa,.rz-fineprint .ion-ios-lock{color:var(--tgh-brass);margin-right:5px;}
+
+/* inline status message */
+.rz-status{margin:14px 0 0;padding:12px 16px;border-radius:10px;font-size:14px;display:none;font-family:"Roboto",Arial,sans-serif;}
+.rz-status.is-ok{display:block;background:#eef4ee;color:#274b32;border:1px solid #cfe3d4;}
+.rz-status.is-err{display:block;background:#fbeeea;color:#7a2f22;border:1px solid #f0cfc6;}
+
+/* ---------- reservation summary (the signature "front desk" card) ---------- */
+.rz-summary{
+  position:sticky;top:96px;border-radius:16px;overflow:hidden;
+  background:linear-gradient(160deg,#26362f 0%, var(--tgh-pine) 62%, #182219 100%);
+  color:#efe8da;box-shadow:0 44px 100px -55px rgba(15,20,15,.85);
+}
+.rz-summary-media{position:relative;aspect-ratio:16/10;background:#2a3a32 center/cover no-repeat;}
+.rz-summary-media::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,28,22,.85),rgba(20,28,22,.05) 60%);}
+.rz-summary-tag{
+  position:absolute;left:16px;top:14px;z-index:2;padding:5px 12px;border-radius:999px;
+  background:rgba(20,20,14,.5);backdrop-filter:blur(4px);color:#f0d9ac;
+  font-family:"Roboto",Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+}
+.rz-summary-body{padding:22px 26px 26px;}
+.rz-summary-room{font-family:"Playfair Display",Georgia,serif;font-size:24px;font-weight:600;line-height:1.15;margin:0 0 8px;color:#fff;}
+.rz-summary-desc{font-family:"Roboto",Arial,sans-serif;font-size:13.5px;line-height:1.6;color:#c3c9bf;margin:0 0 20px;}
+
+.rz-dl{margin:0 0 20px;padding:18px 0 4px;border-top:1px solid rgba(240,220,170,.18);}
+.rz-dl .rz-dl-row{display:flex;align-items:baseline;margin:0 0 11px;font-family:"Roboto",Arial,sans-serif;}
+.rz-dl dt{font-size:13px;color:#b4bcae;}
+.rz-dl .rz-lead{flex:1;margin:0 8px 5px;border-bottom:1px dotted rgba(240,220,170,.28);}
+.rz-dl dd{margin:0;font-size:13.5px;font-weight:600;color:#f2ead9;white-space:nowrap;}
+.rz-dl dd.rz-accent{color:#e9c987;}
+
+.rz-perks{list-style:none;margin:0;padding:16px 0 0;border-top:1px solid rgba(240,220,170,.18);
+  display:grid;grid-template-columns:1fr 1fr;gap:9px 14px;}
+.rz-perks li{position:relative;padding-left:22px;font-family:"Roboto",Arial,sans-serif;font-size:12.5px;color:#cdd2c7;line-height:1.35;}
+.rz-perks li::before{
+  content:"";position:absolute;left:0;top:3px;width:12px;height:7px;
+  border-left:2px solid var(--tgh-brass);border-bottom:2px solid var(--tgh-brass);
+  transform:rotate(-45deg);
+}
+
+/* ---------- hero copy tweaks for this page ---------- */
+.tgh-reserve-hero .tgh-eyebrow-line{
+  display:inline-flex;align-items:center;gap:12px;justify-content:center;
+  font-family:"Roboto",Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.26em;
+  text-transform:uppercase;color:#f0d9ac;margin-bottom:14px;
+}
+.tgh-reserve-hero .tgh-eyebrow-line::before,
+.tgh-reserve-hero .tgh-eyebrow-line::after{content:"";width:30px;height:1px;background:rgba(240,217,172,.6);}
+.tgh-reserve-hero .rz-hero-sub{color:rgba(255,255,255,.86);font-size:16px;max-width:34ch;margin:14px auto 0;line-height:1.6;}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .tgh-reserve-grid{grid-template-columns:1fr;gap:22px;margin-top:-70px;}
+  .rz-summary{position:static;order:-1;}          /* show the stay summary first on mobile */
+  .rz-summary-media{aspect-ratio:16/8;}
+  .rz-form{padding:30px 22px 26px;}
+}
+@media (max-width:560px){
+  .rz-row{grid-template-columns:1fr;gap:0;}
+  .rz-perks{grid-template-columns:1fr;}
+}
+
+/* ---------- Full-page confirmation (after a successful booking) ---------- */
+.rz-confirm{max-width:640px;margin:-104px auto 0;position:relative;z-index:6;}
+@media (max-width:900px){.rz-confirm{margin-top:-70px;}}
+.rz-confirm-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 44px 100px -55px rgba(20,15,8,.65);}
+.rz-confirm-media{position:relative;aspect-ratio:16/7;background:#2a3a32 center/cover no-repeat;}
+.rz-confirm-media::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,28,22,.7),rgba(20,28,22,.15));}
+.rz-check{position:absolute;left:50%;bottom:-32px;transform:translateX(-50%);z-index:2;
+  width:66px;height:66px;border-radius:50%;background:var(--tgh-brass);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:32px;line-height:1;
+  box-shadow:0 12px 26px -10px rgba(176,138,70,.9);border:4px solid #fff;}
+.rz-confirm-body{padding:48px 40px 38px;text-align:center;}
+.rz-confirm-eyebrow{display:block;font-family:"Roboto",Arial,sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--tgh-brass);margin-bottom:10px;}
+.rz-confirm-body h2{font-family:"Playfair Display",Georgia,serif;font-size:30px;font-weight:600;color:var(--tgh-ink);margin:0 0 12px;}
+.rz-confirm-lead{font-family:"Roboto",Arial,sans-serif;font-size:15px;line-height:1.65;color:#6f685c;margin:0 auto 26px;max-width:44ch;}
+
+.rz-confirm-dl{text-align:left;background:var(--tgh-ivory);border:1px solid var(--tgh-mist);border-radius:12px;
+  padding:20px 22px;margin:0 0 26px;}
+.rz-confirm-dl .rz-dl-row{display:flex;align-items:baseline;margin:0 0 12px;font-family:"Roboto",Arial,sans-serif;}
+.rz-confirm-dl .rz-dl-row:last-child{margin-bottom:0;}
+.rz-confirm-dl dt{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--tgh-stone);min-width:96px;}
+.rz-confirm-dl .rz-lead{flex:1;margin:0 10px 5px;border-bottom:1px dotted #cdbf9f;}
+.rz-confirm-dl dd{margin:0;font-size:14.5px;font-weight:600;color:var(--tgh-ink);text-align:right;}
+.rz-confirm-dl dd.rz-accent{color:var(--tgh-brass-d);}
+
+.rz-confirm-note{font-family:"Roboto",Arial,sans-serif;font-size:13px;color:var(--tgh-stone);margin:0 0 24px;}
+.rz-confirm-note .ion-ios-lock{color:var(--tgh-brass);margin-right:5px;}
+.rz-confirm-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.rz-confirm-actions a{display:inline-flex;align-items:center;height:48px;padding:0 26px;border-radius:10px;
+  font-family:"Roboto",Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  text-decoration:none;transition:transform .2s ease,box-shadow .2s ease,background .2s ease;}
+.rz-confirm-actions .rz-btn-primary{background:var(--tgh-brass);color:#fff;}
+.rz-confirm-actions .rz-btn-primary:hover{background:var(--tgh-brass-d);transform:translateY(-2px);box-shadow:0 14px 28px -14px rgba(176,138,70,.8);}
+.rz-confirm-actions .rz-btn-ghost{background:transparent;color:var(--tgh-ink);border:1px solid var(--tgh-mist);}
+.rz-confirm-actions .rz-btn-ghost:hover{border-color:var(--tgh-brass);color:var(--tgh-brass-d);}
+@media (max-width:560px){.rz-confirm-body{padding:44px 22px 30px;}.rz-confirm-dl dt{min-width:78px;}}

@@ -9,8 +9,6 @@
     <meta name="keywords" content="" />
     <meta name="author" content="" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=|Roboto+Sans:400,700|Playfair+Display:400,700">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
@@ -24,61 +22,24 @@
     <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
     <!-- Theme Style -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tgh-custom.css?v=h6">
+    <link rel="stylesheet" href="css/tgh-theme.css?v=t2">
   </head>
   <body>
     
-    <header class="site-header js-site-header">
-      <div class="container-fluid">
-        <div class="row align-items-center">
-          <div class="col-6 col-lg-4 site-logo" data-aos="fade">
-            <img src="./images/thamellogo-removebg-preview.png" class="logo-size" style="height: 100px; width: 100px;"/>
-            <a href="index.html">
-              Thamel Grand Hotel
-          </a>
-        </div>
-          <div class="col-6 col-lg-8">
-
-
-            <div class="site-menu-toggle js-site-menu-toggle"  data-aos="fade">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-            <!-- END menu-toggle -->
-
-            <div class="site-navbar js-site-navbar">
-              <nav role="navigation">
-                <div class="container">
-                  <div class="row full-height align-items-center">
-                    <div class="col-md-6 mx-auto">
-                      <ul class="list-unstyled menu">
-                        <li class="active"><a href="index.html">Home</a></li>
-                        <li><a href="rooms.html">Rooms</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="events.html">Events</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="reservation.html">Reservation</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </nav>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
+    <div id="tgh-header"></div>
+    <script src="js/tgh-chrome.js?v=2"></script>
     <!-- END head -->
 
-    <section class="site-hero overlay" style="background-image: url(images/hotel/tgh-4.jpg)" data-stellar-background-ratio="0.5">
+    <section class="site-hero overlay tgh-hero" style="background-image: url(images/hotel/tgh-4.jpg)" data-stellar-background-ratio="0.5">
       <div class="container">
-        <div class="row site-hero-inner justify-content-center align-items-center">
-          <div class="col-md-10 text-center" data-aos="fade-up">
-            <span class="custom-caption text-uppercase text-white d-block  mb-3">Welcome To THAMEL GRAND HOTEL</span>
-            <h1 class="heading">A Best Place To Stay</h1>
-          </div>
+        <div class="tgh-hero-inner" data-aos="fade-up">
+          <span class="tgh-eyebrow">Thamel, Kathmandu</span>
+          <h1 class="tgh-hero-title">Rest well in the<br>heart of Thamel</h1>
+          <p class="tgh-hero-sub">Warm Nepali hospitality, a rooftop garden caf&eacute; and the Himalaya on the horizon &mdash; steps from Kathmandu&rsquo;s most vibrant quarter.</p>
         </div>
       </div>
+      <a href="#next" class="tgh-scroll smoothscroll">Discover</a>
     </section>
     <!-- END section -->
 
@@ -147,16 +108,42 @@
     <section class="py-5 bg-light">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-md-12 col-lg-7 ml-auto order-lg-2 position-relative mb-5" data-aos="fade-up">
-            <figure class="img-absolute">
-              <img src="images/food-1.jpg" alt="Image" class="img-fluid">
-            </figure>
-            <img src="images/img_1.jpg" alt="Image" class="img-fluid rounded">
+          <div class="col-md-12 col-lg-6 ml-auto order-lg-2 position-relative mb-5 text-center" data-aos="fade-up">
+            <div class="tgh-video-slider" id="welcomeVideos" aria-label="Videos of Thamel Grand Hotel">
+              <div class="tvs-slide is-active">
+                <video muted playsinline preload="auto" poster="media/welcome-poster.jpg" aria-label="Evening at Thamel Grand Hotel">
+                  <source src="media/welcome.mp4" type="video/mp4">
+                </video>
+                <span class="tvs-tag">Rooftop caf&eacute; &middot; evening</span>
+              </div>
+              <div class="tvs-slide">
+                <video muted playsinline preload="metadata" poster="media/cafe-poster.jpg" aria-label="Black Olives Café &amp; Bar rooftop">
+                  <source src="media/cafe.mp4" type="video/mp4">
+                </video>
+                <span class="tvs-tag">Rooftop caf&eacute; &middot; day</span>
+              </div>
+              <div class="tvs-slide">
+                <video muted playsinline preload="metadata" poster="media/exterior-poster.jpg" aria-label="Hotel building and entrance">
+                  <source src="media/exterior.mp4" type="video/mp4">
+                </video>
+                <span class="tvs-tag">Our building</span>
+              </div>
+              <div class="tvs-slide">
+                <video muted playsinline preload="metadata" poster="media/rooms/room-tour-poster.jpg" aria-label="Luxurious City View room tour">
+                  <source src="media/rooms/room-tour.mp4" type="video/mp4">
+                </video>
+                <span class="tvs-tag">City View room</span>
+              </div>
+              <button type="button" class="tvs-arrow tvs-prev" aria-label="Previous video">&lsaquo;</button>
+              <button type="button" class="tvs-arrow tvs-next" aria-label="Next video">&rsaquo;</button>
+              <div class="tvs-dots" role="tablist" aria-label="Choose video"></div>
+            </div>
           </div>
-          <div class="col-md-12 col-lg-4 order-lg-1" data-aos="fade-up">
-            <h2 class="heading">Welcome!</h2>
-            <p class="mb-4"><b>Welcome to a retreat where nature's grandeur meets modern comfort. Discover the allure of a three-star gem cradled by the breathtaking landscapes of mountains and hills. Our hotel promises a cozy escape, where you can unwind and relish the natural splendor that surrounds you.<b> </p>
-            <p><a href="about.html#" class="btn btn-primary text-white py-2 mr-3">Learn More</a> <span class="mr-3 font-family-serif"><em>or</em></span> <a href="https://vimeo.com/channels/staffpicks/93951774"  data-fancybox class="text-uppercase letter-spacing-1">See video</a></p>
+          <div class="col-md-12 col-lg-5 order-lg-1" data-aos="fade-up">
+            <span class="d-block text-primary text-uppercase letter-spacing-2 mb-2">A warm Nepali welcome</span>
+            <h2 class="heading">Welcome to Thamel Grand</h2>
+            <p class="mb-4">Tucked into the heart of Thamel, Kathmandu, we are a welcoming retreat where warm Nepali hospitality meets modern comfort. Wake to Himalayan light, unwind on our rooftop garden at the Black Olives Caf&eacute;, and step straight into the city&rsquo;s most vibrant quarter &mdash; temples, trails and markets right at your doorstep.</p>
+            <p class="mb-0"><a href="rooms.html" class="btn btn-primary text-white py-2">Book your stay</a></p>
           </div>
           
         </div>
@@ -171,115 +158,74 @@
             <span data-aos="fade-up" data-aos-delay="100">Step into a world of refinement and comfort in our thoughtfully appointed hotel rooms and suites, tailored to exceed your expectations.</span>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-6 col-lg-4" data-aos="fade-up">
-            <a href="rooms.html#deluxe-single" class="room">
-              <figure class="img-wrap">
-                <img src="images/img_1.jpg" alt="Free website template" class="img-fluid mb-3">
-              </figure>
-              <div class="p-3 text-center room-info">
-                <h2>Deluxe Single Room</h2>
-                
+        <div class="row justify-content-center rooms-grid" id="homeRooms">
+          
+          <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up">
+            <a href="rooms.html" class="tgh-room-card">
+              <div class="rc-media"><img src="images/rooms/single-1.jpg?p=20260820g" alt="Deluxe Single / Double Room" loading="lazy" decoding="async"></div>
+              <div class="rc-body">
+                <h3 class="rc-name">Deluxe Single / Double Room</h3>
+                <span class="rc-cta">View room <span aria-hidden="true">&rarr;</span></span>
               </div>
             </a>
           </div>
-
-
-          <div class="col-md-6 col-lg-4" data-aos="fade-up">
-            <a href="rooms.html#deluxe-double" class="room">
-              <figure class="img-wrap">
-                <img src="images/img_2.jpg" alt="Free website template" class="img-fluid mb-3">
-              </figure>
-              <div class="p-3 text-center room-info">
-                <h2>Deluxe Double Room</h2>
-                
+          <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up">
+            <a href="rooms.html" class="tgh-room-card">
+              <div class="rc-media"><img src="images/rooms/twin-1.jpg?p=20260820g" alt="Deluxe Twin Room" loading="lazy" decoding="async"></div>
+              <div class="rc-body">
+                <h3 class="rc-name">Deluxe Twin Room</h3>
+                <span class="rc-cta">View room <span aria-hidden="true">&rarr;</span></span>
               </div>
             </a>
           </div>
-
-          <div class="col-md-6 col-lg-4" data-aos="fade-up">
-            <a href="rooms.html#deluxe-twin" class="room">
-              <figure class="img-wrap">
-                <img src="images/img_2.jpg" alt="Free website template" class="img-fluid mb-3">
-              </figure>
-              <div class="p-3 text-center room-info">
-                <h2>Deluxe Twin Room</h2>
-                
+          <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up">
+            <a href="rooms.html" class="tgh-room-card">
+              <div class="rc-media"><img src="images/rooms/triple-1.jpg?p=20260820g" alt="Deluxe Triple Room" loading="lazy" decoding="async"></div>
+              <div class="rc-body">
+                <h3 class="rc-name">Deluxe Triple Room</h3>
+                <span class="rc-cta">View room <span aria-hidden="true">&rarr;</span></span>
               </div>
             </a>
           </div>
-
-          <div class="col-md-6 col-lg-4" data-aos="fade-up">
-            <a href="rooms.html#deluxe-triple" class="room">
-              <figure class="img-wrap">
-                <img src="images/img_3.jpg" alt="Free website template" class="img-fluid mb-3">
-              </figure>
-              <div class="p-3 text-center room-info">
-                <h2>Deluxe Triple Room</h2>
-                
+          <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up">
+            <a href="rooms.html" class="tgh-room-card">
+              <div class="rc-media"><img src="images/rooms/family-1.jpg?p=20260820g" alt="Deluxe Family Suite Room" loading="lazy" decoding="async"></div>
+              <div class="rc-body">
+                <h3 class="rc-name">Deluxe Family Suite Room</h3>
+                <span class="rc-cta">View room <span aria-hidden="true">&rarr;</span></span>
               </div>
             </a>
           </div>
-
-          <div class="col-md-6 col-lg-4" data-aos="fade-up">
-            <a href="rooms.html#superior-deluxe" class="room">
-              <figure class="img-wrap">
-                <img src="images/img_3.jpg" alt="Free website template" class="img-fluid mb-3">
-              </figure>
-              <div class="p-3 text-center room-info">
-                <h2>Superior Deluxe Queen Suite with Balcony</h2>
-                
+          <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up">
+            <a href="rooms.html" class="tgh-room-card">
+              <div class="rc-media">
+                <span class="rc-video-tag">Room tour</span>
+                <video autoplay muted loop playsinline preload="metadata" poster="media/rooms/room-tour-poster.jpg" aria-label="Luxurious City View Room tour">
+                  <source src="media/rooms/room-tour.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="rc-body">
+                <h3 class="rc-name">Luxurious City View Room</h3>
+                <span class="rc-cta">View room <span aria-hidden="true">&rarr;</span></span>
               </div>
             </a>
           </div>
-
-          <div class="col-md-6 col-lg-4" data-aos="fade-up">
-            <a href="rooms.html#luxurious-city" class="room">
-              <figure class="img-wrap">
-                <img src="images/img_3.jpg" alt="Free website template" class="img-fluid mb-3">
-              </figure>
-              <div class="p-3 text-center room-info">
-                <h2>Luxurious City View Room</h2>
-                
-              </div>
-            </a>
-          </div>
-
         </div>
       </div>
     </section>
-    
-    
+
     <section class="section slider-section bg-light">
       <div class="container">
         <div class="row justify-content-center text-center mb-5">
-          <div class="col-md-7">
+          <div class="col-md-8">
+            <span class="d-block text-primary text-uppercase letter-spacing-2 mb-2" data-aos="fade-up">Gallery</span>
             <h2 class="heading" data-aos="fade-up">Photos</h2>
-            <span data-aos="fade-up" data-aos-delay="100">Dive into our hotel room photo gallery, where each image narrates the story of comfort, elegance, and unparalleled hospitality.</span>
+            <span data-aos="fade-up" data-aos-delay="100">A glimpse of the rooms, rooftop dining and the streets of Thamel.</span>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="home-slider major-caousel owl-carousel mb-5" data-aos="fade-up" data-aos-delay="200">
-              <div class="slider-item">
-                <a href="images/slider-1.jpg" data-fancybox="images" data-caption="Caption for this image"><img src="images/room.jpeg" alt="Image placeholder" class="img-fluid"></a>
-              </div>
-              <div class="slider-item">
-                <a href="images/slider-4.jpg" data-fancybox="images" data-caption="Caption for this image"><img src="images/room3.jpeg" alt="Image placeholder" class="img-fluid"></a>
-              </div>
-              <div class="slider-item">
-                <a href="images/slider-5.jpg" data-fancybox="images" data-caption="Caption for this image"><img src="images/room4.jpeg" alt="Image placeholder" class="img-fluid"></a>
-              </div>
-              <div class="slider-item">
-                <a href="images/slider-6.jpg" data-fancybox="images" data-caption="Caption for this image"><img src="images/slider-6.jpg" alt="Image placeholder" class="img-fluid"></a>
-              </div>
-              <div class="slider-item">
-                <a href="images/slider-7.jpg" data-fancybox="images" data-caption="Caption for this image"><img src="images/slider-7.jpg" alt="Image placeholder" class="img-fluid"></a>
-              </div>
-            </div>
-            <!-- END slider -->
-          </div>
-        
+        <div class="tgh-grid" id="galleryTeaser" data-aos="fade-up"></div>
+        <div class="text-center mt-4">
+          <a href="gallery.html" class="btn btn-primary text-white">View full gallery &rarr;</a>
         </div>
       </div>
     </section>
@@ -442,63 +388,18 @@
       <div class="container">
         <div class="row justify-content-center text-center mb-5">
           <div class="col-md-8">
-            <span class="d-block text-primary text-uppercase letter-spacing-2 mb-2" data-aos="fade-up">Our Kitchen</span>
+            <span class="d-block text-primary text-uppercase letter-spacing-2 mb-2" data-aos="fade-up">Black Olives Caf&eacute; &middot; Rooftop</span>
             <h2 class="heading text-white" data-aos="fade-up">Our Menu</h2>
-            <p class="text-white text-opacity-7" data-aos="fade-up">Breakfast, mains, vegetarian and drinks &mdash; freshly prepared and served on our rooftop.</p>
+            <p class="text-white text-opacity-7" data-aos="fade-up">Breakfast, food, drinks &amp; cocktails &mdash; freshly prepared and served on our rooftop garden.</p>
           </div>
         </div>
 
-        <style>
-          .menu-tabs{list-style:none;padding:0;margin:0 0 46px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
-          .menu-tab{background:transparent;border:1px solid rgba(255,255,255,.4);color:#fff;padding:9px 24px;border-radius:40px;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .3s,color .3s,border-color .3s;font-family:"Roboto",arial,sans-serif;}
-          .menu-tab:hover{border-color:#ffba5a;color:#ffba5a;}
-          .menu-tab.active{background:#ffba5a;border-color:#ffba5a;color:#3a2c12;font-weight:600;}
-          /* Fixed menu-card aspect ratio: any uploaded photo drops in and fits (no crop). */
-          .menu-stage{position:relative;width:100%;max-width:500px;margin:0 auto;aspect-ratio:3/4;perspective:1900px;}
-          .menu-panel{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .45s ease;}
-          .menu-panel.is-active{opacity:1;pointer-events:auto;}
-          .menu-fold{width:100%;height:100%;transform-origin:top center;transform:rotateX(-90deg);transition:transform .85s cubic-bezier(.2,.8,.25,1);border-radius:10px;overflow:hidden;box-shadow:0 28px 60px rgba(0,0,0,.55);background:#f6efe1;will-change:transform;}
-          .menu-panel.is-active .menu-fold{transform:rotateX(0deg);}
-          .menu-fold img{width:100%;height:100%;object-fit:contain;display:block;background:#f6efe1;}
-          @supports not (aspect-ratio:1/1){.menu-stage{height:0;padding-bottom:133.33%;}}
-          @media (prefers-reduced-motion:reduce){.menu-fold{transition:none;transform:none;}}
-        </style>
 
-        <div class="food-menu-fold" data-aos="fade">
-          <ul class="menu-tabs" role="tablist">
-            <li><button type="button" class="menu-tab active" data-menu="breakfast" role="tab">Breakfast</button></li>
-            <li><button type="button" class="menu-tab" data-menu="mains" role="tab">Mains</button></li>
-            <li><button type="button" class="menu-tab" data-menu="vegetarian" role="tab">Vegetarian</button></li>
-            <li><button type="button" class="menu-tab" data-menu="drinks" role="tab">Drinks</button></li>
-          </ul>
 
-          <div class="menu-stage">
-            <!-- Swap the src of each .menu-fold img with a real menu photo; the slot fits it automatically. -->
-            <div class="menu-panel is-active" data-menu="breakfast"><div class="menu-fold"><img src="images/menu-breakfast.svg" alt="Breakfast menu"></div></div>
-            <div class="menu-panel" data-menu="mains"><div class="menu-fold"><img src="images/menu-mains.svg" alt="Mains menu"></div></div>
-            <div class="menu-panel" data-menu="vegetarian"><div class="menu-fold"><img src="images/menu-vegetarian.svg" alt="Vegetarian menu"></div></div>
-            <div class="menu-panel" data-menu="drinks"><div class="menu-fold"><img src="images/menu-drinks.svg" alt="Drinks menu"></div></div>
-          </div>
+        <div class="tgh-menu" data-aos="fade-up">
+          <div class="tgh-menu-tabs" id="menuTabs" role="tablist" aria-label="Menu categories"></div>
+          <div class="tgh-menu-body" id="menuBody"></div>
         </div>
-
-        <script>
-          (function () {
-            var wrap = document.querySelector('.food-menu-fold');
-            if (!wrap) return;
-            var tabs = wrap.querySelectorAll('.menu-tab');
-            var panels = wrap.querySelectorAll('.menu-panel');
-            // Each inactive card sits folded (rotateX(-90)); toggling is-active unfolds
-            // the chosen one and re-folds the rest — the CSS transition does the animation.
-            function show(key) {
-              tabs.forEach(function (t) { t.classList.toggle('active', t.getAttribute('data-menu') === key); });
-              panels.forEach(function (p) { p.classList.toggle('is-active', p.getAttribute('data-menu') === key); });
-            }
-            tabs.forEach(function (t) { t.addEventListener('click', function () { show(t.getAttribute('data-menu')); }); });
-            // Fold the first card in on load (start folded, then open shortly after).
-            panels.forEach(function (p) { p.classList.remove('is-active'); });
-            setTimeout(function () { show('breakfast'); }, 80);
-          })();
-        </script>
       </div>
     </section>
    
@@ -562,46 +463,42 @@
         </div>
           <div class="row">
               <div class="col-lg-8 offset-lg-2">
-                  <div class="testimonial-slider owl-carousel owl-loaded owl-drag" id="reviews">
-                      <!-- <div class="ts-item">
-                          <p>After a construction project took longer than expected, my husband, my daughter and I
-                              needed a place to stay for a few nights. As a Chicago resident, we know a lot about our
-                              city, neighborhood and the types of housing options available and absolutely love our
-                              vacation at Sona Hotel.</p>
-                          <div class="ti-author">
-                              <div class="rating">
-                                  <i class="icon_star"></i>
-                                  <i class="icon_star"></i>
-                                  <i class="icon_star"></i>
-                                  <i class="icon_star"></i>
-                                  <i class="icon_star-half_alt"></i>
-                              </div>
-                              <h5> - Alexander Vasquez</h5>
-                          </div>
-                          <img src="img/testimonial-logo.png" alt="">
-                      </div> -->
-                      <!-- <div class="ts-item">
-                          <p>After a construction project took longer than expected, my husband, my daughter and I
-                              needed a place to stay for a few nights. As a Chicago resident, we know a lot about our
-                              city, neighborhood and the types of housing options available and absolutely love our
-                              vacation at Sona Hotel.</p>
-                          <div class="ti-author">
-                              <div class="rating">
-                                  <i class="icon_star"></i>
-                                  <i class="icon_star"></i>
-                                  <i class="icon_star"></i>
-                                  <i class="icon_star"></i>
-                                  <i class="icon_star-half_alt"></i>
-                              </div>
-                              <h5> - Alexander Vasquez</h5>
-                          </div>
-                          <img src="img/testimonial-logo.png" alt="">
-                      </div> -->
+                  <div class="testimonial-slider" id="reviews">
+                      <div class="ts-item">
+                          <div style="width:60px;height:60px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:600;background:#3b6ea5;">EC</div>
+                          <div style="color:#f0a500;font-size:16px;letter-spacing:2px;margin-bottom:10px;">★★★★★</div>
+                          <p style="color:#555;font-size:14.5px;line-height:1.6;margin:0 0 12px;">Beautiful little hotel with genuine charm. Breakfast on the roof with mountain views was the highlight of our Kathmandu stay.</p>
+                          <div style="color:#222;font-weight:600;font-size:15px;margin-top:auto;">Emily Carter</div>
+                      </div>
+                      <div class="ts-item">
+                          <div style="width:60px;height:60px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:600;background:#4b7a52;">TH</div>
+                          <div style="color:#f0a500;font-size:16px;letter-spacing:2px;margin-bottom:10px;">★★★★☆</div>
+                          <p style="color:#555;font-size:14.5px;line-height:1.6;margin:0 0 12px;">Central and quiet at night, and the staff arranged everything from taxis to trekking permits. We will come back next year.</p>
+                          <div style="color:#222;font-weight:600;font-size:15px;margin-top:auto;">Tanvir Hossain</div>
+                      </div>
+                      <div class="ts-item">
+                          <div style="width:60px;height:60px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:600;background:#8e4d3b;">SM</div>
+                          <div style="color:#f0a500;font-size:16px;letter-spacing:2px;margin-bottom:10px;">★★★★★</div>
+                          <p style="color:#555;font-size:14.5px;line-height:1.6;margin:0 0 12px;">Stayed on my way back from an Annapurna trek. Hot showers, comfy beds and a wonderful team who stored my gear.</p>
+                          <div style="color:#222;font-weight:600;font-size:15px;margin-top:auto;">Sarah Mitchell</div>
+                      </div>
+                      <div class="ts-item">
+                          <div style="width:60px;height:60px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:600;background:#8a5a9e;">FA</div>
+                          <div style="color:#f0a500;font-size:16px;letter-spacing:2px;margin-bottom:10px;">★★★★★</div>
+                          <p style="color:#555;font-size:14.5px;line-height:1.6;margin:0 0 12px;">The staff felt like family and the rooftop dinner was excellent. Warm hospitality right in the middle of Thamel.</p>
+                          <div style="color:#222;font-weight:600;font-size:15px;margin-top:auto;">Farhana Akter</div>
+                      </div>
+                      <div class="ts-item">
+                          <div style="width:60px;height:60px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:600;background:#487b7b;">JT</div>
+                          <div style="color:#f0a500;font-size:16px;letter-spacing:2px;margin-bottom:10px;">★★★★☆</div>
+                          <p style="color:#555;font-size:14.5px;line-height:1.6;margin:0 0 12px;">Great value and an unbeatable location. The room was spotless and the rooftop caf&eacute; is a hidden gem.</p>
+                          <div style="color:#222;font-weight:600;font-size:15px;margin-top:auto;">Jake Thompson</div>
+                      </div>
+                  </div>
                   </div>
               </div>
           </div>
 
-  
           <div class="justify-content-center text-center mb-5">
             <a href="review.html"><button type="button" class="btn btn-success">Give use a Review</button></a>
           </div>
@@ -619,76 +516,37 @@
         </div>
 
         <div class="row" id="blogs">
-          <!-- <div class="col-lg-4 col-md-6 col-sm-6 col-12 post mb-5" data-aos="fade-up" data-aos-delay="100">
-
-            <div class="media media-custom d-block mb-4 h-100">
-              <a href="events.html#" class="mb-4 d-block"><img src="images/img_1.jpg" alt="Image placeholder" class="img-fluid"></a>
-              <div class="media-body">
-                <span class="meta-post">February 26, 2018</span>
-                <h2 class="mt-0 mb-3"><a href="pashupatinath.html#">Pashupatinath Temple: A Thousand Years of Sacred Heritage</a></h2>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-lg-4 col-md-6 col-sm-6 col-12 post mb-5" data-aos="fade-up" data-aos-delay="200">
-            <div class="media media-custom d-block mb-4 h-100">
-              <a href="events.html#" class="mb-4 d-block"><img src="images/img_2.jpg" alt="Image placeholder" class="img-fluid"></a>
-              <div class="media-body">
-                <span class="meta-post">February 26, 2018</span>
-                <h2 class="mt-0 mb-3"><a href="events.html#">Bhaktapur Sight Seeing</a></h2>
-                <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 col-sm-6 col-12 post mb-5" data-aos="fade-up" data-aos-delay="300">
-            <div class="media media-custom d-block mb-4 h-100">
-              <a href="events.html#" class="mb-4 d-block"><img src="images/img_3.jpg" alt="Image placeholder" class="img-fluid"></a>
-              <div class="media-body">
-                <span class="meta-post">February 26, 2018</span>
-                <h2 class="mt-0 mb-3"><a href="patan.html#">Patan Durbar Square Sight Seeing</a></h2>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. t is a paradisematic country, in which roasted parts of sentences.</p>
-              </div>
-            </div>
-          </div>
-
           <div class="col-lg-4 col-md-6 col-sm-6 col-12 post mb-5" data-aos="fade-up" data-aos-delay="100">
-
             <div class="media media-custom d-block mb-4 h-100">
-              <a href="events.html#" class="mb-4 d-block"><img src="images/img_4.jpg" alt="Image placeholder" class="img-fluid"></a>
+              <a href="blog.html?id=1" class="mb-4 d-block"><img loading="lazy" decoding="async" src="images/trips/nagarkot-sunrise.jpg" alt="Sunrise Over the Himalayas: A Morning in Nagarkot" class="img-fluid"></a>
               <div class="media-body">
-                <span class="meta-post">February 26, 2018</span>
-                <h2 class="mt-0 mb-3"><a href="events.html#">Bhaktapur Sight Seeing</a></h2>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <span class="meta-post">February 12, 2026</span>
+                <h2 class="mt-0 mb-3"><a href="blog.html?id=1">Sunrise Over the Himalayas: A Morning in Nagarkot</a></h2>
+                <p>Just 32 km from Thamel, the ridge town of Nagarkot offers one of the most breathtaking Himalayan panoramas in all of Nepal.</p>
               </div>
             </div>
-
           </div>
-
           <div class="col-lg-4 col-md-6 col-sm-6 col-12 post mb-5" data-aos="fade-up" data-aos-delay="200">
             <div class="media media-custom d-block mb-4 h-100">
-              <a href="events.html#" class="mb-4 d-block"><img src="images/img_1.jpg" alt="Image placeholder" class="img-fluid"></a>
+              <a href="blog.html?id=2" class="mb-4 d-block"><img loading="lazy" decoding="async" src="images/trips/newari-alley.jpg" alt="Wandering the Ancient Alleys of Thamel" class="img-fluid"></a>
               <div class="media-body">
-                <span class="meta-post">February 26, 2018</span>
-                <h2 class="mt-0 mb-3"><a href="events.html#">Patan Durbar Square Sight Seeing</a></h2>
-                <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                <span class="meta-post">March 5, 2026</span>
+                <h2 class="mt-0 mb-3"><a href="blog.html?id=2">Wandering the Ancient Alleys of Thamel</a></h2>
+                <p>Step out of the hotel into a labyrinth of prayer flags, singing bowls, trekking shops and hidden courtyards — the beating heart of Kathmandu.</p>
               </div>
             </div>
           </div>
-
           <div class="col-lg-4 col-md-6 col-sm-6 col-12 post mb-5" data-aos="fade-up" data-aos-delay="300">
             <div class="media media-custom d-block mb-4 h-100">
-              <a href="events.html#" class="mb-4 d-block"><img src="images/img_2.jpg" alt="Image placeholder" class="img-fluid"></a>
+              <a href="blog.html?id=4" class="mb-4 d-block"><img loading="lazy" decoding="async" src="images/trips/boudhanath.jpg" alt="Temples, Stupas &amp; Prayer Flags: Boudhanath and Swayambhunath" class="img-fluid"></a>
               <div class="media-body">
-                <span class="meta-post">February 26, 2018</span>
-                <h2 class="mt-0 mb-3"><a href="events.html#">30 Great Ideas On Gifts For Travelers</a></h2>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. t is a paradisematic country, in which roasted parts of sentences.</p>
+                <span class="meta-post">May 22, 2026</span>
+                <h2 class="mt-0 mb-3"><a href="blog.html?id=4">Temples, Stupas &amp; Prayer Flags: Boudhanath and Swayambhunath</a></h2>
+                <p>Two of the most sacred sites in the Himalayan Buddhist world sit within easy reach of the hotel.</p>
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
 
       </div>
     </section>
@@ -706,66 +564,9 @@
         </div>
       </section> -->
 
-    <footer class="section footer-section">
-    <div class="container">
-      <div class="row mb-4">
-        <div class="col-md-3 mb-5">
-          <ul class="list-unstyled link">
-            <li><a href="rooms.html">The Rooms &amp; Suites</a></li>
-            <li><a href="about.html#">About Us</a></li>
-            <li><a href="contact.html#">Contact Us</a></li>
-            <li><a href="index.html#restaurant">Restaurant</a></li>
-          </ul>
-        </div>
-        <div class="col-md-3 mb-5">
-          <!-- <ul class="list-unstyled link">
-                <li><a href="index.html#">About Us</a></li>
-                <li><a href="index.html#">Terms &amp; Conditions</a></li>
-                <li><a href="index.html#">Privacy Policy</a></li>
-               <li><a href="index.html#">Rooms</a></li>
-              </ul> -->
-        </div>
-        <div class="col-md-3 mb-5 pr-md-5 contact-info">
-          <!-- <li>198 West 21th Street, <br> Suite 721 New York NY 10016</li> -->
-          <!-- <p><span class="d-block"><span class="ion-ios-location h5 mr-3 text-primary"></span>Address:</span> <span> 198 West 21th Street, <br> Suite 721 New York NY 10016</span></p>
-              <p><span class="d-block"><span class="ion-ios-telephone h5 mr-3 text-primary"></span>Phone:</span> <span> (+1) 435 3533</span></p>
-              <p><span class="d-block"><span class="ion-ios-email h5 mr-3 text-primary"></span>Email:</span> <span> info@domain.com</span></p> -->
-        </div>
-        <div class="col-md-3 mb-5">
-          <!-- <li>198 West 21th Street, <br> Suite 721 New York NY 10016</li> -->
-          <p><span class="d-block"><span class="ion-ios-location h5 mr-3 text-primary"></span>Address:</span>
-            <span>
-              <a href="https://www.google.com/maps/place/Thamel+Grand+Hotel/@27.7170826,85.3098029,17z/data=!3m1!4b1!4m9!3m8!1s0x39eb18e33639aa63:0xd3a44de7c84b3bd3!5m2!4m1!1i2!8m2!3d27.7170826!4d85.3098029!16s%2Fg%2F1q62kbq1d?entry=ttu"
-                target="_blank">
-                P885+RWM, Chaksibari Marg, Kathmandu 44600
-              </a>
-            </span>
-          </p>
-          <p><span class="d-block"><span class="ion-ios-telephone h5 mr-3 text-primary"></span>Phone:</span> <span>
-              01-4700296</span></p>
-          <p><span class="d-block"><span class="ion-ios-email h5 mr-3 text-primary"></span>Email:</span> <span>
-              info@thamelgrandhotel.com.np</span></p>
-        </div>
-      </div>
-      <div class="row pt-5">
-        <p class="col-md-6 text-left">
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          Copyright &copy;
-          <script>document.write(new Date().getFullYear());</script> All rights reserved
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-        </p>
+    <!-- Gallery teaser -->
 
-        <p class="col-md-6 text-right social">
-          <a
-            href="https://www.tripadvisor.com/Hotel_Review-g293890-d6468795-Reviews-Thamel_Grand_Hotel-Kathmandu_Kathmandu_Valley_Bagmati_Zone_Central_Region.html"><span
-              class="fa fa-tripadvisor"></span></a>
-          <a href="https://www.facebook.com/thamelgrandhotel.np/"><span class="fa fa-facebook"></span></a>
-          <a href="https://www.instagram.com/thamelgrandhotel2012/"><span class="fa fa-instagram"></span></a>
-          <a href="https://www.booking.com/hotel/np/hamel-rand-otel-td.html"><span class="fa fa-book"></span></a>
-        </p>
-      </div>
-    </div>
-  </footer>
+    <div id="tgh-footer"></div>
     
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -779,176 +580,58 @@
     <script src="js/aos.js"></script>
     
     <script src="js/bootstrap-datepicker.js"></script> 
-    <script src="js/jquery.timepicker.min.js"></script> 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="js/jquery.timepicker.min.js"></script>
     <script>
-      $(document).ready(function () {
-          $('.owl-carousel').owlCarousel({
-              items: 1, // Number of items to display at a time
-              loop: true, // Enable loop
-              autoplay: true, // Enable autoplay
-              autoplayTimeout: 3000, // Autoplay interval in milliseconds (3 seconds in this case)
-              autoplayHoverPause: true ,// Pause autoplay on hover
-              nav: true, // Enable navigation arrows
+
+      // Reviews slider + Trips grid are handled by js/tgh-collections.js
+
+      // --- Welcome video slider: each clip plays through, then slides to the next ---
+      (function () {
+        var box = document.getElementById('welcomeVideos');
+        if (!box) return;
+        var slides = Array.prototype.slice.call(box.querySelectorAll('.tvs-slide'));
+        var dotsWrap = box.querySelector('.tvs-dots');
+        var idx = 0, watchdog;
+        slides.forEach(function (s, i) {
+          var d = document.createElement('button');
+          d.type = 'button'; d.className = 'tvs-dot' + (i === 0 ? ' is-active' : '');
+          d.setAttribute('aria-label', 'Video ' + (i + 1));
+          d.onclick = function () { show(i); };
+          dotsWrap.appendChild(d);
+          s.querySelector('video').addEventListener('ended', function () { if (i === idx) show(idx + 1); });
+        });
+        box.querySelector('.tvs-prev').addEventListener('click', function () { show(idx - 1); });
+        box.querySelector('.tvs-next').addEventListener('click', function () { show(idx + 1); });
+        function show(n) {
+          clearTimeout(watchdog);
+          idx = (n + slides.length) % slides.length;
+          slides.forEach(function (s, i) {
+            var v = s.querySelector('video');
+            s.classList.toggle('is-active', i === idx);
+            dotsWrap.children[i].classList.toggle('is-active', i === idx);
+            if (i === idx) {
+              v.currentTime = 0;
+              var p = v.play();
+              if (p && p.catch) p.catch(function () { /* autoplay blocked — poster stays */ });
+              // Safety: advance even if 'ended' never fires (e.g. play blocked).
+              watchdog = setTimeout(function () { if (idx === i) show(idx + 1); },
+                ((isFinite(v.duration) && v.duration > 0 ? v.duration : 12) + 3) * 1000);
+            } else {
+              v.pause();
+            }
           });
-      });
-
-      // Reliable review slider (autoplay + arrows + responsive) — the template's
-      // owl-carousel is unreliable when content is injected after page load.
-      function tghBuildSlider(el, opts) {
-        opts = opts || {};
-        var interval = opts.interval || 5000;
-        var originals = Array.prototype.slice.call(el.children);
-        if (!originals.length) return;
-        // Break out of the narrow Bootstrap column so 5 cards have room to breathe.
-        var col = el.closest('[class*="col-"]');
-        if (col) { col.style.maxWidth = '100%'; col.style.flex = '0 0 100%'; col.style.marginLeft = '0'; col.style.marginRight = '0'; }
-        el.setAttribute('style', 'position:relative;overflow:hidden;max-width:1500px;margin:0 auto;padding:0 6px;');
-        var track = document.createElement('div');
-        track.setAttribute('style', 'display:flex;');
-        originals.forEach(function (c) {
-          c.setAttribute('style', 'background:#fff;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.07);padding:26px 22px;text-align:center;height:280px;display:flex;flex-direction:column;justify-content:flex-start;box-sizing:border-box;margin:0;');
-          var slide = document.createElement('div');
-          slide.setAttribute('style', 'box-sizing:border-box;padding:14px;flex:0 0 33.3333%;');
-          slide.appendChild(c);
-          track.appendChild(slide);
-        });
-        el.innerHTML = '';
-        el.appendChild(track);
-        var perView = 3, idx = 0, timer, animating = false;
-        var baseSlides = Array.prototype.slice.call(track.children);
-        function pvFor() { var w = window.innerWidth; return w < 640 ? 1 : (w < 1024 ? 2 : 3); }
-        function removeClones() { Array.prototype.slice.call(track.querySelectorAll('.tgh-clone')).forEach(function (n) { track.removeChild(n); }); }
-        function addClones() { for (var i = 0; i < perView; i++) { var cl = baseSlides[i % baseSlides.length].cloneNode(true); cl.className = 'tgh-clone'; track.appendChild(cl); } }
-        function setFlex() { Array.prototype.forEach.call(track.children, function (s) { s.style.flex = '0 0 ' + (100 / perView) + '%'; }); }
-        function apply(anim) { track.style.transition = anim ? 'transform .6s ease' : 'none'; track.style.transform = 'translateX(-' + (idx * (100 / perView)) + '%)'; }
-        function next() { if (animating) return; animating = true; idx++; apply(true); setTimeout(function () { if (idx >= originals.length) { idx = 0; apply(false); } animating = false; }, 640); }
-        function prev() { if (animating) return; animating = true; if (idx <= 0) { idx = originals.length; apply(false); void track.offsetWidth; } idx--; apply(true); setTimeout(function () { animating = false; }, 640); }
-        function play() { clearInterval(timer); timer = setInterval(next, interval); }
-        function resize() { perView = pvFor(); removeClones(); addClones(); setFlex(); if (idx > originals.length) idx = 0; apply(false); }
-        [['‹', prev, 'left'], ['›', next, 'right']].forEach(function (a) {
-          var b = document.createElement('button'); b.type = 'button'; b.textContent = a[0];
-          b.setAttribute('style', 'position:absolute;top:50%;' + a[2] + ':0;transform:translateY(-50%);z-index:3;width:40px;height:40px;border:none;border-radius:50%;background:rgba(20,20,20,.4);color:#fff;font-size:22px;line-height:1;cursor:pointer;');
-          b.onclick = function () { a[1](); play(); };
-          el.appendChild(b);
-        });
-        el.onmouseenter = function () { clearInterval(timer); };
-        el.onmouseleave = play;
-        window.addEventListener('resize', resize);
-        resize(); play();
-      }
-
-
-      function tghEsc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
-      function tghInitials(name){ var p=String(name||'').trim().split(/[\s-]+/).filter(Boolean); if(!p.length) return '?'; return (p.length===1?p[0].slice(0,2):p[0][0]+p[p.length-1][0]).toUpperCase(); }
-      function tghColor(name){ var pal=['#8e4d3b','#3b6ea5','#4b7a52','#8a5a9e','#b5852f','#487b7b','#a24d5c','#5b6a8a']; var h=0,s=String(name||''); for(var i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))>>>0; return pal[h%pal.length]; }
-      function tghStars(n){ n=Math.round(Number(n)||0); var o=''; for(var i=0;i<5;i++) o+= i<n?'★':'☆'; return o; }
-      function tghReviewInner(a){ var name=a.full_name||''; return '<div style="width:60px;height:60px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:600;background:'+tghColor(name)+';">'+tghEsc(tghInitials(name))+'</div>'+'<div style="color:#f0a500;font-size:16px;letter-spacing:2px;margin-bottom:10px;">'+tghStars(a.rating)+'</div>'+'<p style="color:#555;font-size:14.5px;line-height:1.6;margin:0 0 12px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;">'+tghEsc(a.description)+'</p>'+'<div style="color:#222;font-weight:600;font-size:15px;margin-top:auto;">'+tghEsc(name)+'</div>'; }
-
-      const apiUrl = 'http://localhost:1337/api/reviews';
-
-
-      fetch(apiUrl, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization':  "Bearer 081d9de3542455cc520d79b612919ae47322b341e0b5b7b12f1e7eb238ff38c1c855ae6bb366fe7f7f5c5bd9619f7932937d1b8162a68f55ca50ec7f294e09a2750a6e021006240762237a95924a2e7a8b5618c2d3c40a0e1ba907e2baafff23a2f2b465ac3faed9b3e5412719612461ad3db4d300c72fc0d50ad1bb0afe5692"
         }
-      })
-      .then(response => response.json())
-      
-      .then(data => {
-        
-        let itemContainer = document.querySelector('#reviews');
-        itemContainer.className = 'testimonial-slider owl-carousel';
-
-        data.data.forEach(function (review) {
-          var item = document.createElement('div');
-          item.className = 'ts-item';
-          item.innerHTML = tghReviewInner(review.attributes);
-          itemContainer.appendChild(item);
-        })
-
-        // Reviews arrive after the page-load owl init, so render them in a
-        // reliable custom slider (autoplay + arrows + responsive).
-        try { $('#reviews').trigger('destroy.owl.carousel'); } catch (e) { /* ignore */ }
-        itemContainer.className = '';
-        tghBuildSlider(itemContainer, { interval: 4500 });
-      })
-      .catch(error => {
-        console.error('API Error:', error);
-      });
-
-
-      const blogUrl = 'http://localhost:1337/api/blogs?populate=*'
-
-      fetch(blogUrl,{
-        method: "GET",
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization':  "Bearer 081d9de3542455cc520d79b612919ae47322b341e0b5b7b12f1e7eb238ff38c1c855ae6bb366fe7f7f5c5bd9619f7932937d1b8162a68f55ca50ec7f294e09a2750a6e021006240762237a95924a2e7a8b5618c2d3c40a0e1ba907e2baafff23a2f2b465ac3faed9b3e5412719612461ad3db4d300c72fc0d50ad1bb0afe5692"
-        }
-      })
-      .then(response=> response.json())
-      .then(data => {
-
-        const itemContainer = document.querySelector("#blogs");
-        
-        data.data.forEach(blog => {
-
-          const item = document.createElement('div');
-          item.className = 'col-lg-4 col-md-6 col-sm-6 col-12 post mb-5';
-          item.setAttribute('aos', 'fade-up');
-          item.setAttribute('aos-delay', 100);
-
-          const media = document.createElement('div');
-          media.className = 'media media-custom d-block mb-4 h-100';
-
-          const mediaHref = document.createElement('a');
-          mediaHref.setAttribute('href', 'http://localhost:5500/sogo/blog.html?id='+blog.id);
-          mediaHref.className = 'mb-4 d-block';
-
-          const mediaImage = document.createElement('img');
-          mediaImage.className = 'img-fluid';
-          mediaImage.setAttribute("src", 'http://localhost:1337'+blog.attributes.header_img.data.attributes.url);
-          
-          const headerImage = document.createElement('img');
-          const cardBody = document.createElement('div');
-          const createdAt =  document.createElement('span');
-
-          cardBody.className = 'media-body';
-
-          const description = document.createElement('h2');
-          description.className = 'mt-0 mb-3';
-          description.textContent = `${blog.attributes.title}`;
-          const subDescription = document.createElement('p');
-
-          subDescription.textContent = `${blog.attributes.description}`.substr(0, 100);
-          
-          const timestamp = new Date(blog.attributes.createdAt);
-          const month = timestamp.toLocaleString('default', { month: 'long' });
-          const day = timestamp.getDate();
-          const year = timestamp.getFullYear();
-          
-          createdAt.textContent = `${month} ${day}, ${year}`;
-          createdAt.className = 'meta-post';
-
-
-          mediaHref.appendChild(mediaImage)
-          media.appendChild(mediaHref);
-          cardBody.appendChild(createdAt);
-          cardBody.appendChild(description);
-          cardBody.appendChild(subDescription);
-          media.appendChild(cardBody);
-          item.appendChild(media);
-
-          itemContainer.appendChild(item);
-        })
-      })
+        show(0);
+      })();
 
   </script>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=2"></script>
+    <script src="js/gallery-data.js?v=g1"></script>
+    <script src="js/tgh-lightbox.js?v=g2"></script>
+    <script src="js/gallery-teaser.js?v=g2"></script>
+    <script src="js/menu-data.js?v=m1"></script>
+    <script src="js/menu-render.js?v=m7"></script>
+    <script src="js/tgh-collections.js?v=c1"></script>
   </body>
 </html>

@@ -23,228 +23,144 @@
 
     <!-- Theme Style -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tgh-custom.css?v=h6">
+    <link rel="stylesheet" href="css/tgh-theme.css?v=t2">
+    <link rel="stylesheet" href="css/tgh-reserve.css?v=r2">
   </head>
   <body>
     
-    <header class="site-header js-site-header">
-      <div class="container-fluid">
-        <div class="row align-items-center">
-          <div class="col-6 col-lg-4 site-logo" data-aos="fade"><a href="index.html">Thamel Grand Hotel</a></div>
-          <div class="col-6 col-lg-8">
-
-
-            <div class="site-menu-toggle js-site-menu-toggle"  data-aos="fade">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-            <!-- END menu-toggle -->
-
-            <div class="site-navbar js-site-navbar">
-              <nav role="navigation">
-                <div class="container">
-                  <div class="row full-height align-items-center">
-                    <div class="col-md-6 mx-auto">
-                      <ul class="list-unstyled menu">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="rooms.html">Rooms</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="events.html">Events</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li class="active"><a href="reservation.html">Reservation</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </nav>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
+    <div id="tgh-header"></div>
+    <script src="js/tgh-chrome.js?v=2"></script>
     <!-- END head -->
 
-    <section class="site-hero inner-page overlay" style="background-image: url(images/hotel/tgh-4.jpg)" data-stellar-background-ratio="0.5">
+    <section class="site-hero inner-page overlay tgh-reserve-hero" style="background-image: url(images/hotel/tgh-4.jpg)" data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row site-hero-inner justify-content-center align-items-center">
           <div class="col-md-10 text-center" data-aos="fade">
-            <h1 class="heading mb-3">Reservation Form</h1>
-            <ul class="custom-breadcrumbs mb-4">
-              <li><a href="index.html">Home</a></li>
-              <li>&bullet;</li>
-              <li>Reservation</li>
-            </ul>
+            <span class="tgh-eyebrow-line">Booking &middot; Thamel, Kathmandu</span>
+            <h1 class="heading mb-2">Reserve your stay</h1>
+            <p class="rz-hero-sub">Pick your room and dates &mdash; we&rsquo;ll confirm by email and phone. No payment now.</p>
           </div>
         </div>
       </div>
-
-      <a class="mouse smoothscroll" href="reservation.html#next">
-        <div class="mouse-icon">
-          <span class="mouse-wheel"></span>
-        </div>
-      </a>
     </section>
     <!-- END section -->
 
-    <section class="section contact-section" id="next">
+    <section class="tgh-reserve" id="next">
       <div class="container">
-        <div class="row">
-          <div class="col-md-7" data-aos="fade-up" data-aos-delay="100">
-            
-            <form id="reservation" class="bg-white p-md-5 p-4 mb-5 border">
-              <div class="row">
-                <div class="col-md-12 form-group">
-                  <label class="text-black font-weight-bold" for="room">Room</label>
-                  <select name="room" id="room" class="form-control">
-                    <option value="">Loading rooms…</option>
+        <div class="tgh-reserve-grid">
+
+          <!-- Booking form -->
+          <form id="reservation" class="rz-form" data-aos="fade-up">
+
+            <fieldset class="rz-group">
+              <legend class="rz-eyebrow">Your stay</legend>
+
+              <div class="rz-field rz-full rz-select">
+                <label for="room">Room</label>
+                <select name="room" id="room" class="form-control">
+                  <option value="">Loading rooms&hellip;</option>
+                </select>
+              </div>
+
+              <div class="rz-row">
+                <div class="rz-field">
+                  <label for="checkin_date">Check&#8209;in</label>
+                  <input type="text" id="checkin_date" class="form-control" name="check_in" placeholder="Select date" autocomplete="off" readonly>
+                </div>
+                <div class="rz-field">
+                  <label for="checkout_date">Check&#8209;out</label>
+                  <input type="text" id="checkout_date" class="form-control" name="check_out" placeholder="Select date" autocomplete="off" readonly>
+                </div>
+              </div>
+
+              <div class="rz-row">
+                <div class="rz-field rz-select">
+                  <label for="adults">Adults</label>
+                  <select name="adult" id="adults" class="form-control">
+                    <option value="1">1 adult</option>
+                    <option value="2">2 adults</option>
+                    <option value="3">3 adults</option>
+                    <option value="4+">4+ adults</option>
+                  </select>
+                </div>
+                <div class="rz-field rz-select">
+                  <label for="children">Children</label>
+                  <select name="children" id="children" class="form-control">
+                    <option value="0">No children</option>
+                    <option value="1">1 child</option>
+                    <option value="2">2 children</option>
+                    <option value="3">3 children</option>
                   </select>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <label class="text-black font-weight-bold" for="name">Name</label>
-                  <input type="text" id="name" class="form-control " name="name">
+            </fieldset>
+
+            <fieldset class="rz-group">
+              <legend class="rz-eyebrow">Your details</legend>
+
+              <div class="rz-row">
+                <div class="rz-field">
+                  <label for="name">Full name</label>
+                  <input type="text" id="name" class="form-control" name="name" placeholder="e.g. Emily Carter" autocomplete="name">
                 </div>
-                <div class="col-md-6 form-group">
-                  <label class="text-black font-weight-bold" for="phone">Phone</label>
-                  <input type="text" id="phone" class="form-control " name="phone">
-                </div>
-              </div>
-          
-              <div class="row">
-                <div class="col-md-12 form-group">
-                  <label class="text-black font-weight-bold" for="email">Email</label>
-                  <input type="email" id="email" class="form-control " name="email">
+                <div class="rz-field">
+                  <label for="phone">Phone</label>
+                  <input type="tel" id="phone" class="form-control" name="phone" placeholder="e.g. +1 555 012 3456" autocomplete="tel">
                 </div>
               </div>
 
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <label class="text-black font-weight-bold" for="checkin_date">Date Check In</label>
-                  <input type="text" id="checkin_date" class="form-control" name="check_in">
-                </div>
-                <div class="col-md-6 form-group">
-                  <label class="text-black font-weight-bold" for="checkout_date">Date Check Out</label>
-                  <input type="text" id="checkout_date" class="form-control" name="check_out">
-                </div>
+              <div class="rz-field rz-full">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="form-control" name="email" placeholder="you@email.com" autocomplete="email">
               </div>
 
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <label for="adults" class="font-weight-bold text-black">Adults</label>
-                  <div class="field-icon-wrap">
-                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                    <select name="adult" id="adults" class="form-control">
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4+">4+</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-6 form-group">
-                  <label for="children" class="font-weight-bold text-black">Children</label>
-                  <div class="field-icon-wrap">
-                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                    <select name="children" id="children" class="form-control">
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4+">4+</option>
-                    </select>
-                  </div>
-                </div>
+              <div class="rz-field rz-full">
+                <label for="message">Anything we should know? <span style="text-transform:none;letter-spacing:0;color:#b7ad9c;">(optional)</span></label>
+                <textarea name="description" id="message" class="form-control" rows="4" placeholder="Arrival time, airport pickup, dietary needs&hellip;"></textarea>
               </div>
+            </fieldset>
 
-              
-
-              <div class="row mb-4">
-                <div class="col-md-12 form-group">
-                  <label class="text-black font-weight-bold" for="message">Notes</label>
-                  <textarea name="description" id="message" class="form-control " cols="30" rows="8"></textarea>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="submit" id="submitButton" value="Book Now" class="btn btn-primary text-white py-3 px-5 font-weight-bold">
-                </div>
-              </div>
-            </form>
-
-          </div>
-          <div class="col-md-5" data-aos="fade-up" data-aos-delay="200">
-            <div class="row">
-              <div class="col-md-10 ml-auto contact-info">
-                <p><span class="d-block">Address:</span> <span class="text-black"> Chaksibari Marg, Thamel, Kathmandu 44600, Nepal</span></p>
-                <p><span class="d-block">Phone:</span> <span class="text-black"> +977-1-4700296</span></p>
-                <p><span class="d-block">Email:</span> <span class="text-black"> info@yourdomain.com</span></p>
-              </div>
+            <div class="rz-actions">
+              <button type="submit" id="submitButton" class="rz-submit">Confirm reservation</button>
+              <p class="rz-status" id="reserveStatus" role="status" aria-live="polite"></p>
+              <p class="rz-fineprint"><span class="ion-ios-lock"></span>No payment today &mdash; we hold your request and reply within a few hours.</p>
             </div>
-          </div>
+          </form>
+
+          <!-- Live reservation summary — the "front desk" card -->
+          <aside class="rz-summary" data-aos="fade-up" data-aos-delay="100" aria-label="Your reservation summary">
+            <div class="rz-summary-media" id="rzMedia">
+              <span class="rz-summary-tag">Your reservation</span>
+            </div>
+            <div class="rz-summary-body">
+              <h2 class="rz-summary-room" id="rzRoomName">Choose a room</h2>
+              <p class="rz-summary-desc" id="rzRoomDesc">Pick a room above and your stay details fill in here.</p>
+
+              <dl class="rz-dl">
+                <div class="rz-dl-row"><dt>Check&#8209;in</dt><span class="rz-lead"></span><dd id="rzIn">&mdash;</dd></div>
+                <div class="rz-dl-row"><dt>Check&#8209;out</dt><span class="rz-lead"></span><dd id="rzOut">&mdash;</dd></div>
+                <div class="rz-dl-row"><dt>Nights</dt><span class="rz-lead"></span><dd id="rzNights" class="rz-accent">&mdash;</dd></div>
+                <div class="rz-dl-row"><dt>Guests</dt><span class="rz-lead"></span><dd id="rzGuests">1 adult</dd></div>
+              </dl>
+
+              <ul class="rz-perks">
+                <li>Free Wi&#8209;Fi</li>
+                <li>Ensuite bathroom</li>
+                <li>Rooftop caf&eacute;</li>
+                <li>Airport pickup help</li>
+              </ul>
+            </div>
+          </aside>
+
         </div>
+
+        <!-- Full-page confirmation (shown after a successful booking) -->
+        <div id="rzConfirm" class="rz-confirm" hidden></div>
       </div>
     </section>
   
-    <footer class="section footer-section">
-    <div class="container">
-      <div class="row mb-4">
-        <div class="col-md-3 mb-5">
-          <ul class="list-unstyled link">
-            <li><a href="rooms.html">The Rooms &amp; Suites</a></li>
-            <li><a href="about.html#">About Us</a></li>
-            <li><a href="contact.html#">Contact Us</a></li>
-            <li><a href="index.html#restaurant">Restaurant</a></li>
-          </ul>
-        </div>
-        <div class="col-md-3 mb-5">
-          <!-- <ul class="list-unstyled link">
-                <li><a href="index.html#">About Us</a></li>
-                <li><a href="index.html#">Terms &amp; Conditions</a></li>
-                <li><a href="index.html#">Privacy Policy</a></li>
-               <li><a href="index.html#">Rooms</a></li>
-              </ul> -->
-        </div>
-        <div class="col-md-3 mb-5 pr-md-5 contact-info">
-          <!-- <li>198 West 21th Street, <br> Suite 721 New York NY 10016</li> -->
-          <!-- <p><span class="d-block"><span class="ion-ios-location h5 mr-3 text-primary"></span>Address:</span> <span> 198 West 21th Street, <br> Suite 721 New York NY 10016</span></p>
-              <p><span class="d-block"><span class="ion-ios-telephone h5 mr-3 text-primary"></span>Phone:</span> <span> (+1) 435 3533</span></p>
-              <p><span class="d-block"><span class="ion-ios-email h5 mr-3 text-primary"></span>Email:</span> <span> info@domain.com</span></p> -->
-        </div>
-        <div class="col-md-3 mb-5">
-          <!-- <li>198 West 21th Street, <br> Suite 721 New York NY 10016</li> -->
-          <p><span class="d-block"><span class="ion-ios-location h5 mr-3 text-primary"></span>Address:</span>
-            <span>
-              <a href="https://www.google.com/maps/place/Thamel+Grand+Hotel/@27.7170826,85.3098029,17z/data=!3m1!4b1!4m9!3m8!1s0x39eb18e33639aa63:0xd3a44de7c84b3bd3!5m2!4m1!1i2!8m2!3d27.7170826!4d85.3098029!16s%2Fg%2F1q62kbq1d?entry=ttu"
-                target="_blank">
-                P885+RWM, Chaksibari Marg, Kathmandu 44600
-              </a>
-            </span>
-          </p>
-          <p><span class="d-block"><span class="ion-ios-telephone h5 mr-3 text-primary"></span>Phone:</span> <span>
-              01-4700296</span></p>
-          <p><span class="d-block"><span class="ion-ios-email h5 mr-3 text-primary"></span>Email:</span> <span>
-              info@thamelgrandhotel.com.np</span></p>
-        </div>
-      </div>
-      <div class="row pt-5">
-        <p class="col-md-6 text-left">
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          Copyright &copy;
-          <script>document.write(new Date().getFullYear());</script> All rights reserved
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-        </p>
-
-        <p class="col-md-6 text-right social">
-          <a
-            href="https://www.tripadvisor.com/Hotel_Review-g293890-d6468795-Reviews-Thamel_Grand_Hotel-Kathmandu_Kathmandu_Valley_Bagmati_Zone_Central_Region.html"><span
-              class="fa fa-tripadvisor"></span></a>
-          <a href="https://www.facebook.com/thamelgrandhotel.np/"><span class="fa fa-facebook"></span></a>
-          <a href="https://www.instagram.com/thamelgrandhotel2012/"><span class="fa fa-instagram"></span></a>
-          <a href="https://www.booking.com/hotel/np/hamel-rand-otel-td.html"><span class="fa fa-book"></span></a>
-        </p>
-      </div>
-    </div>
-  </footer>
+    <div id="tgh-footer"></div>
     
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -262,95 +178,192 @@
 
     
 
-    <script src="js/main.js"></script>
-    <script src="js/tgh-api.js?v=20260816a"></script>
+    <script src="js/main.js?v=2"></script>
+    <script src="js/tgh-api.js?v=20260820g"></script>
 
     <script>
 
-      $(document).ready(function(){
+      // Room details for the live summary card (mirrors STATIC_ROOMS in tgh-api.js).
+      var RZ_ROOMS = {
+        '1': { name: 'Deluxe Single / Double Room', img: 'images/rooms/single-1.jpg', desc: 'A comfortable room for one or two guests, with a cosy double bed and ensuite bathroom.' },
+        '2': { name: 'Deluxe Twin Room', img: 'images/rooms/twin-1.jpg', desc: 'A bright room with two separate beds — ideal for friends or colleagues.' },
+        '4': { name: 'Deluxe Triple Room', img: 'images/rooms/triple-1.jpg', desc: 'A spacious room that comfortably sleeps three, with three beds.' },
+        '5': { name: 'Deluxe Family Suite Room', img: 'images/rooms/family-1.jpg', desc: 'A roomy suite for families, with a sitting area and flexible bedding.' },
+        '6': { name: 'Luxurious City View Room', img: 'images/rooms/cityview-1.jpg', desc: 'Our top-floor room with bright city views and a plush bed.' }
+      };
+      var MONTHS = { January:'01',February:'02',March:'03',April:'04',May:'05',June:'06',July:'07',August:'08',September:'09',October:'10',November:'11',December:'12' };
 
-        function populateFormFields(){
+      function convertDate(dateString) {
+        var parts = String(dateString || '').split(' ');
+        if (parts.length < 3) return '';
+        var day = parts[0], month = parts[1].replace(',', '').trim(), year = parts[2];
+        if (!MONTHS[month]) return '';
+        return year + '-' + MONTHS[month] + '-' + (day.length < 2 ? '0' + day : day);
+      }
+      function fmtShort(dateString) {
+        var iso = convertDate(dateString);
+        if (!iso) return '—';
+        var d = new Date(iso + 'T00:00:00');
+        if (isNaN(d.getTime())) return '—';
+        return d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+      }
+      function guestsLabel() {
+        var a = document.getElementById('adults').value || '1';
+        var c = document.getElementById('children').value || '0';
+        var out = (a === '4+' ? '4+ adults' : a + (a === '1' ? ' adult' : ' adults'));
+        var cn = Number(c) || 0;
+        if (cn > 0) out += ' · ' + cn + (cn === 1 ? ' child' : ' children');
+        return out;
+      }
 
-          const urlParams = new URLSearchParams(window.location.search);
-          const start_date = urlParams.get("start_date");
-          const end_date = urlParams.get("end_date");
-          const adultInput = urlParams.get("adult");
-          const childrenInput = urlParams.get("children");
+      function updateSummary() {
+        var room = RZ_ROOMS[document.getElementById('room').value];
+        var media = document.getElementById('rzMedia');
+        document.getElementById('rzRoomName').textContent = room ? room.name : 'Choose a room';
+        document.getElementById('rzRoomDesc').textContent = room ? room.desc : 'Pick a room above and your stay details fill in here.';
+        media.style.backgroundImage = room ? "url('" + room.img + "')" : '';
 
-          $("#checkin_date").datepicker("setDate", start_date);
-          $("#checkout_date").datepicker("setDate", end_date);
+        var inStr = document.getElementById('checkin_date').value;
+        var outStr = document.getElementById('checkout_date').value;
+        document.getElementById('rzIn').textContent = inStr ? fmtShort(inStr) : '—';
+        document.getElementById('rzOut').textContent = outStr ? fmtShort(outStr) : '—';
 
-          document.getElementById("adults").value = adultInput;
-          document.getElementById("children").value= childrenInput;
+        var ci = convertDate(inStr), co = convertDate(outStr), nights = '—';
+        if (ci && co) {
+          var n = Math.round((new Date(co) - new Date(ci)) / 86400000);
+          nights = n > 0 ? (n + (n === 1 ? ' night' : ' nights')) : '—';
         }
+        document.getElementById('rzNights').textContent = nights;
+        document.getElementById('rzGuests').textContent = guestsLabel();
+      }
 
-        populateFormFields();
+      $(document).ready(function () {
+        // Prefill from the home-page availability bar, if present.
+        var q = new URLSearchParams(window.location.search);
+        if (q.get('start_date')) $('#checkin_date').datepicker('setDate', q.get('start_date'));
+        if (q.get('end_date')) $('#checkout_date').datepicker('setDate', q.get('end_date'));
+        if (q.get('adult')) document.getElementById('adults').value = q.get('adult');
+        if (q.get('children')) document.getElementById('children').value = q.get('children');
+
+        // Live summary: react to every field that describes the stay.
+        $('#room, #adults, #children').on('change', updateSummary);
+        $('#checkin_date, #checkout_date').on('change changeDate', updateSummary);
+        // #room is filled by tgh-api.js after load — refresh once it's ready.
+        setTimeout(updateSummary, 60);
+        setTimeout(updateSummary, 400);
       });
 
-      document.getElementById('submitButton').addEventListener('click', function(){
+      var statusEl = document.getElementById('reserveStatus');
+      function setStatus(kind, msg) {
+        statusEl.className = 'rz-status ' + (kind === 'ok' ? 'is-ok' : 'is-err');
+        statusEl.textContent = msg;
+      }
+
+      document.getElementById('reservation').addEventListener('submit', function (e) {
+        e.preventDefault();
         submitForm();
       });
 
       function submitForm() {
+        var f = document.getElementById('reservation');
+        var room = f.room.value, ci = f.check_in.value, co = f.check_out.value;
+        var name = f.name.value.trim(), phone = f.phone.value.trim(), email = f.email.value.trim();
 
-        const form = document.getElementById('reservation');
-        const formData = new FormData(form);
+        if (!room) return setStatus('err', 'Please choose a room.');
+        if (!ci || !co) return setStatus('err', 'Please pick your check-in and check-out dates.');
+        if (convertDate(co) <= convertDate(ci)) return setStatus('err', 'Check-out must be after check-in.');
+        if (!name) return setStatus('err', 'Please add your name so we know who’s coming.');
+        if (!phone && !email) return setStatus('err', 'Add a phone or email so we can confirm your stay.');
 
-        const formDataObject = {};
-        formData.forEach((value, key) => {
-          if (['check_in', 'check_out'].includes(key)) formDataObject[key] = convertDate(value);
-          else if (['adult', 'children'].includes(key)) formDataObject[key] = Number(value) || 0;
-          else formDataObject[key] = value; // phone is a biginteger — a string is fine
-        });
+        var payload = {
+          room: room,
+          name: name, phone: phone, email: email,
+          check_in: convertDate(ci), check_out: convertDate(co),
+          adult: Number(f.adult.value) || 0,
+          children: Number(f.children.value) || 0,
+          description: f.description.value
+        };
 
-        // Public "create" on /api/bookings is enabled in Strapi, so no API token
-        // is needed. (A stale bearer token would 401 rather than fall back to the
-        // public role — which is exactly what the old hardcoded token did.)
-        fetch('http://localhost:1337/api/bookings', {
+        var btn = document.getElementById('submitButton');
+        btn.disabled = true; btn.textContent = 'Sending…';
+        setStatus('ok', 'Sending your request…');
+
+        fetch('/api/bookings', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ data: formDataObject })
+          body: JSON.stringify({ data: payload })
         })
-        .then(async (response) => {
-          const payload = await response.json().catch(() => ({}));
-          if (!response.ok) {
-            throw new Error((payload.error && payload.error.message) || ('HTTP ' + response.status));
-          }
-          return payload;
+        .then(async function (r) {
+          var body = await r.json().catch(function () { return {}; });
+          if (!r.ok) throw new Error((body.error && body.error.message) || ('HTTP ' + r.status));
+          return body;
         })
-        .then(() => {
-          alert('Booking has been created!');
-          window.location.search = '';
-          window.location.reload();
+        .then(function (body) {
+          var ref = body && body.data && body.data.id;
+          showConfirmation(payload, ref);
         })
-        .catch((error) => {
-          alert('Could not create booking: ' + error.message);
-          console.error('API Error:', error);
+        .catch(function (err) {
+          console.error('Booking error:', err);
+          setStatus('err', 'Sorry, we couldn’t send that (' + err.message + '). Please call us on 01-4700296 and we’ll book you in.');
+          btn.disabled = false; btn.textContent = 'Confirm reservation';
         });
       }
 
-      function convertDate(dateString) {
-        
-        const parts = dateString.split(" ");
-        const day = parts[0];
-        const month = parts[1].replace(',', '').trim();
-        const year = parts[2];
+      function showConfirmation(p, ref) {
+        var room = RZ_ROOMS[p.room] || { name: 'Your room', img: '' };
+        function isoLong(iso) {
+          if (!iso) return '—';
+          var d = new Date(iso + 'T00:00:00');
+          return isNaN(d.getTime()) ? '—' : d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' });
+        }
+        var nights = '—';
+        if (p.check_in && p.check_out) {
+          var n = Math.round((new Date(p.check_out) - new Date(p.check_in)) / 86400000);
+          if (n > 0) nights = n + (n === 1 ? ' night' : ' nights');
+        }
+        var guests = (p.adult || 0) + ((p.adult === 1) ? ' adult' : ' adults');
+        if (p.children > 0) guests += ' · ' + p.children + (p.children === 1 ? ' child' : ' children');
+        var contact = [p.phone, p.email].filter(Boolean).join(' &middot; ') || '—';
+        var first = (p.name || '').trim().split(' ')[0] || 'there';
 
-        const monthMap = {
-          January: "01",
-          February: "02",
-          March: "03",
-          April: "04",
-          May: "05",
-          June: "06",
-          July: "07",
-          August: "08",
-          September: "09",
-          October: "10",
-          November: "11",
-          December: "12",
-        };
-        return `${year}-${monthMap[month]}-${day}`;
+        function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+        function row(label, value, accent) {
+          return '<div class="rz-dl-row"><dt>' + label + '</dt><span class="rz-lead"></span><dd' + (accent ? ' class="rz-accent"' : '') + '>' + value + '</dd></div>';
+        }
+
+        var html =
+          '<div class="rz-confirm-card">' +
+            '<div class="rz-confirm-media"' + (room.img ? ' style="background-image:url(\'' + room.img + '\')"' : '') + '>' +
+              '<span class="rz-check" aria-hidden="true">&#10003;</span>' +
+            '</div>' +
+            '<div class="rz-confirm-body">' +
+              '<span class="rz-confirm-eyebrow">Reservation received</span>' +
+              '<h2>Thank you, ' + esc(first) + '!</h2>' +
+              '<p class="rz-confirm-lead">Your request is in. We&rsquo;ll confirm your stay by email or phone within a few hours &mdash; there&rsquo;s nothing more to do right now.</p>' +
+              '<dl class="rz-confirm-dl">' +
+                row('Room', esc(room.name)) +
+                row('Check&#8209;in', isoLong(p.check_in)) +
+                row('Check&#8209;out', isoLong(p.check_out)) +
+                row('Nights', nights, true) +
+                row('Guests', esc(guests)) +
+                row('Name', esc(p.name || '—')) +
+                row('Contact', contact) +
+                (ref ? row('Reference', '#' + ref, true) : '') +
+              '</dl>' +
+              '<p class="rz-confirm-note"><span class="ion-ios-lock"></span>No payment was taken. Keep your reference for any questions.</p>' +
+              '<div class="rz-confirm-actions">' +
+                '<a href="index.html" class="rz-btn-primary">Back to home</a>' +
+                '<a href="rooms.html" class="rz-btn-ghost">Explore more rooms</a>' +
+              '</div>' +
+            '</div>' +
+          '</div>';
+
+        document.querySelector('.tgh-reserve-grid').style.display = 'none';
+        var c = document.getElementById('rzConfirm');
+        c.innerHTML = html;
+        c.hidden = false;
+        var top = document.querySelector('.tgh-reserve').getBoundingClientRect().top + window.pageYOffset - 80;
+        window.scrollTo({ top: top, behavior: 'smooth' });
       }
     </script>
   </body>
