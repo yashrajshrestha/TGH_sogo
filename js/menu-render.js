@@ -7,17 +7,10 @@
   var keys = Object.keys(data);
   function esc(s){ return String(s==null?'':s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];}); }
   function slug(s){ return String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
-  // Photographed dishes get a small thumbnail inline beside the name, like a
-  // real restaurant menu. Keyed by exact item name (only these have photos).
+  // Only Nepali dishes carry a photo (foreign dishes stay text-only). The
+  // thumbnail sits to the RIGHT of the item text, keyed by exact item name.
   var PHOTO = {
-    'Croissant Breakfast': 'croissant-breakfast.webp',
-    'MoMo — vegetable or chicken': 'momo.webp',
-    'Pad Thai — vegetable / chicken / prawn': 'pad-thai.webp',
-    'Margherita / Baby Corn & Mushroom': 'pizza.webp',
-    'Black Olives King Burger': 'burger.webp',
-    'Bolognese / Carbonara': 'carbonara.webp',
-    'Cappuccino / Latte / Mocha': 'cappuccino.webp',
-    'Virgin Mojito': 'mojito.webp'
+    'MoMo — vegetable or chicken': 'momo.webp'
   };
   // Prices are intentionally not rendered: the menu on the site is a taster,
   // not a price list. `price` stays in menu-data.js so it can come back easily.
@@ -27,7 +20,7 @@
     var thumb = img ? '<img class="mi-thumb" src="images/menu/' + img + '" alt="" loading="lazy" width="56" height="56">' : '';
     var body = '<div class="mi-text"><div class="mi-head"><span class="mi-name">' + esc(it.name) +
       '</span></div>' + desc + '</div>';
-    return '<div class="menu-item' + (img ? ' has-photo' : '') + '">' + thumb + body + '</div>';
+    return '<div class="menu-item' + (img ? ' has-photo' : '') + '">' + body + thumb + '</div>';
   }
   function groupHtml(g) {
     return '<div class="menu-group" id="mg-' + slug(g.group) + '"><h4 class="menu-group-title">' + esc(g.group) + '</h4>' +
