@@ -158,9 +158,13 @@ img{max-width:100%;}
 .site-header{padding-top:6px;padding-bottom:6px;transition:background .3s ease,box-shadow .3s ease,padding .3s ease;}
 .site-header .logo-size{height:56px !important;width:56px !important;}
 .site-header .site-logo a{font-size:22px;}
+/* NOTE: backdrop-filter makes the header the containing block for its
+   position:fixed children — the fullscreen nav overlay lives inside the
+   header, so it must be disabled while the menu is open (see .menu-open). */
 .site-header.scrolled{background:rgba(255,255,255,.82);-webkit-backdrop-filter:saturate(150%) blur(10px);
   backdrop-filter:saturate(150%) blur(10px);box-shadow:0 2px 16px rgba(0,0,0,.07);padding-top:2px;padding-bottom:2px;}
 @media (prefers-color-scheme:dark){.site-header.scrolled{background:rgba(255,255,255,.82);}}
+.menu-open .site-header,.menu-open .site-header.scrolled{-webkit-backdrop-filter:none;backdrop-filter:none;}
 
 /* ---------- Homepage room-tour video ---------- */
 .tgh-tour-video{max-height:560px;width:auto;max-width:100%;border-radius:14px;
@@ -171,6 +175,11 @@ img{max-width:100%;}
 /* The shots are cut out (transparent PNG/WebP), so they sit straight on the
    section photo with only a drop shadow grounding them - no card, no plate edge. */
 .tgh-menu-highlights{max-width:1080px;margin:0 auto 40px;}
+.tgh-menu .tgh-menu-highlights{margin:6px auto 34px;}
+.tgh-menu .mh-card{color:#33302a;}
+.tgh-menu .mh-card:hover,.tgh-menu .mh-card:focus-visible{background:rgba(185,134,59,.10);}
+.tgh-menu .mh-group{color:#9a6f2c;}
+.tgh-menu .mh-shot img{filter:drop-shadow(0 12px 14px rgba(60,40,10,.28));}
 .mh-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px 8px;}
 .mh-card{display:flex;flex-direction:column;align-items:center;text-align:center;
   background:none;border:0;padding:10px 6px 14px;cursor:pointer;color:#fff;border-radius:12px;
@@ -191,3 +200,6 @@ img{max-width:100%;}
   .mh-shot{height:104px;} .mh-shot img{max-height:104px;}
   .mh-name{font-size:14px;margin-top:10px;} .tgh-menu-highlights{margin-bottom:28px;}
 }
+
+/* ---------- Trips & Tours cards: uniform image ratio (photos are CC0) ---------- */
+.blog-post-entry .post .media-custom > a img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block;border-radius:6px;}
