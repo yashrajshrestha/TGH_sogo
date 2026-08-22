@@ -10,6 +10,10 @@
   // Only Nepali dishes carry a photo (foreign dishes stay text-only). The
   // thumbnail sits to the RIGHT of the item text, keyed by exact item name.
   var PHOTO = {
+    'Traditional Nepali Dal Bhat': 'dalbhat.webp',
+    'Nepali Curry — vegetable / chicken / mutton': 'nepali-curry.webp',
+    'Sandheko Kathmandu Style — chicken / fish / beef': 'sandheko.webp',
+    'Chhoila Newari — chicken / fish / beef': 'chhoila.webp',
     'MoMo — vegetable or chicken': 'momo.webp'
   };
   // Prices are intentionally not rendered: the menu on the site is a taster,

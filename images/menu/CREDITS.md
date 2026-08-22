@@ -21,3 +21,8 @@ was cropped to the dish, resized to 560px and saved as WebP.
 
 To swap in the cafe's own photography later, replace the WebP files in place —
 same filenames, transparent background, ~560px on the long edge.
+## Nepali dish photos (added 2026-08-22, from Openverse — CC0 / Public Domain)
+- dalbhat.webp — "Lunch and Dinner Nepali Food – Dal, Bhat, Tarkari, Achar" (pd.w.org, CC0)
+- nepali-curry.webp — "Nepali special curry – Local chicken soup" (pd.w.org, CC0)
+- chhoila.webp — "Newari Khaja Set" traditional Newari platter (pd.w.org, CC0) — used for Chhoila Newari
+- sandheko.webp — Newari platter with fish (pd.w.org, CC0) — used for Sandheko (no single-dish CC0 photo exists)
