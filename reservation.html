@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tgh-custom.css?v=h6">
     <link rel="stylesheet" href="css/tgh-theme.css?v=t2">
-    <link rel="stylesheet" href="css/tgh-reserve.css?v=r1">
+    <link rel="stylesheet" href="css/tgh-reserve.css?v=r2">
   </head>
   <body>
     
@@ -154,6 +154,9 @@
           </aside>
 
         </div>
+
+        <!-- Full-page confirmation (shown after a successful booking) -->
+        <div id="rzConfirm" class="rz-confirm" hidden></div>
       </div>
     </section>
   
@@ -295,16 +298,72 @@
           if (!r.ok) throw new Error((body.error && body.error.message) || ('HTTP ' + r.status));
           return body;
         })
-        .then(function () {
-          setStatus('ok', 'Reservation received — thank you, ' + name.split(' ')[0] + '! We’ll confirm by email or phone shortly.');
-          btn.textContent = 'Reservation sent ✓';
-          f.reset(); updateSummary();
+        .then(function (body) {
+          var ref = body && body.data && body.data.id;
+          showConfirmation(payload, ref);
         })
         .catch(function (err) {
           console.error('Booking error:', err);
           setStatus('err', 'Sorry, we couldn’t send that (' + err.message + '). Please call us on 01-4700296 and we’ll book you in.');
           btn.disabled = false; btn.textContent = 'Confirm reservation';
         });
+      }
+
+      function showConfirmation(p, ref) {
+        var room = RZ_ROOMS[p.room] || { name: 'Your room', img: '' };
+        function isoLong(iso) {
+          if (!iso) return '—';
+          var d = new Date(iso + 'T00:00:00');
+          return isNaN(d.getTime()) ? '—' : d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' });
+        }
+        var nights = '—';
+        if (p.check_in && p.check_out) {
+          var n = Math.round((new Date(p.check_out) - new Date(p.check_in)) / 86400000);
+          if (n > 0) nights = n + (n === 1 ? ' night' : ' nights');
+        }
+        var guests = (p.adult || 0) + ((p.adult === 1) ? ' adult' : ' adults');
+        if (p.children > 0) guests += ' · ' + p.children + (p.children === 1 ? ' child' : ' children');
+        var contact = [p.phone, p.email].filter(Boolean).join(' &middot; ') || '—';
+        var first = (p.name || '').trim().split(' ')[0] || 'there';
+
+        function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+        function row(label, value, accent) {
+          return '<div class="rz-dl-row"><dt>' + label + '</dt><span class="rz-lead"></span><dd' + (accent ? ' class="rz-accent"' : '') + '>' + value + '</dd></div>';
+        }
+
+        var html =
+          '<div class="rz-confirm-card">' +
+            '<div class="rz-confirm-media"' + (room.img ? ' style="background-image:url(\'' + room.img + '\')"' : '') + '>' +
+              '<span class="rz-check" aria-hidden="true">&#10003;</span>' +
+            '</div>' +
+            '<div class="rz-confirm-body">' +
+              '<span class="rz-confirm-eyebrow">Reservation received</span>' +
+              '<h2>Thank you, ' + esc(first) + '!</h2>' +
+              '<p class="rz-confirm-lead">Your request is in. We&rsquo;ll confirm your stay by email or phone within a few hours &mdash; there&rsquo;s nothing more to do right now.</p>' +
+              '<dl class="rz-confirm-dl">' +
+                row('Room', esc(room.name)) +
+                row('Check&#8209;in', isoLong(p.check_in)) +
+                row('Check&#8209;out', isoLong(p.check_out)) +
+                row('Nights', nights, true) +
+                row('Guests', esc(guests)) +
+                row('Name', esc(p.name || '—')) +
+                row('Contact', contact) +
+                (ref ? row('Reference', '#' + ref, true) : '') +
+              '</dl>' +
+              '<p class="rz-confirm-note"><span class="ion-ios-lock"></span>No payment was taken. Keep your reference for any questions.</p>' +
+              '<div class="rz-confirm-actions">' +
+                '<a href="index.html" class="rz-btn-primary">Back to home</a>' +
+                '<a href="rooms.html" class="rz-btn-ghost">Explore more rooms</a>' +
+              '</div>' +
+            '</div>' +
+          '</div>';
+
+        document.querySelector('.tgh-reserve-grid').style.display = 'none';
+        var c = document.getElementById('rzConfirm');
+        c.innerHTML = html;
+        c.hidden = false;
+        var top = document.querySelector('.tgh-reserve').getBoundingClientRect().top + window.pageYOffset - 80;
+        window.scrollTo({ top: top, behavior: 'smooth' });
       }
     </script>
   </body>
