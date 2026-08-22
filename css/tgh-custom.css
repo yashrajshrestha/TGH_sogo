@@ -165,6 +165,9 @@ img{max-width:100%;}
   backdrop-filter:saturate(150%) blur(10px);box-shadow:0 2px 16px rgba(0,0,0,.07);padding-top:2px;padding-bottom:2px;}
 @media (prefers-color-scheme:dark){.site-header.scrolled{background:rgba(255,255,255,.82);}}
 .menu-open .site-header,.menu-open .site-header.scrolled{-webkit-backdrop-filter:none;backdrop-filter:none;}
+/* The nav overlay lives inside the header; the header's own z-index caps the
+   overlay's stacking, so lift the whole header above page content when open. */
+.menu-open .site-header,.menu-open .site-header.scrolled{z-index:9999;}
 
 /* ---------- Homepage room-tour video ---------- */
 .tgh-tour-video{max-height:560px;width:auto;max-width:100%;border-radius:14px;
