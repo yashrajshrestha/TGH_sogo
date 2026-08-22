@@ -903,6 +903,8 @@
           dotsWrap.appendChild(d);
           s.querySelector('video').addEventListener('ended', function () { if (i === idx) show(idx + 1); });
         });
+        box.querySelector('.tvs-prev').addEventListener('click', function () { show(idx - 1); });
+        box.querySelector('.tvs-next').addEventListener('click', function () { show(idx + 1); });
         function show(n) {
           clearTimeout(watchdog);
           idx = (n + slides.length) % slides.length;
