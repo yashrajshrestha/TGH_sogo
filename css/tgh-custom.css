@@ -96,9 +96,10 @@ img{max-width:100%;}
 .tvs-slide{position:absolute;inset:0;opacity:0;transition:opacity .5s ease;pointer-events:none;}
 .tvs-slide.is-active{opacity:1;pointer-events:auto;}
 .tvs-slide video{width:100%;height:100%;object-fit:cover;display:block;}
-/* Landscape clip in the portrait frame: show it whole rather than crop it to
-   a strip. Letterboxes against the slider's dark background. */
-.tvs-slide video.tvs-wide{object-fit:contain;background:#111;}
+/* One clip is landscape: rather than crop it to a strip (cover) or leave the
+   card mostly black (contain), the frame itself switches to 16:9 for it. */
+.tgh-video-slider{transition:aspect-ratio .45s ease;}
+.tgh-video-slider.is-wide{aspect-ratio:16/9;}
 .tvs-tag{position:absolute;top:12px;left:12px;z-index:3;padding:5px 12px;border-radius:999px;
   background:rgba(20,14,6,.55);backdrop-filter:blur(4px);color:#ffe6bf;font-size:10.5px;
   letter-spacing:1.5px;text-transform:uppercase;font-family:"Roboto",arial,sans-serif;}

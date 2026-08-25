@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
     <!-- Theme Style -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/tgh-custom.css?v=h7">
+    <link rel="stylesheet" href="css/tgh-custom.css?v=h8">
     <link rel="stylesheet" href="css/tgh-theme.css?v=t2">
   </head>
   <body>
@@ -605,6 +605,8 @@
         function show(n) {
           clearTimeout(watchdog);
           idx = (n + slides.length) % slides.length;
+          // One clip is landscape — let the frame match it instead of cropping.
+          box.classList.toggle('is-wide', !!slides[idx].querySelector('video.tvs-wide'));
           slides.forEach(function (s, i) {
             var v = s.querySelector('video');
             s.classList.toggle('is-active', i === idx);
