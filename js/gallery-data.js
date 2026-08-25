@@ -156,57 +156,62 @@ window.TGH_GALLERY = {
   {
    "full": "images/gallery/dining-01.jpg",
    "thumb": "images/gallery/thumbs/dining-01.jpg",
-   "alt": "Freshly prepared dish at Black Olives Cafe"
+   "alt": "Traditional Nepali dal bhat set at Black Olives Cafe"
   },
   {
    "full": "images/gallery/dining-02.jpg",
    "thumb": "images/gallery/thumbs/dining-02.jpg",
-   "alt": "Freshly prepared dish at Black Olives Cafe"
+   "alt": "Steamed momo with dipping sauce at Black Olives Cafe"
   },
   {
    "full": "images/gallery/dining-03.jpg",
    "thumb": "images/gallery/thumbs/dining-03.jpg",
-   "alt": "Freshly prepared dish at Black Olives Cafe"
+   "alt": "Fresh garden salad at Black Olives Cafe"
   },
   {
    "full": "images/gallery/dining-04.jpg",
    "thumb": "images/gallery/thumbs/dining-04.jpg",
-   "alt": "Freshly prepared dish at Black Olives Cafe"
+   "alt": "Grilled meat platter with chips at Black Olives Cafe"
   },
   {
    "full": "images/gallery/dining-05.jpg",
    "thumb": "images/gallery/thumbs/dining-05.jpg",
-   "alt": "Freshly prepared dish at Black Olives Cafe"
+   "alt": "Slow-cooked meat in gravy at Black Olives Cafe"
   },
   {
    "full": "images/gallery/dining-06.jpg",
    "thumb": "images/gallery/thumbs/dining-06.jpg",
-   "alt": "Freshly prepared dish at Black Olives Cafe"
+   "alt": "Fragrant rice pulao at Black Olives Cafe"
   },
   {
    "full": "images/gallery/dining-07.jpg",
    "thumb": "images/gallery/thumbs/dining-07.jpg",
-   "alt": "Freshly prepared dish at Black Olives Cafe"
+   "alt": "Braised meat with mashed potato at Black Olives Cafe"
   },
   {
    "full": "images/gallery/dining-08.jpg",
    "thumb": "images/gallery/thumbs/dining-08.jpg",
-   "alt": "Freshly prepared dish at Black Olives Cafe"
+   "alt": "Chicken with asparagus at Black Olives Cafe"
   },
   {
    "full": "images/gallery/dining-09.jpg",
    "thumb": "images/gallery/thumbs/dining-09.jpg",
-   "alt": "Freshly prepared dish at Black Olives Cafe"
+   "alt": "Breakfast with eggs, toast and sausage at Black Olives Cafe"
   },
   {
    "full": "images/gallery/dining-10.jpg",
    "thumb": "images/gallery/thumbs/dining-10.jpg",
-   "alt": "Freshly prepared dish at Black Olives Cafe"
+   "alt": "Breakfast platter at Black Olives Cafe"
   },
   {
    "full": "images/gallery/dining-11.jpg",
    "thumb": "images/gallery/thumbs/dining-11.jpg",
-   "alt": "Freshly prepared dish at Black Olives Cafe"
+   "alt": "Sandwich with salad at Black Olives Cafe"
+  },
+  {
+   "full": "images/gallery/dining-12.jpg",
+   "thumb": "images/gallery/thumbs/dining-12.jpg",
+   "alt": "Burger and fries at Black Olives Cafe"
   }
  ],
  "Cafe & Exterior": [
