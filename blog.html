@@ -23,7 +23,7 @@
 
     <!-- Theme Style -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/tgh-custom.css?v=h8">
+    <link rel="stylesheet" href="css/tgh-custom.css?v=h9">
     <link rel="stylesheet" href="css/tgh-theme.css?v=t2">
   </head>
   <body>
@@ -157,9 +157,10 @@
           'Content-Type': 'application/json'
         }
       })
-      .then(response => response.json())
-      
+      .then(response => { if (!response.ok) throw new Error('HTTP ' + response.status); return response.json(); })
+
       .then(data => {
+          if (!data || !data.data) throw new Error('empty');
 
           const blogtitle = document.getElementById('blogtitle');
           blogtitle.textContent = data.data.attributes.title;
@@ -204,7 +205,19 @@
           const header = document.getElementById('header');
           const imageUrl = ''+data.data.attributes.header_img.data.attributes.url;
           header.style.backgroundImage = `url('${imageUrl}')`;
-      
+
+         })
+         // The article lives in the database; if the API can't be reached the
+         // page would otherwise render completely blank. Say so, and offer a
+         // way back, instead of showing nothing.
+         .catch(function (e) {
+           console.warn('[TGH] blog unavailable:', e.message);
+           document.getElementById('blogtitle').textContent = 'Story unavailable';
+           document.getElementById('paratitle').textContent = 'We couldn’t load this story';
+           document.getElementById('blog-introduction').innerHTML =
+             '<p>This article couldn’t be loaded just now. Please try again in a moment, or browse our other trips and tours.</p>' +
+             '<p class="mt-4"><a href="events.html" class="btn btn-primary text-white">All trips &amp; tours</a> ' +
+             '<a href="index.html" class="text-uppercase letter-spacing-1 ml-3">Back to home</a></p>';
          });
       });
     </script>
