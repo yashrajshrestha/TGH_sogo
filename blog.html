@@ -139,6 +139,7 @@
     <script src="js/bootstrap-datepicker.js"></script> 
     <script src="js/jquery.timepicker.min.js"></script> 
     <script src="js/showdown.min.js"></script>
+    <script src="js/blog-data.js?v=b1"></script>
     
 
     <script src="js/main.js?v=2"></script>
@@ -210,14 +211,27 @@
          // The article lives in the database; if the API can't be reached the
          // page would otherwise render completely blank. Say so, and offer a
          // way back, instead of showing nothing.
+         // API unreachable (or running without a backend): fall back to the
+         // article bundled in js/blog-data.js so the page is never blank.
          .catch(function (e) {
-           console.warn('[TGH] blog unavailable:', e.message);
-           document.getElementById('blogtitle').textContent = 'Story unavailable';
-           document.getElementById('paratitle').textContent = 'We couldn’t load this story';
-           document.getElementById('blog-introduction').innerHTML =
-             '<p>This article couldn’t be loaded just now. Please try again in a moment, or browse our other trips and tours.</p>' +
-             '<p class="mt-4"><a href="events.html" class="btn btn-primary text-white">All trips &amp; tours</a> ' +
-             '<a href="index.html" class="text-uppercase letter-spacing-1 ml-3">Back to home</a></p>';
+           console.warn('[TGH] blog from API unavailable (' + e.message + ') — using bundled copy.');
+           var post = (window.TGH_BLOGS || []).filter(function (p) { return String(p.id) === String(myParam); })[0];
+           if (!post) {
+             document.getElementById('blogtitle').textContent = 'Story not found';
+             document.getElementById('paratitle').textContent = 'We couldn’t find that story';
+             document.getElementById('blog-introduction').innerHTML =
+               '<p class="mt-4"><a href="events.html" class="btn btn-primary text-white">All trips &amp; tours</a></p>';
+             return;
+           }
+           var conv = new showdown.Converter();
+           document.getElementById('blogtitle').textContent = post.title;
+           document.getElementById('paratitle').textContent = post.title;
+           var d = new Date(post.date + 'T00:00:00');
+           document.getElementById('blogdate').textContent =
+             d.toLocaleString('default', { month: 'long' }) + ' ' + d.getDate() + ', ' + d.getFullYear();
+           document.getElementById('blog-introduction').innerHTML = conv.makeHtml(post.introduction);
+           document.getElementById('blog-description').innerHTML = conv.makeHtml(post.description);
+           document.getElementById('header').style.backgroundImage = "url('" + post.header_img + "')";
          });
       });
     </script>
