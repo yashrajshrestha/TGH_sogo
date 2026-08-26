@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tgh-custom.css?v=h9">
     <link rel="stylesheet" href="css/tgh-theme.css?v=t2">
+    <link rel="stylesheet" href="css/tgh-article.css?v=a1">
   </head>
   <body>
     
@@ -145,6 +146,43 @@
     <script src="js/main.js?v=2"></script>
 
     <script>
+      // Photos run inside the article as captioned figures, spaced through the
+      // body rather than dumped in a block at the top.
+      function tghFigure(mount, url, caption) {
+        if (!mount || !url) return;
+        var f = document.createElement('figure');
+        f.className = 'tgh-figure';
+        var i = document.createElement('img');
+        i.src = url; i.alt = caption || ''; i.loading = 'lazy'; i.decoding = 'async';
+        f.appendChild(i);
+        if (caption) {
+          var c = document.createElement('figcaption');
+          c.textContent = caption;
+          f.appendChild(c);
+        }
+        // Drop each figure after a later section heading so the article reads
+        // as text-image-text instead of a wall of photos.
+        var body = document.getElementById('blog-description');
+        var heads = body ? body.querySelectorAll('h2') : [];
+        var placed = mount.dataset.placed ? Number(mount.dataset.placed) : 0;
+        var anchor = heads[placed + 1] || heads[heads.length - 1];
+        if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(f, anchor);
+        else mount.appendChild(f);
+        mount.dataset.placed = placed + 1;
+      }
+
+      function tghArticleEnd() {
+        var body = document.getElementById('blog-description');
+        if (!body || document.querySelector('.tgh-article-end')) return;
+        var d = document.createElement('div');
+        d.className = 'tgh-article-end';
+        d.innerHTML = '<a href="events.html" class="ae-primary">More trips &amp; tours</a>' +
+                      '<a href="reservation.html" class="ae-ghost">Book your stay</a>';
+        body.parentNode.appendChild(d);
+      }
+    </script>
+
+    <script>
       document.addEventListener("DOMContentLoaded", function(){
 
         const urlParams = new URLSearchParams(window.location.search);
@@ -192,16 +230,11 @@
           blogbody.innerHTML = htmlbody;
 
           const blogimage = document.getElementById('blog-image');
-          const images = data.data.attributes.images;
-
-          images.data.forEach(image => {
-            
-            const mediaImage = document.createElement('img');
-            mediaImage.className = 'col-lg-4 col-md-6 col-sm-6 col-12 post mb-5';
-            mediaImage.setAttribute("src", ''+image.attributes.url);
-
-            blogimage.append(mediaImage);
+          const images = (data.data.attributes.images && data.data.attributes.images.data) || [];
+          images.forEach(image => {
+            tghFigure(blogimage, image.attributes.url, image.attributes.caption || '');
           });
+          tghArticleEnd();
 
           const header = document.getElementById('header');
           const imageUrl = ''+data.data.attributes.header_img.data.attributes.url;
@@ -232,6 +265,9 @@
            document.getElementById('blog-introduction').innerHTML = conv.makeHtml(post.introduction);
            document.getElementById('blog-description').innerHTML = conv.makeHtml(post.description);
            document.getElementById('header').style.backgroundImage = "url('" + post.header_img + "')";
+           var fig = document.getElementById('blog-image');
+           (post.images || []).forEach(function (im) { tghFigure(fig, im.url, im.caption); });
+           tghArticleEnd();
          });
       });
     </script>

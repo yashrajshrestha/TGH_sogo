@@ -1,0 +1,103 @@
+/* Thamel Grand Hotel — article (blog post) layout.
+   Editorial defaults: one centred column at a comfortable measure, a clear
+   type scale, and generous vertical rhythm. Scoped to .blog-post-entry. */
+
+.blog-post-entry{background:var(--tgh-ivory);padding:0 0 6rem;}
+
+/* --- the article column ---------------------------------------------------
+   ~68 characters is the readable measure most publications settle on; at
+   19px that lands near 720px. The card floats up over the hero. */
+.blog-post-entry .container{max-width:1140px;}
+.blog-post-entry .post{padding:0;margin:0;}
+.blog-post-entry .media-custom{border:0;margin:0!important;}
+.blog-post-entry .media-body{
+  max-width:760px;margin:-96px auto 0;position:relative;z-index:5;
+  background:#fff;border-radius:14px;padding:56px 64px 60px;
+  box-shadow:0 40px 90px -50px rgba(20,15,8,.55);
+}
+
+/* --- meta + title --------------------------------------------------------- */
+.blog-post-entry .meta-post{
+  font-family:"Roboto",Arial,sans-serif;font-size:11.5px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--tgh-brass);
+  margin:0 0 14px;
+}
+.blog-post-entry #paratitle{
+  font-family:"Playfair Display",Georgia,serif;font-weight:600;
+  font-size:clamp(28px,3.4vw,40px);line-height:1.18;letter-spacing:-.01em;
+  color:var(--tgh-ink);margin:0 0 26px;
+}
+
+/* --- lead paragraph ------------------------------------------------------- */
+#blog-introduction p{
+  font-size:20px;line-height:1.6;color:#4a453d;margin:0 0 10px;
+}
+#blog-introduction{
+  padding-bottom:30px;margin-bottom:34px;border-bottom:1px solid var(--tgh-mist);
+}
+
+/* --- body ----------------------------------------------------------------- */
+#blog-description{font-size:18px;line-height:1.78;color:#413c34;}
+#blog-description p{margin:0 0 1.35em;}
+#blog-description h2{
+  font-family:"Playfair Display",Georgia,serif;font-weight:600;
+  font-size:27px;line-height:1.25;color:var(--tgh-ink);
+  margin:2.4em 0 .1em;padding-top:.9em;border-top:1px solid var(--tgh-mist);
+}
+#blog-description h2:first-child{margin-top:1.2em;}
+#blog-description h3{font-family:"Playfair Display",Georgia,serif;font-size:21px;margin:1.9em 0 .5em;}
+/* the "2,285 m · 3–4 hours · moderate" stat line under a heading */
+#blog-description h2 + p strong:only-child{
+  display:inline-block;font-family:"Roboto",Arial,sans-serif;font-size:12.5px;
+  font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--tgh-brass-d);
+  background:rgba(176,138,70,.09);border-radius:999px;padding:6px 14px;
+}
+#blog-description h2 + p{margin:.9em 0 1.5em;}
+#blog-description strong{color:var(--tgh-ink);font-weight:600;}
+#blog-description ul{margin:0 0 1.5em;padding-left:0;list-style:none;}
+#blog-description li{position:relative;padding-left:26px;margin-bottom:.7em;}
+#blog-description li::before{
+  content:"";position:absolute;left:2px;top:.72em;width:7px;height:7px;
+  border-radius:50%;background:var(--tgh-brass);
+}
+#blog-description a{color:var(--tgh-brass-d);text-decoration:underline;text-underline-offset:2px;}
+
+/* --- figures -------------------------------------------------------------- */
+#blog-image{margin:0;}
+.tgh-figure{margin:2.6em 0;}
+.tgh-figure img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block;border-radius:10px;}
+.tgh-figure figcaption{
+  font-family:"Roboto",Arial,sans-serif;font-size:13px;color:var(--tgh-stone);
+  margin-top:10px;padding-left:2px;line-height:1.5;
+}
+/* let a figure breathe past the text measure on wide screens */
+@media (min-width:900px){
+  .tgh-figure{margin-left:-42px;margin-right:-42px;}
+}
+
+/* --- footer of the article ------------------------------------------------ */
+.tgh-article-end{
+  margin-top:3rem;padding-top:1.8rem;border-top:1px solid var(--tgh-mist);
+  display:flex;gap:12px;flex-wrap:wrap;align-items:center;
+}
+.tgh-article-end a{
+  display:inline-flex;align-items:center;height:44px;padding:0 22px;border-radius:9px;
+  font-family:"Roboto",Arial,sans-serif;font-size:12.5px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:all .2s ease;
+}
+.tgh-article-end .ae-primary{background:var(--tgh-brass);color:#fff;}
+.tgh-article-end .ae-primary:hover{background:var(--tgh-brass-d);transform:translateY(-2px);}
+.tgh-article-end .ae-ghost{border:1px solid var(--tgh-mist);color:var(--tgh-ink);}
+.tgh-article-end .ae-ghost:hover{border-color:var(--tgh-brass);color:var(--tgh-brass-d);}
+
+/* --- responsive ----------------------------------------------------------- */
+@media (max-width:820px){
+  .blog-post-entry .media-body{margin-top:-56px;padding:38px 26px 44px;border-radius:12px;}
+  #blog-introduction p{font-size:18px;}
+  #blog-description{font-size:17px;}
+  #blog-description h2{font-size:23px;}
+  .tgh-figure{margin-left:0;margin-right:0;}
+}
+@media (max-width:520px){
+  .blog-post-entry .media-body{margin-top:-36px;padding:30px 20px 36px;}
+}
