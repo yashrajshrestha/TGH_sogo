@@ -161,13 +161,12 @@
       }
     });
 
-    // Trips & Tours — grid (static grid already in the HTML is the fallback)
-    mountCollection({
-      name: 'blogs',
-      url: '/api/blogs?populate=*',
-      container: '#blogs',
-      toCards: function (items) { return items.map(tripCard); }
-    });
+    // Trips & Tours — NOT mounted here any more. js/blogs-list.js owns #blogs
+    // (and the events.html grid): it renders the bundled articles first so the
+    // section is real with no backend, then upgrades from the API, and it caps
+    // the homepage at the latest three. Both loaders used to target #blogs and
+    // whichever fetch resolved last won — on production this one did, so the
+    // teaser showed all eleven articles instead of three.
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
