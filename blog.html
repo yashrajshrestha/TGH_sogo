@@ -23,9 +23,9 @@
 
     <!-- Theme Style -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/tgh-custom.css?v=h9">
+    <link rel="stylesheet" href="css/tgh-custom.css?v=h10">
     <link rel="stylesheet" href="css/tgh-theme.css?v=t2">
-    <link rel="stylesheet" href="css/tgh-article.css?v=a1">
+    <link rel="stylesheet" href="css/tgh-article.css?v=a9">
   </head>
   <body>
     
@@ -49,7 +49,10 @@
       <div class="container">
         
         <div class="row">
-          <div class="col-lg-12 col-md-6 col-sm-6 col-12 post mb-5" data-aos="fade-up" data-aos-delay="100">
+          <!-- Single full-width column: the article measure is set by .media-body
+               (max-width 760px, auto margins). The template's col-md-6/col-sm-6
+               squeezed the card into half the container between 576 and 991px. -->
+          <div class="col-12 post mb-5" data-aos="fade-up" data-aos-delay="100">
 
             <div class="media media-custom d-block mb-4 h-100">
               <!-- <a href="events.html#" class="mb-4 d-block"><img loading="lazy" decoding="async" src="images/img_1.jpg" alt="Thamel Grand Hotel" class="img-fluid"></a> -->
@@ -140,40 +143,90 @@
     <script src="js/bootstrap-datepicker.js"></script> 
     <script src="js/jquery.timepicker.min.js"></script> 
     <script src="js/showdown.min.js"></script>
-    <script src="js/blog-data.js?v=b1"></script>
+    <script src="js/blog-data.js?v=b3"></script>
     
 
     <script src="js/main.js?v=2"></script>
 
     <script>
-      // Photos run inside the article as captioned figures, spaced through the
-      // body rather than dumped in a block at the top.
+      // Photos sit BESIDE the text, not stacked through it: the first one pairs
+      // with the standfirst at the top, the rest pair with the longest sections
+      // and alternate sides down the page. Figures are collected as they arrive
+      // and laid out once, by tghArticleEnd(), when the body is complete.
+      var TGH_FIGS = [];
+
       function tghFigure(mount, url, caption) {
-        if (!mount || !url) return;
-        var f = document.createElement('figure');
-        f.className = 'tgh-figure';
+        if (!url) return;
+        TGH_FIGS.push({ url: url, caption: caption || '' });
+      }
+
+      function tghBuildFigure(f) {
+        var fig = document.createElement('figure');
+        fig.className = 'tgh-figure';
         var i = document.createElement('img');
-        i.src = url; i.alt = caption || ''; i.loading = 'lazy'; i.decoding = 'async';
-        f.appendChild(i);
-        if (caption) {
+        i.src = f.url; i.alt = f.caption; i.loading = 'lazy'; i.decoding = 'async';
+        fig.appendChild(i);
+        if (f.caption) {
           var c = document.createElement('figcaption');
-          c.textContent = caption;
-          f.appendChild(c);
+          c.textContent = f.caption;      // caption always below the image
+          fig.appendChild(c);
         }
-        // Drop each figure after a later section heading so the article reads
-        // as text-image-text instead of a wall of photos.
-        var body = document.getElementById('blog-description');
-        var heads = body ? body.querySelectorAll('h2') : [];
-        var placed = mount.dataset.placed ? Number(mount.dataset.placed) : 0;
-        var anchor = heads[placed + 1] || heads[heads.length - 1];
-        if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(f, anchor);
-        else mount.appendChild(f);
-        mount.dataset.placed = placed + 1;
+        return fig;
+      }
+
+      function tghSplitRow(cls) {
+        var row = document.createElement('div');
+        row.className = 'tgh-split' + (cls ? ' ' + cls : '');
+        var t = document.createElement('div'); t.className = 'tgh-split-text';
+        var m = document.createElement('div'); m.className = 'tgh-split-media';
+        row.appendChild(t); row.appendChild(m);
+        row._text = t; row._media = m;
+        return row;
+      }
+
+      function tghLayoutFigures() {
+        var body  = document.getElementById('blog-description');
+        var intro = document.getElementById('blog-introduction');
+        if (!body || !TGH_FIGS.length) return;
+        var figs = TGH_FIGS.slice();
+        TGH_FIGS.length = 0;
+
+        // 1) the standfirst and the opening photo, side by side
+        if (intro && intro.parentNode && figs.length) {
+          var lede = tghSplitRow('tgh-split--lede');
+          intro.parentNode.insertBefore(lede, intro);
+          lede._text.appendChild(intro);
+          lede._media.appendChild(tghBuildFigure(figs.shift()));
+        }
+
+        // 2) the rest pair with the meatiest sections, so a photo never sits
+        //    next to two lines of text. Sides alternate down the article.
+        var sections = [].slice.call(body.querySelectorAll('h2')).map(function (h) {
+          var nodes = [h], n = h.nextElementSibling, len = h.textContent.length;
+          while (n && n.tagName !== 'H2') { nodes.push(n); len += n.textContent.length; n = n.nextElementSibling; }
+          return { h: h, nodes: nodes, len: len };
+        }).sort(function (a, b) { return b.len - a.len; });
+
+        figs.forEach(function (f, k) {
+          var sec = sections[k];
+          if (!sec) { body.appendChild(tghBuildFigure(f)); return; }
+          var row = tghSplitRow('');
+          sec.h.parentNode.insertBefore(row, sec.h);
+          sec.nodes.forEach(function (n) { row._text.appendChild(n); });
+          row._media.appendChild(tghBuildFigure(f));
+        });
+
+        // Sides alternate by position on the PAGE, not by pairing order — the
+        // sections were picked by length, so their document order differs.
+        [].slice.call(document.querySelectorAll('.tgh-split')).forEach(function (r, idx) {
+          if (idx % 2) r.classList.add('tgh-split--rev');
+        });
       }
 
       function tghArticleEnd() {
         var body = document.getElementById('blog-description');
         if (!body || document.querySelector('.tgh-article-end')) return;
+        tghLayoutFigures();
         var d = document.createElement('div');
         d.className = 'tgh-article-end';
         d.innerHTML = '<a href="events.html" class="ae-primary">More trips &amp; tours</a>' +
@@ -231,9 +284,19 @@
 
           const blogimage = document.getElementById('blog-image');
           const images = (data.data.attributes.images && data.data.attributes.images.data) || [];
-          images.forEach(image => {
-            tghFigure(blogimage, image.attributes.url, image.attributes.caption || '');
-          });
+          if (images.length) {
+            images.forEach(image => {
+              tghFigure(blogimage, image.attributes.url, image.attributes.caption || '');
+            });
+          } else {
+            // The blogs table has no media rows, so /api/blogs returns an empty
+            // images array. Use the captioned figures bundled with the article
+            // rather than dropping the photos when the API is live.
+            const bundled = (window.TGH_BLOGS || []).filter(p => String(p.id) === String(myParam))[0];
+            (bundled && bundled.images || []).forEach(im => {
+              tghFigure(blogimage, im.url, im.caption || '');
+            });
+          }
           tghArticleEnd();
 
           const header = document.getElementById('header');
