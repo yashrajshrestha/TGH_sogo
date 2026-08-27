@@ -5,14 +5,22 @@
 .blog-post-entry{background:var(--tgh-ivory);padding:0 0 6rem;}
 
 /* --- the article column ---------------------------------------------------
-   ~68 characters is the readable measure most publications settle on; at
-   19px that lands near 720px. The card floats up over the hero. */
-.blog-post-entry .container{max-width:1140px;}
-.blog-post-entry .post{padding:0;margin:0;}
+   A wide editorial card rather than a narrow single measure: the card runs to
+   1120px and the text fills it. The card floats up over the hero. */
+.blog-post-entry .container{max-width:1320px;}
+/* The Bootstrap row's -15px side margins plus a zero-padding column pushed the
+   card 30px past the container and put a horizontal scrollbar on narrow
+   screens, with the card flush to both edges. Cancel the row margins and keep
+   a 15px gutter of our own instead. */
+.blog-post-entry .row{margin-left:0;margin-right:0;}
+.blog-post-entry .post{padding:0 15px;margin:0;}
 .blog-post-entry .media-custom{border:0;margin:0!important;}
-.blog-post-entry .media-body{
-  max-width:760px;margin:-96px auto 0;position:relative;z-index:5;
-  background:#fff;border-radius:14px;padding:56px 64px 60px;
+/* The selector is deliberately long: style.css sets
+   `.post .media-custom .media-body{padding:10px 30px}` (0,3,0), which silently
+   outranked a shorter rule here — the card was running on template padding. */
+.blog-post-entry .post .media-custom .media-body{
+  max-width:1120px;margin:-96px auto 0;position:relative;z-index:5;
+  background:#fff;border-radius:14px;padding:60px 80px 64px;
   box-shadow:0 40px 90px -50px rgba(20,15,8,.55);
 }
 
@@ -30,14 +38,14 @@
 
 /* --- lead paragraph ------------------------------------------------------- */
 #blog-introduction p{
-  font-size:20px;line-height:1.6;color:#4a453d;margin:0 0 10px;
+  font-size:21px;line-height:1.6;color:#4a453d;margin:0 0 10px;
 }
 #blog-introduction{
   padding-bottom:30px;margin-bottom:34px;border-bottom:1px solid var(--tgh-mist);
 }
 
 /* --- body ----------------------------------------------------------------- */
-#blog-description{font-size:18px;line-height:1.78;color:#413c34;}
+#blog-description{font-size:19px;line-height:1.8;color:#413c34;}
 #blog-description p{margin:0 0 1.35em;}
 #blog-description h2{
   font-family:"Playfair Display",Georgia,serif;font-weight:600;
@@ -64,16 +72,53 @@
 
 /* --- figures -------------------------------------------------------------- */
 #blog-image{margin:0;}
-.tgh-figure{margin:2.6em 0;}
-.tgh-figure img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block;border-radius:10px;}
+/* A stray figure (more photos than sections) still reads as a centred plate. */
+.tgh-figure{margin:2.4em auto;max-width:620px;}
+.tgh-figure img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;border-radius:10px;}
 .tgh-figure figcaption{
   font-family:"Roboto",Arial,sans-serif;font-size:13px;color:var(--tgh-stone);
   margin-top:10px;padding-left:2px;line-height:1.5;
 }
-/* let a figure breathe past the text measure on wide screens */
-@media (min-width:900px){
-  .tgh-figure{margin-left:-42px;margin-right:-42px;}
+
+
+/* --- text beside photo ----------------------------------------------------
+   Two parallel columns: the words on one side, the picture on the other, tops
+   flush. Sides alternate down the article so the eye zig-zags instead of
+   scrolling past a stack of slabs. Fractional columns (not a fixed media
+   width) keep both sides usable as the card narrows. */
+.tgh-split{
+  display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
+  gap:46px;align-items:start;margin:2.9em 0;
 }
+/* Place by column, not by `order`: with fractional tracks, reordering also
+   swaps which track each side lands in — which made a reversed row's photo the
+   WIDE column and squeezed the text. Swap the template and the placement. */
+/* grid-row:1 is required, not decorative: auto-placement only moves forward,
+   so a reversed row (media placed in column 1 after the text took column 2)
+   dropped the photo into a second row instead of sitting beside the text. */
+.tgh-split .tgh-split-text{grid-column:1;grid-row:1;}
+.tgh-split .tgh-split-media{grid-column:2;grid-row:1;}
+.tgh-split--rev{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);}
+.tgh-split--rev .tgh-split-text{grid-column:2;}
+.tgh-split--rev .tgh-split-media{grid-column:1;}
+.tgh-split-media .tgh-figure{margin:0;max-width:none;}
+.tgh-split-media .tgh-figure img{aspect-ratio:4/5;}
+/* The heading that opens a split needs no rule or top margin — the row itself
+   provides the separation. Prefixed with #blog-description because the base
+   `#blog-description h2` rule carries an id and would otherwise win, leaving
+   the text column pushed 2.4em below the photo instead of flush with it. */
+#blog-description .tgh-split .tgh-split-text > h2:first-child{
+  margin-top:0;padding-top:0;border-top:0;
+}
+.tgh-split .tgh-split-text > *:last-child{margin-bottom:0;}
+
+/* the standfirst, paired with the opening photo */
+.tgh-split--lede{
+  grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:center;
+  margin:0 0 36px;padding-bottom:32px;border-bottom:1px solid var(--tgh-mist);
+}
+.tgh-split--lede #blog-introduction{padding-bottom:0;margin-bottom:0;border-bottom:0;}
+.tgh-split--lede .tgh-figure img{aspect-ratio:4/3;}
 
 /* --- footer of the article ------------------------------------------------ */
 .tgh-article-end{
@@ -92,12 +137,24 @@
 
 /* --- responsive ----------------------------------------------------------- */
 @media (max-width:820px){
-  .blog-post-entry .media-body{margin-top:-56px;padding:38px 26px 44px;border-radius:12px;}
+  /* below this the two columns would both be too narrow: stack them, photo
+     under its text, and let the figure run the full measure again. */
+  .tgh-split,.tgh-split--lede{grid-template-columns:minmax(0,1fr);gap:26px;}
+  .tgh-split--lede{align-items:start;}
+  .tgh-split .tgh-split-text,.tgh-split .tgh-split-media,
+  .tgh-split--rev .tgh-split-text,.tgh-split--rev .tgh-split-media{
+    grid-column:1;grid-row:auto;
+  }
+  .tgh-split-media .tgh-figure img,.tgh-split--lede .tgh-figure img{aspect-ratio:16/10;}
+  .blog-post-entry .post{padding:0 10px;}
+  .blog-post-entry .post .media-custom .media-body{margin-top:-56px;padding:44px 34px 48px;border-radius:12px;}
   #blog-introduction p{font-size:18px;}
   #blog-description{font-size:17px;}
   #blog-description h2{font-size:23px;}
   .tgh-figure{margin-left:0;margin-right:0;}
 }
 @media (max-width:520px){
-  .blog-post-entry .media-body{margin-top:-36px;padding:30px 20px 36px;}
+  .blog-post-entry .post{padding:0 8px;}
+  .blog-post-entry .post .media-custom .media-body{margin-top:-36px;padding:32px 20px 38px;}
+  .tgh-figure{max-width:100%;}
 }

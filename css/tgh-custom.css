@@ -262,3 +262,9 @@ img{max-width:100%;}
   .tl-item:nth-child(even) .tl-media{order:0;}
   .tl-item:nth-child(even) .tl-text{order:0;text-align:left;}
 }
+
+/* --- footer: long unbreakable strings ------------------------------------
+   The email address (and the plus-code address) are single long "words" that
+   overflowed their col-md-3 below 992px, putting a horizontal scrollbar on
+   every page. Let them wrap instead. */
+.footer-section p{overflow-wrap:break-word;}
